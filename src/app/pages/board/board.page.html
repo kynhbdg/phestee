@@ -1,0 +1,226 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title (click)="presentActionSheet()" class="ion-text-center">@pastelesMX  <ion-icon name="chevron-down-outline"></ion-icon>
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+        <!-- <ion-searchbar></ion-searchbar> -->
+        <div class="ion-margin-top ion-padding-start ion-padding-end d-flex-row-between-centered">
+          <h5><b>Febrero, 2020</b></h5> 
+          <!-- <ion-button shape="round" color="light">
+            <ion-icon name="calendar-outline"></ion-icon>
+          </ion-button>  -->
+        </div> 
+
+        <ion-card>
+          <ion-card-content class="d-flex-row-between-centered w-100">
+            <ion-avatar>
+              <img src="./../assets/media/cake.jpg">
+            </ion-avatar>
+            <ion-card-title class="ion-text-center">
+              <h2><b>10</b></h2>
+              <h3>Interacciones</h3>
+            </ion-card-title>
+            <ion-card-title class="ion-text-center">
+              <h2><b>$5,200</b></h2>
+              <h3>Ingreso aprox.</h3>
+            </ion-card-title>
+            <ion-card-title class="ion-text-center">
+              <h2><ion-icon color="warning" name="star" slot="start"></ion-icon></h2>
+              <h3>4,95</h3>
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+
+        <div class="ion-padding-start ion-padding-end">
+          <ion-segment (ionChange)="boardStatusToggle($event)"  value="wip">
+            <!-- (ionChange)="onFilterUpdate($event)" -->
+            <ion-segment-button value="proposed">
+              <ion-label>Propuestas</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="wip">
+              <ion-label>Aceptadas</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="done">
+              <ion-label>Terminadas</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+
+
+        <div class="ion-no-margin ion-no-padding" *ngIf="showBoardActiveFlg" >
+          <ion-list class="ion-margin-top">
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/woman2.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Laura Perez</b></h2>
+                <h3>Necesito un pastel para mi sobrina que...</h3>
+                <p class="d-flex-row-between-centered ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="success">$452+</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/friendship.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Ray Castellanos</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="success">$452+</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/stress.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Juan Carlos</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="success">$0</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/woman.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Mike Hernández</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="success">$452</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/party.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Ramon Gama</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="success">$452+</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/friendship.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Ben Castro</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="success">$452+</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+
+        <div class="ion-no-margin ion-no-padding" *ngIf="!showBoardActiveFlg" >
+          <ion-list class="ion-margin-top">
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/party.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Ramon Gama</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="primary">$452+</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/friendship.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Ben Castro</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="light">$0</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/stress.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Juan Carlos</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="warning">$452+</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/woman.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Mike Hernández</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="primary">$452+</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/party.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Ramon Gama</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="primary">$452+</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item class="ion-margin-top ion-margin-bottom">
+              <ion-avatar slot="start">
+                <img src="../../assets/media/friendship.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>Ben Castro</b></h2>
+                <h3>Tengo que llevar un pastel a la ofi...</h3>
+                <p class="d-flex-row-between-centered  ion-margin-top">
+                  <ion-text><ion-icon name="alarm-outline" slot="start"></ion-icon> 15 de marzo a la 1pm</ion-text>
+                  <ion-badge color="primary">$452+</ion-badge>
+                </p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

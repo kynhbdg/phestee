@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/pages/tabs/feed" color="primary">
+        <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Necesito un corte de cabello</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+
+        <ion-card>
+          <img class="img-feed-exp" src="../../assets/media/stress.jpg"/>
+          <ion-card-header>
+            <ion-card-subtitle>Hace 10 minutos | A 2km</ion-card-subtitle>
+            <ion-card-title>Necesito un corte de cabello</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="d-flex-row-between-centered">
+            <ion-button shape="round" color="light"><ion-icon class="rotated-15" color="primary" name="hand-left" slot="start"></ion-icon>  15</ion-button>
+            <ion-button shape="round" color="medium" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  0</ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-list>
+
+          <ion-list-header>
+            <h6>Ésta publicación coincide con tu tablero <span color="primart">@esteticaMX</span>. Selecciona los items para realizar una oferta.</h6>
+          </ion-list-header>
+
+          <ion-card>
+            <ion-card-content class="d-flex-row-between-centered w-100">
+              <ion-avatar>
+                <img src="./../assets/media/hairdresser.jpg">
+              </ion-avatar>
+              <ion-card-title class="ion-text-center">
+                <h2><b>10</b></h2>
+                <h3>Interacciones</h3>
+              </ion-card-title>
+              <ion-card-title class="ion-text-center">
+                <h2><b>$2,100</b></h2>
+                <h3>Ingreso mes.</h3>
+              </ion-card-title>
+              <ion-card-title class="ion-text-center">
+                <h2><ion-icon color="warning" name="star" slot="start"></ion-icon></h2>
+                <h3>4,95</h3>
+              </ion-card-title>
+            </ion-card-content>
+
+            <ion-list>
+              <ion-item-group>
+                <ion-item>
+                  <ion-checkbox checked="true" slot="start" color="primary"></ion-checkbox>
+                  <ion-label>Corte de cabello para dama</ion-label>
+                  <ion-badge slot="end" color="success">$150</ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-checkbox checked="true" slot="start" color="primary"></ion-checkbox>
+                  <ion-label>Peinado de salón</ion-label>
+                  <ion-badge slot="end" color="success">$430</ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-checkbox slot="start" color="primary"></ion-checkbox>
+                  <ion-label>Pedicure</ion-label>
+                  <ion-badge slot="end" color="light">$120</ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-checkbox slot="start" color="primary"></ion-checkbox>
+                  <ion-label>Manicure</ion-label>
+                  <ion-badge slot="end" color="light">$200</ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label class="ion-text-right">
+                    Subtotal:$580.00
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="stacked">Ingresa un descuento %</ion-label>
+                  <ion-input></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label class="ion-text-right">
+                    Total: <b>$580.00 </b>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="stacked">Agrega comentarios</ion-label>
+                  <ion-textarea></ion-textarea>
+                </ion-item>
+                <div class="ion-padding">
+                  <ion-button shape="round" expand="block" type="submit" class="ion-no-margin"><ion-icon class="rotated-15" name="hand-left" slot="start"></ion-icon> Enviar oferta</ion-button>
+                </div>
+              </ion-item-group>
+            </ion-list>
+
+          </ion-card>
+
+
+
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home" color="primary">
+        <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding hdr-margin-right-back-btn">
+      <div class="phestee-icon-hdr"></div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-align-items-start">
+
+      <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+        <h3 class="ion-text-center ph-margin-top-3"><b>Entra con tu cuenta</b></h3>
+        <form ngNativeValidate [formGroup]="loginForm" (ngSubmit)="onUserLogin()">
+          <ion-list>
+            <ion-item [ngClass]="{'border-left-active': emailForm.dirty && emailForm.valid, 'border-left-danger': !emailForm.valid && emailForm.touched}">
+              <ion-label position="floating">Email registrado</ion-label>
+              <ion-input formControlName="email" id="email" name="email" required type="email"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!emailForm.valid && emailForm.touched">
+              <ion-note color="danger"><small> Oh no... parece que el correo no es válido.</small></ion-note>
+            </ion-item>
+            <ion-item [ngClass]="{'border-left-active': passwordForm.dirty && passwordForm.valid, 'border-left-danger': !passwordForm.valid && passwordForm.touched}">
+              <ion-label position="floating">Contraseña</ion-label>
+              <ion-input formControlName="password" id="password" name="password" required type="password"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!passwordForm.valid && passwordForm.touched">
+              <ion-note color="danger"><small>Parece que la contraseña no es válida</small></ion-note>
+            </ion-item>
+          </ion-list>
+          <ion-button [disabled]="loginForm.invalid" expand="block" shape="round" type="submit" color="primary" class="ph-margin-top-3"><ion-icon name="arrow-forward-outline" slot="end"></ion-icon>Entrar</ion-button>
+
+          <ion-button expand="block" size="small" routerLink="/signin" type="button" color="primary" class="ion-margin-top" fill="clear" class="ion-margin-top">Olvidé mi contraseña</ion-button>
+          <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-facebook" slot="start"></ion-icon>Entrar con facebook</ion-button>
+          <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-google" slot="start"></ion-icon>Entrar con google</ion-button>
+          <ion-button expand="block" size="small" routerLink="/signin" type="button" color="primary" fill="clear" class="ion-margin-top">Aún no tengo una cuenta</ion-button>
+        </form>
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

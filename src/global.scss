@@ -24,3 +24,228 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,500,600,700|Open+Sans:300,400,500,700&display=swap');
+$ff-brand: 'Quicksand', sans-serif;
+$ff-primary: 'Open Sans', sans-serif;
+
+* {
+    font-family: $ff-primary;
+}
+
+ion-icon {
+    --ionicon-stroke-width: 24px;
+  }
+
+p, h1, h2, h3, h4, h5, h6 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.ph-img-thumbnail {
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-user-footer {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+    margin-top: 10px;
+}
+
+.font-brand-big {
+    font-family: $ff-brand;
+    letter-spacing: -1px;
+    font-size: 1.4rem;
+}
+
+.font-brand-normal {
+    font-family: $ff-brand;
+    letter-spacing: -1px;
+    font-size: 1.5rem;
+}
+
+.rotated-15 {
+    transform: rotate(-15deg);
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.d-flex-col-justifiy-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.d-flex-col-start-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.d-flex-col-center-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.d-flex-row-between-centered {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.d-flex-row-around-centered {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.d-flex-row-start-centered {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-flex-row-start-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.ph-avatar-profile {
+    height: 72px;
+    width: 72px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.phestee-icon-md {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    background-image: url(../src/assets/phesteeGrad110px.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.phestee-icon-hdr {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    background-image: url(../src/assets/phesteeGrad30px.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hdr-margin-right-back-btn{
+    margin-right: 50.59px;
+}
+
+.ph-margin-y-1{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.ph-margin-y-2 {
+    margin-top: 2rem;
+    margin-bottom:2rem;
+}
+
+.ph-margin-top-1 {
+    margin-top: 1.5rem;
+}
+
+.ph-margin-top-2 {
+    margin-top: 2rem;
+}
+
+.ph-margin-top-3 {
+    margin-top: 3rem;
+}
+
+.ph-margin-bottom-1 {
+    margin-bottom: 1.5rem;
+}
+
+.ph-margin-bottom-2 {
+    margin-bottom: 2rem;
+}
+
+.ph-margin-bottom-3 {
+    margin-bottom: 3rem;
+}
+
+.ph-padding-top-1 {
+    padding-top: 1.5rem;
+}
+
+.ph-margin-right-0 {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.bg-transparent {
+    background: transparent;
+} 
+
+.no-border {
+    border: none;
+}
+
+.ph-border-bottom {
+    border-bottom: 1.75px solid var(--ion-color-light);
+}
+
+.border-left-active {
+    border-left: 2px solid var(--ion-color-primary);
+}
+
+.border-left-danger {
+    border-left: 2px solid var(--ion-color-danger);
+}
+
+.border-left-done {
+    border-left: 2px solid var(--ion-color-medium);
+}
+
+.border-left-success {
+    border-left: 2px solid var(--ion-color-success);
+}
+
+.ph-border-top {
+    border-top: 1.25px solid var(--ion-color-light);
+}
+
+.img-feed-post {
+    height: 45vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-feed-post {
+    height: 35vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}

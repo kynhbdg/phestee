@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/login" color="primary">
+        <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding hdr-margin-right-back-btn">
+      <div class="phestee-icon-hdr"></div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-align-items-start">
+      <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+        <h3 class="ion-text-center ph-margin-top-3"><b>Regístrate</b></h3>
+        <form [formGroup]="signinForm" (ngSubmit)="onUserSignin()" class="ion-margin-top">
+          <ion-list>
+            <ion-item [ngClass]="{'border-left-active': emailForm.dirty && emailForm.valid, 'border-left-danger': !emailForm.valid && emailForm.touched}">
+              <ion-label position="floating">Ingresa un email</ion-label>
+              <ion-input formControlName="email" id="email" name="email" required type="email"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!emailForm.valid && emailForm.touched" class="ion-no-border">
+              <ion-note color="danger">Intenta con un correo válido.</ion-note>
+            </ion-item>
+            <ion-item [ngClass]="{'border-left-active': userProfileForm.dirty && userProfileForm.valid, 'border-left-danger': !userProfileForm.valid && userProfileForm.touched}">
+              <ion-label position="floating">Crea un nombre de usuario</ion-label>
+              <ion-input formControlName="userName" id="userName" name="userName" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="userProfileForm.value" class="ion-no-border border-left-active">
+              <ion-note color="primary">@{{userProfileForm.value}}</ion-note>
+            </ion-item>
+            <ion-item [ngClass]="{'border-left-active': passwordForm.dirty && passwordForm.valid, 'border-left-danger': !passwordForm.valid && passwordForm.touched}">
+              <ion-label position="floating">Crea una contraseña</ion-label>
+              <ion-input formControlName="password1" id="password1" name="password1" required type="password"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!passwordForm.valid && passwordForm.touched" class="ion-no-border">
+              <ion-note color="danger">Mínimo 8 caracteres </ion-note>
+            </ion-item>
+            <ion-item [ngClass]="{'border-left-active': password2Form.dirty && password2Form.valid, 'border-left-danger': !password2Form.valid && password2Form.touched}">
+              <ion-label position="floating">Repite la contraseña</ion-label>
+              <ion-input formControlName="password2" id="password2" name="password2" required type="password"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!password2Form.valid && password2Form.touched" class="ion-no-border">
+              <ion-note color="danger">Las contraseñas no coinciden </ion-note>
+            </ion-item>
+            <ion-item class="bg-transparent no-border ion-margin-top">
+              Acepto los términos y condiciones
+              <ion-checkbox formControlName="tyc" id="tyc" name="tyc" required color="primary" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item *ngIf="!tycForm.valid && tycForm.touched" class="ion-no-border">
+              <ion-note color="danger">Debes aceptar los TyC </ion-note>
+            </ion-item>
+          </ion-list>
+          <ion-button [disabled]="signinForm.invalid"  expand="block" shape="round" type="submit" color="primary" class="ph-margin-top-3"><ion-icon name="arrow-forward-outline" slot="end"></ion-icon>Registrar</ion-button>
+          <ion-button expand="block" size="small" routerLink="/login" type="button" color="primary" fill="clear" class="ion-margin-top">Ya tengo una cuenta</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+

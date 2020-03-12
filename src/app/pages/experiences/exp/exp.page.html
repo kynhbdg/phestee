@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/pages/tabs/experiences" color="primary">
+        <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Necesito una lámpara para mi escritorio</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateInfo('123')" color="primary">
+        <ion-icon color="dark" name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+
+        <ion-card>
+          <ion-card-header class="d-flex-row-start-top">
+            <img class="ph-img-thumbnail" src="../../assets/media/woman2.jpg">
+            <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
+              <h4>Necesito una lámpara para mi escritorio</h4>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
+            <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 2</b></ion-label>
+            <ion-label><ion-icon name="flash-outline" slot="start"></ion-icon> <b> 10</b></ion-label>
+            <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 1</b></ion-label>
+            <ion-label> <b> $329.00</b></ion-label>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

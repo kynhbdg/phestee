@@ -1,5 +1,7 @@
 {
   "name": "phestee",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
