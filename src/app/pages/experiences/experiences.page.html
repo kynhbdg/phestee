@@ -1,6 +1,16 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title class="ion-text-center">@lauraG21X</ion-title>
+    <ion-title class="ion-text-center">
+      <ion-segment (ionChange)="experienceStatusToggle($event)" value="wip">
+        <!-- (ionChange)="onFilterUpdate($event)" -->
+        <ion-segment-button value="wip">
+          <ion-label>Activas</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="done">
+          <ion-label>Terminadas</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,189 +19,249 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
         <!-- <ion-searchbar></ion-searchbar> -->
-        <div class="ion-margin-top ion-padding-start ion-padding-end d-flex-row-between-centered">
-          <h5><b>Febrero, 2020</b></h5> 
+        <div class="ion-margin-top ion-margin-bottom ion-padding-start ion-padding-end d-flex-row-between-centered">
+          <h1><b>Febrero, 2020</b></h1> 
           <!-- <ion-button shape="round" color="light">
             <ion-icon name="calendar-outline"></ion-icon>
           </ion-button> -->
         </div>
 
+        <!-- <div class="ion-padding-start ion-padding-end">
+          <ion-segment (ionChange)="experienceStatusToggle($event)" value="wip">
+            (ionChange)="onFilterUpdate($event)"
+            <ion-segment-button value="wip">
+              <ion-label>Activas</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="done">
+              <ion-label>Terminadas</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </div> -->
 
-          <ion-card class="d-flex-row-start-centered">
-            <ion-card-content class="d-flex-row-between-centered w-100">
-              <ion-avatar>
-                <img src="./../assets/media/woman.jpg">
-              </ion-avatar>
-              <ion-card-title class="ion-text-center">
-                <h2><b>25</b></h2>
-                <h3>Experiencias</h3>
-              </ion-card-title>
-              <ion-card-title class="ion-text-center">
-                <h2><b>$5,3K</b></h2>
-                <h3>Gasto aprox.</h3>
-              </ion-card-title>
-              <ion-card-title class="ion-text-center">
-                <h2><ion-icon color="warning" name="star" slot="start"></ion-icon></h2>
-                <h3>4,95</h3>
-              </ion-card-title>
-            </ion-card-content>
-          </ion-card>
-  
-          <div class="ion-padding-start ion-padding-end">
-            <ion-segment (ionChange)="experienceStatusToggle($event)" value="wip">
-              <!-- (ionChange)="onFilterUpdate($event)" -->
-              <ion-segment-button value="wip">
-                <ion-label>Activas</ion-label>
-              </ion-segment-button>
-              <ion-segment-button value="done">
-                <ion-label>Terminadas</ion-label>
-              </ion-segment-button>
-            </ion-segment>
-          </div>
-  
-          <div class="ion-no-margin ion-no-padding" *ngIf="showActiveFlg" >
+        <ion-card class="d-flex-row-start-centered ion-no-padding simple-card">
+          <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-top ion-padding-bottom">
+            <ion-avatar>
+              <img src="./../assets/media/woman.jpg">
+            </ion-avatar>
+            <ion-card-title class="ion-text-center">
+              <h2><b>25</b></h2>
+              <h3>Experiencias</h3>
+            </ion-card-title>
+            <ion-card-title class="ion-text-center">
+              <h2><b>$5,3K</b></h2>
+              <h3>Gasto aprox.</h3>
+            </ion-card-title>
+            <ion-card-title class="ion-text-center">
+              <h2><ion-icon color="warning" name="star" slot="start"></ion-icon></h2>
+              <h3>4,95</h3>
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
 
-            <ion-card (click)="openExp('123')">
-              <img class="img-feed-exp" src="../../assets/media/woman2.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 2 días</ion-card-subtitle>
-                <ion-card-title>Necesito una lámpara para mi escritorio</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-                <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label><ion-icon name="flash-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label> <b> $0</b></ion-label>
-              </ion-card-content>
-            </ion-card>
-
-            <ion-card>
-              <img class="img-feed-exp" src="../../assets/media/friendship.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 1 hora</ion-card-subtitle>
-                <ion-card-title>Necesito una lámpara para mi escritorio</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-                <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label><ion-icon name="flash-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label> <b> $0</b></ion-label>
-              </ion-card-content>
-            </ion-card>
-
-          </div>
-
-          <div class="ion-no-margin ion-no-padding" *ngIf="!showActiveFlg">
+        <div class="ion-no-padding ion-no-margin" *ngIf="showActiveFlg">
           
-            <ion-card>
-              <ion-card-header class="d-flex-row-start-top">
-                <img class="ph-img-thumbnail" src="../../assets/media/friendship.jpg">
-                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h4>¡Laura cumple años el siguiente fin! 🎉</h4>
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-                <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label><ion-icon name="flash-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label> <b> $0</b></ion-label>
-              </ion-card-content>
-            </ion-card>
-            <ion-card>
-              <ion-card-header class="d-flex-row-start-top">
-                <img class="ph-img-thumbnail" src="../../assets/media/friendship.jpg">
-                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h4>¡Laura cumple años el siguiente fin! 🎉</h4>
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-                <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 15</b></ion-label>
-                <ion-label><ion-icon name="chatbubbles-outline" slot="start"></ion-icon> <b> 35</b></ion-label>
-                <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 3</b></ion-label>
-                <ion-label> <b> $5,6K+</b></ion-label>
-              </ion-card-content>
-            </ion-card>
-            <ion-card>
-              <ion-card-header class="d-flex-row-start-top">
-                <!-- <div class="bg-exp-photo"></div> -->
-                <img class="ph-img-thumbnail" src="../../assets/media/dog1.jpg">
-                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h4>¿Alguien que cuide a mi 🐕 durante una semana?</h4>
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-                <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 15</b></ion-label>
-                <ion-label><ion-icon name="chatbubbles-outline" slot="start"></ion-icon> <b> 35</b></ion-label>
-                <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 3</b></ion-label>
-                <ion-label> <b> $1,2K+</b></ion-label>
-              </ion-card-content>
-            </ion-card>
-            <ion-card>
-              <ion-card-header class="d-flex-row-start-top">
-                <!-- <div class="bg-exp-photo"></div> -->
-                <img class="ph-img-thumbnail" src="../../assets/media/couple.jpg">
-                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h4>¡Me caso en un año!</h4>
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-                <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 296</b></ion-label>
-                <ion-label><ion-icon name="chatbubbles-outline" slot="start"></ion-icon> <b> 654</b></ion-label>
-                <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 10</b></ion-label>
-                <ion-label> <b> $39.5K+</b></ion-label>
-              </ion-card-content>
-            </ion-card>
-            <ion-card>
-              <ion-card-header class="d-flex-row-start-top">
-                <!-- <div class="bg-exp-photo"></div> -->
-                <img class="ph-img-thumbnail" src="../../assets/media/stress.jpg">
-                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h4>Me urge un masaje... ha sido una semana muy difícil</h4>
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-                <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 0</b></ion-label>
-                <ion-label><ion-icon name="chatbubbles-outline" slot="start"></ion-icon> <b> 35</b></ion-label>
-                <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 1</b></ion-label>
-                <ion-label> <b> $580+</b></ion-label>
-              </ion-card-content>
-            </ion-card>
-            <ion-card>
-              <ion-card-header class="d-flex-row-start-top">
-                <!-- <div class="bg-exp-photo"></div> -->
-                <img class="ph-img-thumbnail" src="../../assets/media/friendship.jpg">
-                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h4>¡Laura cumple años el siguiente fin! 🎉</h4>
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-                <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 15</b></ion-label>
-                <ion-label><ion-icon name="chatbubbles-outline" slot="start"></ion-icon> <b> 35</b></ion-label>
-                <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 3</b></ion-label>
-                <ion-label> <b> $5,6K</b></ion-label>
-              </ion-card-content>
-            </ion-card>
-            <ion-card>
-              <ion-card-header class="d-flex-row-start-top">
-                <!-- <div class="bg-exp-photo"></div> -->
-                <img class="ph-img-thumbnail" src="../../assets/media/dog1.jpg">
-                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h4>¿Alguien que cuide a mi 🐕 durante una semana?</h4>
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-                <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 15</b></ion-label>
-                <ion-label><ion-icon name="chatbubbles-outline" slot="start"></ion-icon> <b> 35</b></ion-label>
-                <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 3</b></ion-label>
-                <ion-label> <b> $5,6K</b></ion-label>
-              </ion-card-content>
-            </ion-card>
+          <ion-card (click)="openExp('234')">
+            <img class="img-simple-card" src="../../assets/media/dog1.jpg">
+            <ion-card-header>
+              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+              <ion-card-title>
+                <h5 class="text-truncated-one-line">Me voy de viaje y mi perro se va a quedar solo, quièn lo cuida?</h5>
+              </ion-card-title>
+              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 0</h6>
+                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 0</h6>
+                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon> 0</h6>
+                <h6 class="ph-margin-right-0"><b>$0.00</b></h6>
+              </ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>          
+          
+          <ion-card (click)="openExp('123')">
+            <img class="img-simple-card" src="../../assets/media/woman2.jpg">
+            <ion-card-header>
+              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+              <ion-card-title>
+                <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                  también unas estripers, escorts, o como sea... urge por favor!</h5>
+              </ion-card-title>
+              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+              </ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>          
+          
+          <ion-card (click)="openExp('123')">
+            <!-- <img class="img-simple-card" src="../../assets/media/woman2.jpg"> -->
+            <ion-card-header>
+              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+              <ion-card-title>
+                <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                  también unas estripers, escorts, o como sea... urge por favor!</h5>
+              </ion-card-title>
+              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+              </ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
 
-          </div>
-        <!-- <ion-list class="ion-margin-top">
-          <ion-item>
-          </ion-item>
-        </ion-list> -->
+          <ion-card (click)="openExp('123')">
+            <img class="img-simple-card" src="../../assets/media/friendship.jpg">
+            <ion-card-header>
+              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+              <ion-card-title>
+                <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                  también unas estripers, escorts, o como sea... urge por favor!</h5>
+              </ion-card-title>
+              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+              </ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+
+          <ion-card (click)="openExp('123')">
+            <img class="img-simple-card" src="../../assets/media/woman2.jpg">
+            <ion-card-header>
+              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+              <ion-card-title>
+                <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                  también unas estripers, escorts, o como sea... urge por favor!</h5>
+              </ion-card-title>
+              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+              </ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+
+        </div>
+
+        <ion-grid class="ion-no-padding ion-no-margin" *ngIf="!showActiveFlg">
+          <ion-row>
+            <ion-col size="6" size-lg="12">
+              <ion-card class="simple-card ion-no-padding">
+                <img class="img-simple-card" src="../../assets/media/friendship.jpg">
+                <ion-card-content class="ion-no-padding">
+                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                  <ion-card-title>
+                    <h5 class="text-truncated"><b>¡Laura cumple años el siguiente fin! 🎉</b></h5>
+                  </ion-card-title>
+                  <ion-item class="ion-no-padding d-flex-row-start-centered">
+                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
+                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
+                    <h6 class="ph-margin-right-0">$5,6K+</h6>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col size="6" size-lg="12">
+              <ion-card class="simple-card ion-no-padding">
+                <img class="img-simple-card" src="../../assets/media/hairdresser.jpg">
+                <ion-card-content class="ion-no-padding">
+                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                  <ion-card-title>
+                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
+                  </ion-card-title>
+                  <ion-item class="ion-no-padding d-flex-row-start-centered">
+                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
+                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
+                    <h6 class="ph-margin-right-0">$5,6K+</h6>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col size="6" size-lg="12">
+              <ion-card class="simple-card ion-no-padding">
+                <img class="img-simple-card" src="../../assets/media/woman.jpg">
+                <ion-card-content class="ion-no-padding">
+                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                  <ion-card-title>
+                    <h5 class="text-truncated"><b>¡Laura cumple años el siguiente fin! 🎉</b></h5>
+                  </ion-card-title>
+                  <ion-item class="ion-no-padding d-flex-row-start-centered">
+                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
+                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
+                    <h6 class="ph-margin-right-0">$5,6K+</h6>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col size="6" size-lg="12" (click)="openExp('123')">
+              <ion-card class="simple-card ion-no-padding">
+                <img class="img-simple-card" src="../../assets/media/woman2.jpg">
+                <ion-card-content class="ion-no-padding">
+                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                  <ion-card-title>
+                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
+                  </ion-card-title>
+                  <ion-item class="ion-no-padding d-flex-row-start-centered">
+                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
+                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
+                    <h6 class="ph-margin-right-0">$5,6K+</h6>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col size="6" size-lg="12">
+              <ion-card class="simple-card ion-no-padding">
+                <img class="img-simple-card" src="../../assets/media/hairdresser.jpg">
+                <ion-card-content class="ion-no-padding">
+                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                  <ion-card-title>
+                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
+                  </ion-card-title>
+                  <ion-item class="ion-no-padding d-flex-row-start-centered">
+                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
+                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
+                    <h6 class="ph-margin-right-0">$5,6K+</h6>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col size="6" size-lg="12" (click)="openExp('123')">
+              <ion-card class="simple-card ion-no-padding">
+                <img class="img-simple-card" src="../../assets/media/woman2.jpg">
+                <ion-card-content class="ion-no-padding">
+                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                  <ion-card-title>
+                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
+                  </ion-card-title>
+                  <ion-item class="ion-no-padding d-flex-row-start-centered">
+                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
+                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
+                    <h6 class="ph-margin-right-0">$5,6K+</h6>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col size="6" size-lg="12">
+              <ion-card class="simple-card ion-no-padding">
+                <img class="img-simple-card" src="../../assets/media/hairdresser.jpg">
+                <ion-card-content class="ion-no-padding">
+                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                  <ion-card-title>
+                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
+                  </ion-card-title>
+                  <ion-card-subtitle class="d-flex-row-start-centered">
+                    <ion-label><ion-icon name="flash" slot="start"></ion-icon> <b> 35</b></ion-label>
+                    <ion-label class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left" slot="start"></ion-icon> <b> 3</b></ion-label>
+                    <ion-label class="ion-margin-start"> <b> $5,6K+</b></ion-label>
+                  </ion-card-subtitle>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
       </ion-col>
     </ion-row>

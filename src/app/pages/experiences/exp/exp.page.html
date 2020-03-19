@@ -17,24 +17,255 @@
 
 <ion-content>
 
-  <ion-grid>
+  <ion-grid class="ion-no-padding">
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-        <ion-card>
-          <ion-card-header class="d-flex-row-start-top">
-            <img class="ph-img-thumbnail" src="../../assets/media/woman2.jpg">
-            <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-              <h4>Necesito una lámpara para mi escritorio</h4>
+        <ion-card class="ion-margin-bottom">
+          <ion-card-content class="d-flex-row-between-centered">
+            <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+            <ion-chip color="success"><b>$0.00</b></ion-chip>
+          </ion-card-content>
+          <img class="img-feed-exp" src="../../assets/media/woman2.jpg">
+          <ion-card-header>
+            <ion-card-title>
+              <h6>Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                también unas estripers, escorts, o como sea... urge por favor!</h6>
             </ion-card-title>
           </ion-card-header>
-          <ion-card-content class="d-flex-row-between-centered ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-            <ion-label><ion-icon name="people-outline" slot="start"></ion-icon> <b> 2</b></ion-label>
-            <ion-label><ion-icon name="flash-outline" slot="start"></ion-icon> <b> 10</b></ion-label>
-            <ion-label><ion-icon class="rotated-15 ion-no-margin" name="hand-left-outline" slot="start"></ion-icon> <b> 1</b></ion-label>
-            <ion-label> <b> $329.00</b></ion-label>
-          </ion-card-content>
+            <ion-item>
+              <ion-label>Fecha</ion-label>
+              <ion-datetime value="1990-02-19" placeholder="Hoy"></ion-datetime>
+            </ion-item>
+            <ion-item>
+              <ion-label>Hora</ion-label>
+              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Lugar</ion-label>
+              <ion-button expand="block" size="small" color="light" shape="round"><ion-icon name="navigate"></ion-icon></ion-button>
+            </ion-item>
+              <!-- <ion-button size="small" shape="round" color="light">
+                <ion-icon name="time-outline" slot="start"></ion-icon> 
+                <span class="text-truncated-buttons">Lo antes posible</span>
+              </ion-button>
+              <ion-button size="small" shape="round" color="light">
+                <ion-icon name="navigate-outline" slot="start"></ion-icon> 
+                <span class="text-truncated-buttons">Mi casa</span>
+              </ion-button> -->
         </ion-card>
+
+        <div class="ion-margin-top ion-padding">
+          <h3><b> Experiencias</b><small class="ion-margin-start"><ion-icon name="flash-outline" color="medium" slot="start"></ion-icon> (5)</small></h3>
+        </div>
+
+        <ion-slides [options]="sliderConfigOffer">
+
+          <ion-slide>
+            <ion-card class="simple-card">
+
+              <img class="img-slider-thumbnail" src="../../assets/media/dj.jpg">
+
+              <ion-card-content class="ion-no-padding ion-text-start">
+                <ion-label color="dark">
+                  <h2 class="text-truncated">Lámparas de Guadalajara</h2>
+                </ion-label>
+                <ion-label color="medum">
+                  <h3><b>$550.54</b></h3>
+                </ion-label>
+                <ion-label>
+                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,89</h3>
+                </ion-label>
+              </ion-card-content>
+ 
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide> 
+            <ion-card class="simple-card">
+
+              <img class="img-slider-thumbnail" src="../../assets/media/friendship.jpg">
+
+              <ion-card-content class="ion-no-padding ion-text-start">
+                <ion-label color="dark">
+                  <h2 class="text-truncated">Lámparas de Guadalajara</h2>
+                </ion-label>
+                <ion-label color="medum">
+                  <h3><b>$355.54</b></h3>
+                </ion-label>
+                <ion-label>
+                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,9</h3>
+                </ion-label>
+              </ion-card-content>
+ 
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide> 
+            <ion-card class="simple-card">
+
+              <img class="img-slider-thumbnail" src="../../assets/media/dog.jpg">
+
+              <ion-card-content class="ion-no-padding ion-text-start">
+                <ion-label color="dark">
+                  <h2 class="text-truncated">Lámparas de Guadalajara</h2>
+                </ion-label>
+                <ion-label color="medum">
+                  <h3><b>$550.54</b></h3>
+                </ion-label>
+                <ion-label>
+                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,89</h3>
+                </ion-label>
+              </ion-card-content>
+ 
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide> 
+            <ion-card class="simple-card">
+
+              <img class="img-slider-thumbnail" src="../../assets/media/woman.jpg">
+
+              <ion-card-content class="ion-no-padding ion-text-start">
+                <ion-label color="dark">
+                  <h2 class="text-truncated">Lámparas de Guadalajara</h2>
+                </ion-label>
+                <ion-label color="medum">
+                  <h3><b>$550.54</b></h3>
+                </ion-label>
+                <ion-label>
+                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,89</h3>
+                </ion-label>
+              </ion-card-content>
+ 
+            </ion-card>
+          </ion-slide>
+
+        </ion-slides>
+
+        <div class="ion-margin-top ion-padding">
+          <h3><b> Ofrecimientos</b> <small class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" color="medium" slot="start"></ion-icon> (2)</small></h3>
+        </div>
+
+        <ion-slides [options]="sliderConfigOffer">
+
+          <ion-slide>
+            <ion-card class="simple-card">
+
+              <img class="img-slider-thumbnail" src="../../assets/media/lamp2.jpg">
+
+              <ion-card-content class="ion-no-padding ion-text-start">
+                <ion-label color="dark">
+                  <h2 class="text-truncated">Lámparas de Guadalajara</h2>
+                </ion-label>
+                <ion-label color="medum">
+                  <h3><b>$550.54</b></h3>
+                </ion-label>
+                <ion-label>
+                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,89</h3>
+                </ion-label>
+              </ion-card-content>
+ 
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide> 
+            <ion-card class="simple-card">
+
+              <img class="img-slider-thumbnail" src="../../assets/media/lamp.jpg">
+
+              <ion-card-content class="ion-no-padding ion-text-start">
+                <ion-label color="dark">
+                  <h2 class="text-truncated">Lámparas de Guadalajara</h2>
+                </ion-label>
+                <ion-label color="medum">
+                  <h3><b>$355.54</b></h3>
+                </ion-label>
+                <ion-label>
+                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,9</h3>
+                </ion-label>
+              </ion-card-content>
+ 
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card class="simple-card">
+
+              <img class="img-slider-thumbnail" src="../../assets/media/lamp2.jpg">
+
+              <ion-card-content class="ion-no-padding ion-text-start">
+                <ion-label color="dark">
+                  <h2 class="text-truncated">Lámparas de Guadalajara</h2>
+                </ion-label>
+                <ion-label color="medum">
+                  <h3><b>$550.54</b></h3>
+                </ion-label>
+                <ion-label>
+                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,89</h3>
+                </ion-label>
+              </ion-card-content>
+ 
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card class="simple-card">
+
+              <img class="img-slider-thumbnail" src="../../assets/media/lamp2.jpg">
+
+              <ion-card-content class="ion-no-padding ion-text-start">
+                <ion-label color="dark">
+                  <h2 class="text-truncated">Lámparas de Guadalajara</h2>
+                </ion-label>
+                <ion-label color="medum">
+                  <h3><b>$550.54</b></h3>
+                </ion-label>
+                <ion-label>
+                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,89</h3>
+                </ion-label>
+              </ion-card-content>
+ 
+            </ion-card>
+          </ion-slide>
+
+        </ion-slides>
+
+
+        <div class="ion-margin-top ion-padding">
+          <h3><b> Miembros</b> <small class="ion-margin-start"> <ion-icon name="people-outline" color="medium" slot="start"></ion-icon> (2)</small></h3>
+        </div>
+
+        <ion-list class="ion-margin-top">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="../../assets/media/bar.jpg">
+            </ion-avatar>
+            <ion-label>
+              <h3><b>alandiaza</b></h3>
+              <h3>Alan Díaz</h3>
+            </ion-label>
+            <ion-chip color="danger">
+              Quitar
+            </ion-chip>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="../../assets/media/friendship.jpg">
+            </ion-avatar>
+            <ion-label>
+              <h3><b>juancarlosd</b></h3>
+              <h3>Juan Carlos Díaz</h3>
+            </ion-label>
+            <ion-chip color="danger">
+              Quitar
+            </ion-chip>
+          </ion-item>
+          <ion-button expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon>Agregar miembro</ion-button>
+
+        </ion-list>
+        
 
       </ion-col>
     </ion-row>

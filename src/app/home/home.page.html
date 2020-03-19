@@ -9,7 +9,7 @@
             <div class="phestee-icon-md"></div>
             <h1 class="font-brand-big ion-margin-top">phestee</h1>
             <h6>Todo lo que necesitas está aquí, sin búsquedas complicadas y sin publicidad.</h6>
-            <ion-button routerLink="/login" shape="round" type="button" color="primary" class="top-button ion-margin-top"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button>
+            <!-- <ion-button routerLink="/login" shape="round" type="button" color="primary" class="top-button ion-margin-top"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button> -->
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -21,16 +21,16 @@
             <h1><ion-icon class="icon-home-page" color="primary" name="chatbubble-ellipses"></ion-icon></h1>
             <h2 class="ion-margin-top font-brand-normal">Pública lo que quieras</h2>
             <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
-              <img src="../../assets/media/friendship.jpg" />
+              <img class="post-img-demo"  src="../../assets/media/friendship.jpg" />
               <ion-card-header class="ion-text-start ion-no-margin ion-no-padding">
                 <ion-card-title>
                   <h5>¡Laura cumple años el siguiente fin! 🎉</h5>
                 </ion-card-title>
               </ion-card-header>
             </ion-card>
-            <ion-card-content class="ion-margin-top">
+            <!-- <ion-card-content class="ion-margin-top">
               <ion-card-title color="medium"><p>Puedes publicar lo que sea, por ejemplo: "Mi perro tiene hambre", "Quiero comida italiana", "Mi casa está sucia..."</p></ion-card-title>
-            </ion-card-content>
+            </ion-card-content> -->
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -51,22 +51,22 @@
               <ion-card-header class="home-reactions-card flex-start-demo border-left-active">
                 <img src="../../assets/media/bar.jpg">
                 <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h5><b>Bar MX</b></h5>
-                  <h6>Celebra con nosotros. ¡La primera ronda va por nuestra cuenta! 🍸🍹</h6>
+                  <h5><small><b>Bar MX</b></small></h5>
+                  <h5><small>Celebra con nosotros. ¡La primera ronda va por nuestra cuenta! 🍸🍹</small></h5>
                 </ion-card-title>
               </ion-card-header>
               <ion-card-header class="home-reactions-card flex-start-demo border-left-active">
                 <img src="../../assets/media/cake.jpg">
                 <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h5><b>Pastelería Tapatía</b></h5>
-                  <h6>Nosotros te mandamos el pastel y las velas. 🎂 </h6>
+                  <h5><small><b>Pastelería Tapatía</b></small></h5>
+                  <h5><small>Nosotros te mandamos el pastel y las velas. 🎂 </small></h5>
                 </ion-card-title>
               </ion-card-header>
               <ion-card-header class="home-reactions-card flex-start-demo border-left-active ion-hide-md-down">
                 <img src="../../assets/media/party.jpg">
                 <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h5><b>Kattering</b></h5>
-                  <h6>¡Hola! Te organizamos tu fiesta temática 🎊. ¡Checa nuestro tablero! </h6>
+                  <h5><small><b>Kattering</b></small></h5>
+                  <h5><small>¡Hola! Te organizamos tu fiesta temática 🎊. ¡Checa nuestro tablero! </small></h5>
                 </ion-card-title>
               </ion-card-header>
               <!-- <ion-card-header class="ion-padding-top ion-padding-bottom">
@@ -113,7 +113,7 @@
                 <!-- <div class="bg-exp-photo"></div> -->
                 <img class="post-exp-img" src="../../assets/media/dog1.jpg">
                 <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h5>¿Alguien que cuide a mi 🐕 durante una semana?</h5>
+                  <h5>¿Alguien que cuide a mi perro durante una semana? 🐶</h5>
                 </ion-card-title>
               </ion-card-header>
               <ion-card-content class="home-experience-card flex-between-demo">
@@ -154,9 +154,9 @@
                 </ion-card-title>
               </ion-card-content>
             </ion-card>
-            <ion-card-content class="ion-margin-top">
+            <!-- <ion-card-content class="ion-margin-top">
               <ion-card-title color="medium"><p>Agrega miembros para que participen de tu experiencia. Los colaboradores son los que levantan la mano para ayudarte. </p></ion-card-title>
-            </ion-card-content>
+            </ion-card-content> -->
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -167,7 +167,7 @@
           <ion-col size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
             <div class="phestee-icon-md"></div>
             <h1 class="font-brand-big ion-margin-top">Deja de buscar y déjate encontrar</h1>
-            <ion-button routerLink="/login" shape="round" type="button" color="primary" class="top-button ion-margin-top"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button>
+            <!-- <ion-button routerLink="/login" shape="round" type="button" color="primary" class="top-button ion-margin-top"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button> -->
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -176,3 +176,15 @@
   </ion-slides>
   
 </ion-content>
+
+<ion-footer class="ion-no-border">
+
+  <ion-grid fixed>
+    <ion-row class="ion-align-items-center">
+      <ion-col class="home-footer" size-lg="10" offset-lg="1">
+        <ion-button routerLink="/login" shape="round" type="button" color="primary"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>

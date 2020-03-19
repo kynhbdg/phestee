@@ -26,15 +26,15 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'new',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('./post/post.module').then( m => m.PostPageModule)
-          }
-        ]
-      },
+      // {
+      //   path: 'new',
+      //   children: [
+      //     {
+      //       path: '',
+      //       loadChildren: () => import('./post/post.module').then( m => m.PostPageModule)
+      //     }
+      //   ]
+      // },
       {
         path: 'board',
         children: [

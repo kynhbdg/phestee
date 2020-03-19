@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-exp',
@@ -8,8 +9,14 @@ import { Router } from '@angular/router';
 })
 export class ExpPage implements OnInit {
 
+  sliderConfigOffer = {
+    slidesPerView: 2.25
+  };
+
+
   constructor(
-    public router: Router
+    public router: Router,
+    public actionSheetController: ActionSheetController
   ) { }
 
   ngOnInit() {
@@ -17,6 +24,32 @@ export class ExpPage implements OnInit {
 
   navigateInfo(id: string) {
     this.router.navigate(['/', 'pages', 'tabs', 'experiences', 'exp-info' ,  id]);
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Lámparas de Guadalajara',
+      buttons: [{
+        text: 'Reportar',
+        role: 'destructive',
+        handler: () => {
+          console.log('Share clicked');
+        }
+      }, {
+        text: 'Declinar oferta',
+        handler: () => {
+          console.log('Share clicked');
+        }
+      }, {
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
 }

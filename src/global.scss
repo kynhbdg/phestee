@@ -42,6 +42,10 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 0px;
 }
 
+.chip-transparent {
+    background: transparent;
+}
+
 .ph-img-thumbnail {
     width: 48px;
     height: 48px;
@@ -56,18 +60,19 @@ p, h1, h2, h3, h4, h5, h6 {
     object-fit: cover;
     object-position: center;
     margin-top: 10px;
+    border-radius: 100%;
 }
 
 .font-brand-big {
     font-family: $ff-brand;
     letter-spacing: -1px;
-    font-size: 1.4rem;
+    font-size: 2rem;
 }
 
 .font-brand-normal {
     font-family: $ff-brand;
     letter-spacing: -1px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .rotated-15 {
@@ -100,17 +105,17 @@ p, h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
+.d-flex-row-center-centered {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .d-flex-row-between-centered {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-}
-
-.d-flex-row-around-centered {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     align-items: center;
 }
 
@@ -132,9 +137,9 @@ p, h1, h2, h3, h4, h5, h6 {
     align-items: flex-start;
 }
 
-.ph-avatar-profile {
-    height: 72px;
-    width: 72px;
+.ph-avatar-post {
+    height: 32px;
+    width: 32px;
     border-radius: 100%;
     object-fit: cover;
     object-position: center;
@@ -159,6 +164,11 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .hdr-margin-right-back-btn{
     margin-right: 50.59px;
+}
+
+.ph-margin-x-auto {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .ph-margin-y-1{
@@ -243,9 +253,67 @@ p, h1, h2, h3, h4, h5, h6 {
     object-position: center;
 }
 
-.img-feed-post {
-    height: 35vh;
+.img-feed-exp {
+    height: 25vh;
     width: 100%;
     object-fit: cover;
     object-position: center;
 }
+
+.img-slider-thumbnail {
+    height: 18vh !important;
+    width: 100% !important;
+    object-fit: cover;
+    object-position: center;
+}
+
+.slide-card-member {
+    width: auto;
+    height: 90px;
+}
+
+.btn-no-padding {
+    padding: 0px;
+}
+
+.text-truncated {
+    max-width: 190px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+ }
+
+ .text-truncated-one-line {
+    max-width: 90vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+ }
+
+ .text-truncated-buttons {
+    max-width: 30vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+ }
+
+ .simple-card {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+ }
+
+ .simple-card .img-simple-card {
+     width: 100%;
+     height: 20vh;
+     object-fit: cover;
+     object-position: center;
+ }
+
+ @media (min-width: 768px) {
+    .simple-card .img-simple-card {
+        height: 45vh;
+    }
+ }
+ 

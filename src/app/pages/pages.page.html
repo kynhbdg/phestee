@@ -2,18 +2,17 @@
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="feed">
-        <ion-icon name="home-outline"></ion-icon>
+        <ion-icon [name]="iconFeed"></ion-icon>
       </ion-tab-button>
       <ion-tab-button tab="experiences">
-        <ion-icon name="flash-outline"></ion-icon>
-        <ion-badge color="danger">2</ion-badge>
+        <ion-icon [name]="iconExperiences"></ion-icon>
       </ion-tab-button>
-      <ion-tab-button tab="new">
+      <ion-tab-button (click)="openModalPost()">
         <!-- <ion-icon name="add-outline"></ion-icon> -->
         <ion-icon src="../assets/phesteelogoHdrGreyed.svg"></ion-icon> 
       </ion-tab-button>
       <ion-tab-button tab="board">
-        <ion-icon name="file-tray-outline"></ion-icon>
+        <ion-icon [name]="iconChats"></ion-icon>
         <ion-badge color="danger">2</ion-badge>
       </ion-tab-button>
       <ion-tab-button tab="user">

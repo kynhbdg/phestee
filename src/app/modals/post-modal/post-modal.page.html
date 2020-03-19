@@ -1,0 +1,88 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-button (click)="closeModal()" fill="clear" slot="start" >Cancelar</ion-button>
+    <ion-title class="ion-text-center">
+        <img class="img-user-footer ph-margin-x-auto" src="./../assets/media/woman.jpg">
+    </ion-title>
+    <ion-button (click)="closeModal()" fill="clear" slot="end" >Publicar</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col>
+
+        <form>
+
+          <ion-item class="d-flex-row-start-centered">
+            <ion-label position="floating">¿Qué necesitas, Laura?</ion-label>
+            <ion-textarea rows="4"></ion-textarea>
+          </ion-item>
+
+          <ion-grid>
+            <ion-row>
+            <ion-col size="6" 
+              *ngFor="let photo of cameraService.photos; index as position">
+                <ion-img src="{{ photo.webviewPath }}"></ion-img>
+            </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <!-- <ion-slides pager="true">
+
+            <ion-slide *ngFor="let photo of cameraService.photos; index as position">
+              <ion-card>
+                <ion-img class="img-feed-post" src="{{ photo.webviewPath }}"></ion-img>
+              </ion-card>
+            </ion-slide>
+  
+          </ion-slides> -->
+
+          <ion-item (click)="openCamera()"color="light">
+            <ion-icon name="camera-outline" slot="start"></ion-icon>
+            <ion-label>Cámara</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="time-outline" slot="start"></ion-icon>
+            <ion-label>¿Cuándo?</ion-label>
+            <!-- <ion-label class="ph-margin-right-0">Lo antes posible</ion-label> -->
+            <ion-datetime value="1990-02-19" placeholder="Hoy"></ion-datetime>
+          </ion-item>
+          <!-- <ion-item>
+            <ion-label>Hora</ion-label>
+            <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+          </ion-item> -->
+          <ion-item >
+            <ion-icon name="navigate-outline" slot="start"></ion-icon>
+            <ion-label>¿Dónde?</ion-label>
+            <ion-label class="ph-margin-right-0">Ir al mapa</ion-label>
+          </ion-item>
+          <ion-item class="ion-margin-top">
+            <ion-label>Post incógnito</ion-label>
+            <ion-toggle checked="true" color="primary"></ion-toggle>
+          </ion-item>          <ion-item>
+            <ion-label>Sólo profesionales</ion-label>
+            <ion-toggle checked="true" color="primary"></ion-toggle>
+          </ion-item>          <ion-item>
+            <ion-label>Comunidad</ion-label>
+            <ion-toggle color="primary"></ion-toggle>
+          </ion-item>
+          <ion-item>
+            <ion-text class="ion-margin-top ion-margin-bottom ion-text-center" color="medium">
+                <small>
+                  Si seleccionas "comunidad", los usuarios cercanos podrán ver tu publicación y ofrecerte algo. 
+                  Si pubilcas en modo incógnito, nadie podrá ver tu perfil hasta que inicies una experiencia con ellos.
+                </small>
+            </ion-text>
+          </ion-item>
+
+
+
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+
+</ion-content>

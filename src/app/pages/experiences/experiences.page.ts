@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { ExpPage } from './exp/exp.page';
 
 @Component({
   selector: 'app-experiences',
@@ -11,7 +13,8 @@ export class ExperiencesPage implements OnInit {
   showActiveFlg = true;
 
   constructor(
-    public router: Router
+    public router: Router,
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {

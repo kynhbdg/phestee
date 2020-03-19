@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'info',
     loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule)
   },
+  {
+    path: 'modals',
+    loadChildren: () => import('./modals/modals.module').then( m => m.ModalsPageModule)
+  },
 ];
 
 @NgModule({

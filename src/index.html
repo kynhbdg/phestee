@@ -16,10 +16,16 @@
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <script type="module" src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"></script>
+  <!-- we should try to install above via  npm install @ionic/pwa-elements, but it is showing a Zone error when importing things in post-modal.page.ts -->
+
 </head>
 
 <body>
   <app-root></app-root>
 </body>
+
+
 
 </html>
