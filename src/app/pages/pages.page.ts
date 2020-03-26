@@ -31,9 +31,9 @@ export class PagesPage implements OnInit {
   }
 
   activateMenu() {
-    this.iconFeed = this.router.url === '/pages/tabs/feed' ? 'home' : 'home-outline';
+    this.iconFeed = this.router.url === '/pages/tabs/feed' ? 'albums' : 'albums-outline';
     this.iconExperiences = this.router.url === '/pages/tabs/experiences' ? 'flash' : 'flash-outline';
-    this.iconChats = this.router.url === '/pages/tabs/board' ? 'chatbubbles' : 'chatbubbles-outline';
+    this.iconChats = this.router.url === '/pages/tabs/chats' ? 'chatbubbles' : 'chatbubbles-outline';
   }
 
   openModalPost() {

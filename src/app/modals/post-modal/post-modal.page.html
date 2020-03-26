@@ -1,10 +1,10 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-button (click)="closeModal()" fill="clear" slot="start" >Cancelar</ion-button>
+    <ion-button (click)="onCloseModal()" fill="clear" slot="start" >Cancelar</ion-button>
     <ion-title class="ion-text-center">
         <img class="img-user-footer ph-margin-x-auto" src="./../assets/media/woman.jpg">
     </ion-title>
-    <ion-button (click)="closeModal()" fill="clear" slot="end" >Publicar</ion-button>
+    <ion-button type="submit" (click)="onCreatePost()" [disabled]="postForm.invalid" fill="clear" slot="end" >Publicar</ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -13,66 +13,62 @@
     <ion-row class="ion-align-items-center">
       <ion-col>
 
-        <form>
+        <h4 class="ion-text-center ion-margin-top"><b>¡Hola Laura!</b></h4>
 
-          <ion-item class="d-flex-row-start-centered">
-            <ion-label position="floating">¿Qué necesitas, Laura?</ion-label>
-            <ion-textarea rows="4"></ion-textarea>
+        <form ngNativeValidate [formGroup]="postForm" (ngSubmit)="onCreatePost()">
+
+          <ion-item class="d-flex-row-start-centered ion-margin-top">
+            <ion-label position="floating">¿Qué necesitas? </ion-label>
+            <ion-textarea required formControlName="postString" id="postString" name="postString" type="text" rows="4"></ion-textarea>
           </ion-item>
 
-          <ion-grid>
-            <ion-row>
-            <ion-col size="6" 
-              *ngFor="let photo of cameraService.photos; index as position">
-                <ion-img src="{{ photo.webviewPath }}"></ion-img>
-            </ion-col>
-            </ion-row>
-          </ion-grid>
+          <ion-slides pager="true">
 
-          <!-- <ion-slides pager="true">
-
-            <ion-slide *ngFor="let photo of cameraService.photos; index as position">
-              <ion-card>
+            <ion-slide class="post-photo-carroussel" *ngFor="let photo of cameraService.photos; index as i">
+                <ion-icon (click)="removePhotoCarrsl(i)" class="remove-photo-btn" name="close-circle"></ion-icon>
                 <ion-img class="img-feed-post" src="{{ photo.webviewPath }}"></ion-img>
-              </ion-card>
             </ion-slide>
   
-          </ion-slides> -->
+          </ion-slides>
 
-          <ion-item (click)="openCamera()"color="light">
+          <ion-item (click)="onTakePhoto()"color="light">
             <ion-icon name="camera-outline" slot="start"></ion-icon>
-            <ion-label>Cámara</ion-label>
+            <ion-label>Fotos</ion-label>
           </ion-item>
           <ion-item>
             <ion-icon name="time-outline" slot="start"></ion-icon>
             <ion-label>¿Cuándo?</ion-label>
             <!-- <ion-label class="ph-margin-right-0">Lo antes posible</ion-label> -->
-            <ion-datetime value="1990-02-19" placeholder="Hoy"></ion-datetime>
+            <ion-datetime formControlName="postWhen" id="postWhen" name="postWhen" type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Hoy"></ion-datetime>
           </ion-item>
-          <!-- <ion-item>
-            <ion-label>Hora</ion-label>
-            <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
-          </ion-item> -->
           <ion-item >
             <ion-icon name="navigate-outline" slot="start"></ion-icon>
             <ion-label>¿Dónde?</ion-label>
-            <ion-label class="ph-margin-right-0">Ir al mapa</ion-label>
+            <!-- <ion-label class="ph-margin-right-0">Ir al mapa</ion-label> -->
           </ion-item>
           <ion-item class="ion-margin-top">
             <ion-label>Post incógnito</ion-label>
-            <ion-toggle checked="true" color="primary"></ion-toggle>
-          </ion-item>          <ion-item>
-            <ion-label>Sólo profesionales</ion-label>
-            <ion-toggle checked="true" color="primary"></ion-toggle>
+            <ion-toggle formControlName="isIncognito" id="isIncognito" name="isIncognito"  checked="true" color="primary"></ion-toggle>
+          </ion-item>    
+          <ion-item *ngIf="isIncognitoFlag === false">
+            <ion-note color="danger"> 
+              <small>
+                Recuerda que si deshabilitas 'Post incógntio', nuestra comunidad podrá ver tu foto de perfil y tu nombre sin que inicies una experiencia.
+              </small> 
+            </ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label>Profesionales</ion-label>
+            <ion-toggle formControlName="isProf" id="isProf" name="isProf" checked="true" color="primary"></ion-toggle>
           </ion-item>          <ion-item>
             <ion-label>Comunidad</ion-label>
-            <ion-toggle color="primary"></ion-toggle>
+            <ion-toggle formControlName="isCommunity" id="isCommunity" name="isCommunity" color="primary"></ion-toggle>
           </ion-item>
           <ion-item>
             <ion-text class="ion-margin-top ion-margin-bottom ion-text-center" color="medium">
                 <small>
                   Si seleccionas "comunidad", los usuarios cercanos podrán ver tu publicación y ofrecerte algo. 
-                  Si pubilcas en modo incógnito, nadie podrá ver tu perfil hasta que inicies una experiencia con ellos.
+                  Nadie podrá ver tu perfil en modo incógnito hasta que inicies una experiencia.
                 </small>
             </ion-text>
           </ion-item>

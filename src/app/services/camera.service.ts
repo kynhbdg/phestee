@@ -24,7 +24,7 @@ export class CameraService {
 
   // cameraFile: SafeResourceUrl;
 
-  constructor( 
+  constructor(
     private domSanitizer: DomSanitizer,
     platform: Platform ) {
       this.platform = platform; // we only need this if we want to allow pictures from the device
@@ -35,7 +35,6 @@ export class CameraService {
 
     const { Camera, Filesystem, Storage } = Plugins;
 
-    console.log('is this entering?');
     // Take a photo
     const capturedPhoto = await Camera.getPhoto({
       quality: 100,
@@ -46,11 +45,14 @@ export class CameraService {
 
     this.photos.unshift({
       filepath: 'soon...',
-      webviewPath: capturedPhoto.webPath
+      webviewPath: capturedPhoto.webPath,
     });
 
-    console.log(capturedPhoto);
 
+  }
+
+  removePhotoCarroussel(i: number) {
+    this.photos.splice(i, 1);
   }
 
 }

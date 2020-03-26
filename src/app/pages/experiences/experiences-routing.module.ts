@@ -11,11 +11,15 @@ const routes: Routes = [
   {
     path: ':expId',
     loadChildren: () => import('./exp/exp.module').then( m => m.ExpPageModule)
-  },
-  {
-    path: 'exp-info/:expId',
-    loadChildren: () => import('./exp-info/exp-info.module').then( m => m.ExpInfoPageModule)
   }
+  // {
+  //   path: 'exp-info/:expId',
+  //   loadChildren: () => import('./exp-info/exp-info.module').then( m => m.ExpInfoPageModule)
+  // },
+  // {
+  //   path: 'exp-chat/:expId',
+  //   loadChildren: () => import('./exp-chat/exp-chat.module').then( m => m.ExpChatPageModule)
+  // }
 ];
 
 @NgModule({

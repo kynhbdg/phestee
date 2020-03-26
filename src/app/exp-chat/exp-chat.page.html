@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/pages/tabs/experiences/123" color="primary">
+        <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="d-flex-row-start-centered">
+        <img class="img-avatar-chat" src="../../assets/media/woman2.jpg" alt="">
+        <ion-label class="ion-margin-start">Tengo dos amigos que cumplen años, uno el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+          también unas estripers, escorts o como se les conozca... urge por favor!</ion-label>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateInfo('123')" color="primary">
+        <ion-icon color="dark" name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+
+        <ion-item-group class="ion-margin-top">
+
+            <ion-item lines="none">
+              <ion-thumbnail class="ion-margin-top" slot="start">
+                <img src="../../assets/media/hairdresser.jpg">
+              </ion-thumbnail>
+              <ion-label>
+                <b>Corte de cabello hombre werwerewr wer wer werw</b>
+              </ion-label>
+              <ion-chip color="success">
+                <b>$90.00</b>
+              </ion-chip>
+            </ion-item>
+            <ion-item>
+              <ion-text class="ion-no-padding ion-padding-top ion-padding-bottom">
+                Ven, te esperamos con todo preparado y te damos tmbn un masaje de cabello pa que te vayas bien relajado
+              </ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="calendar-outline" size="small" slot="start"></ion-icon>
+              <ion-label>Jueves, 13 Marzo 2020 14:23</ion-label>
+              <!-- <ion-label class="ph-margin-right-0">Lo antes posible</ion-label> -->
+              <!-- <ion-datetime type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Hoy"></ion-datetime> -->
+            </ion-item>
+            <ion-item>
+              <ion-icon name="navigate-outline" size="small" slot="start"></ion-icon>
+              <ion-label>Arquimides 172 int 201</ion-label>
+              <!-- <ion-label class="ph-margin-right-0">Ir al mapa</ion-label> -->
+            </ion-item>
+            <ion-item>
+            <!-- Pausar or Editar o qué? -->
+              <ion-label>Iniciar experiencia</ion-label>
+              <ion-toggle disabled="true" checked color="primary"></ion-toggle>
+            </ion-item>
+
+        </ion-item-group>
+
+        <ion-grid class="ion-margin-top">
+          <ion-row *ngFor="let message of messages">
+            <ion-col size="9" *ngIf="currentUser !== message.user" class="d-flex-row-start-start">
+              <img class="img-avatar-chat" src="../../assets/media/laura.jpg">
+              <div class="msg-chat other-msg-chat w-100 ion-margin-start">
+                <p><b>{{ message.user }}</b></p>
+                <p>{{ message.msg }}</p>
+                <div class="msg-chat-time other-msg-time ">
+                    {{ message.createdAt | date: 'short' }}
+                </div>
+              </div>
+            </ion-col>
+            <ion-col offset="3" size="9" *ngIf="currentUser === message.user" class="ion-text-end" class="msg-chat my-msg-chat">
+              <p><b>{{ message.user }}</b></p>
+              <p>{{ message.msg }}</p>
+              <div class="msg-chat-time my-msg-time ">
+                  {{ message.createdAt | date: 'short' }}
+                  <ion-icon slot="end" color="primary" name="mail-open-outline"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+     </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="10">
+                <textarea autosize maxRows="3" [(ngModel)]="newMsg" class="msg-chat-input w-100"></textarea>
+              </ion-col>
+              <ion-col size="2">
+                <ion-button expand="block" fill="clear" color="primary" *ngIf="newMsg === '' " class="msg-chat-btn">
+                    <ion-icon name="camera"></ion-icon>
+                </ion-button>
+                <ion-button (click)="sendMessage()" expand="block" fill="clear" color="primary" *ngIf="newMsg !== '' " class="msg-chat-btn">
+                  <ion-icon name="send"></ion-icon>
+              </ion-button>  
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+</ion-footer>

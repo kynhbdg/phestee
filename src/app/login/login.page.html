@@ -17,7 +17,9 @@
 
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
         <h3 class="ion-text-center ph-margin-top-3"><b>Entra con tu cuenta</b></h3>
+
         <form ngNativeValidate [formGroup]="loginForm" (ngSubmit)="onUserLogin()">
+          
           <ion-list>
             <ion-item [ngClass]="{'border-left-active': emailForm.dirty && emailForm.valid, 'border-left-danger': !emailForm.valid && emailForm.touched}">
               <ion-label position="floating">Email registrado</ion-label>
@@ -40,7 +42,9 @@
           <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-facebook" slot="start"></ion-icon>Entrar con facebook</ion-button>
           <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-google" slot="start"></ion-icon>Entrar con google</ion-button>
           <ion-button expand="block" size="small" routerLink="/signin" type="button" color="primary" fill="clear" class="ion-margin-top">Aún no tengo una cuenta</ion-button>
+
         </form>
+
       </ion-col>
       
     </ion-row>

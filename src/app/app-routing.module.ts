@@ -24,6 +24,10 @@ const routes: Routes = [
     path: 'modals',
     loadChildren: () => import('./modals/modals.module').then( m => m.ModalsPageModule)
   },
+  {
+    path: 'exp-chat/:expId',
+    loadChildren: () => import('./exp-chat/exp-chat.module').then( m => m.ExpChatPageModule)
+  },
 ];
 
 @NgModule({

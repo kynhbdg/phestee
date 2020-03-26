@@ -63,6 +63,14 @@ p, h1, h2, h3, h4, h5, h6 {
     border-radius: 100%;
 }
 
+.img-avatar-chat {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+}
+
 .font-brand-big {
     font-family: $ff-brand;
     letter-spacing: -1px;
@@ -89,6 +97,7 @@ p, h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     width: 100vw;
     height: 100vh;
+    //?? què estoy haciendo aquí? buscar clase en toda la app..
 }
 
 .d-flex-col-start-centered {
@@ -102,6 +111,13 @@ p, h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.d-flex-col-between-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -126,6 +142,13 @@ p, h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
+.d-flex-row-start-start {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 .d-block {
     display: block;
 }
@@ -148,7 +171,8 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 110px;
     height: 110px;
     margin: 0 auto;
-    background-image: url(../src/assets/phesteeGrad110px.svg);
+    // background-image: url(../src/assets/phesteeGrad110px.svg);
+    background-image: url(../src/assets/phesteeLogoGradCircle110.svg);
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -157,7 +181,8 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 30px;
     height: 30px;
     margin: 0 auto;
-    background-image: url(../src/assets/phesteeGrad30px.svg);
+    // background-image: url(../src/assets/phesteeGrad30px.svg);
+    background-image: url(../src/assets/phesteeLogoGradCircle30.svg);
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -246,6 +271,10 @@ p, h1, h2, h3, h4, h5, h6 {
     border-top: 1.25px solid var(--ion-color-light);
 }
 
+.text-medium {
+    color: var(--ion-color-medium);
+}
+
 .img-feed-post {
     height: 45vh;
     width: 100%;
@@ -284,7 +313,7 @@ p, h1, h2, h3, h4, h5, h6 {
  }
 
  .text-truncated-one-line {
-    max-width: 90vw;
+    max-width: 98%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -309,6 +338,66 @@ p, h1, h2, h3, h4, h5, h6 {
      height: 20vh;
      object-fit: cover;
      object-position: center;
+ }
+
+ .post-photo-carroussel {
+     position: relative;
+     .remove-photo-btn {
+         position: absolute;
+         top: 10px;
+         right: 10px;
+     }
+ }
+
+ .msg-chat {
+    padding: 10px;
+    margin-bottom: 8px;
+    white-space: pre-wrap;
+ }
+
+ .other-msg-chat {
+    border-radius: 0px 20px 20px 20px;
+    background-color: var(--ion-color-dark);
+    color: var(--ion-color-dark-contrast);
+
+ }
+
+ .my-msg-chat {
+    border-radius: 20px 0px 20px 20px;
+    background-color: var(--ion-color-light);
+    color: var(--ion-color-light-contrast);
+
+ }
+
+ .msg-chat-time {
+    float: right;
+    font-size: small;
+ }
+
+ .other-msg-time {
+    color: var(--ion-color-light);
+ }
+
+ .my-msg-time {
+    color: var(--ion-color-medium);
+ }
+
+ .msg-chat-input {
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--ion-color-dark);
+    resize: none;
+    padding-left: 20x;
+    padding-right: 20px;
+    box-shadow: none;
+    outline: none;
+ }
+
+ .msg-chat-btn {
+     --padding-start: 0.5em;
+     --padding-end: 0.5em;
+
  }
 
  @media (min-width: 768px) {

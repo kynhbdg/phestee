@@ -5,13 +5,14 @@
         <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Necesito una lámpara para mi escritorio</ion-title>
+    <ion-title>Tengo dos amigos que cumplen años, uno el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+      también unas estripers, escorts o como se les conozca... urge por favor!</ion-title>
 
-    <ion-buttons slot="end">
+    <!-- <ion-buttons slot="end">
       <ion-button (click)="navigateInfo('123')" color="primary">
         <ion-icon color="dark" name="information-circle-outline"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
@@ -22,38 +23,25 @@
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
         <ion-card class="ion-margin-bottom">
-          <ion-card-content class="d-flex-row-between-centered">
+          <ion-item lines="full">
             <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-            <ion-chip color="success"><b>$0.00</b></ion-chip>
-          </ion-card-content>
-          <img class="img-feed-exp" src="../../assets/media/woman2.jpg">
-          <ion-card-header>
-            <ion-card-title>
-              <h6>Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-                también unas estripers, escorts, o como sea... urge por favor!</h6>
-            </ion-card-title>
-          </ion-card-header>
-            <ion-item>
-              <ion-label>Fecha</ion-label>
-              <ion-datetime value="1990-02-19" placeholder="Hoy"></ion-datetime>
-            </ion-item>
-            <ion-item>
-              <ion-label>Hora</ion-label>
-              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
-            </ion-item>
+            <ion-chip slot="end" color="success"><b>$543.50</b></ion-chip>
+          </ion-item>
+          <ion-item lines="none" class="ion-margin-top">
+            <ion-thumbnail slot="start">
+              <img src="../../assets/media/woman2.jpg">
+            </ion-thumbnail>
+            <ion-label>
+              <b>Laura Perez</b>
+            </ion-label>
+          </ion-item>
 
-            <ion-item>
-              <ion-label>Lugar</ion-label>
-              <ion-button expand="block" size="small" color="light" shape="round"><ion-icon name="navigate"></ion-icon></ion-button>
-            </ion-item>
-              <!-- <ion-button size="small" shape="round" color="light">
-                <ion-icon name="time-outline" slot="start"></ion-icon> 
-                <span class="text-truncated-buttons">Lo antes posible</span>
-              </ion-button>
-              <ion-button size="small" shape="round" color="light">
-                <ion-icon name="navigate-outline" slot="start"></ion-icon> 
-                <span class="text-truncated-buttons">Mi casa</span>
-              </ion-button> -->
+          <ion-item lines="none">
+            <ion-text class="ion-no-padding ion-padding-top ion-padding-bottom">
+                Tengo dos amigos que cumplen años, uno el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                también unas estripers, escorts o como se les conozca... urge por favor!
+            </ion-text>
+          </ion-item>
         </ion-card>
 
         <div class="ion-margin-top ion-padding">
@@ -62,20 +50,20 @@
 
         <ion-slides [options]="sliderConfigOffer">
 
-          <ion-slide>
+          <ion-slide (click)="onOpenExperience('123')" >
             <ion-card class="simple-card">
 
-              <img class="img-slider-thumbnail" src="../../assets/media/dj.jpg">
+              <img class="img-slider-thumbnail" src="../../assets/media/hairdresser.jpg">
 
               <ion-card-content class="ion-no-padding ion-text-start">
                 <ion-label color="dark">
-                  <h2 class="text-truncated">Lámparas de Guadalajara</h2>
+                  <h2 class="text-truncated">Estética México</h2>
                 </ion-label>
                 <ion-label color="medum">
-                  <h3><b>$550.54</b></h3>
+                  <h3><b>$90.00</b></h3>
                 </ion-label>
                 <ion-label>
-                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,89</h3>
+                  <h3><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,95</h3>
                 </ion-label>
               </ion-card-content>
  
@@ -246,8 +234,8 @@
               <h3><b>alandiaza</b></h3>
               <h3>Alan Díaz</h3>
             </ion-label>
-            <ion-chip color="danger">
-              Quitar
+            <ion-chip>
+              <ion-label color="dark">Eliminar</ion-label>
             </ion-chip>
           </ion-item>
           <ion-item>
@@ -258,8 +246,8 @@
               <h3><b>juancarlosd</b></h3>
               <h3>Juan Carlos Díaz</h3>
             </ion-label>
-            <ion-chip color="danger">
-              Quitar
+            <ion-chip>
+              <ion-label color="dark">Eliminar</ion-label>
             </ion-chip>
           </ion-item>
           <ion-button expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon>Agregar miembro</ion-button>

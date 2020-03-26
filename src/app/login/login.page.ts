@@ -11,8 +11,8 @@ import { LoadingController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   isLoading = false;
-
   loginForm: FormGroup;
+
   constructor(
     public router: Router,
     private loadingCtrl: LoadingController

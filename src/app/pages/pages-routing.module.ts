@@ -36,11 +36,11 @@ const routes: Routes = [
       //   ]
       // },
       {
-        path: 'board',
+        path: 'chats',
         children: [
           {
             path: '',
-            loadChildren: () => import('./board/board.module').then( m => m.BoardPageModule)
+            loadChildren: () => import('./chats/chats.module').then( m => m.ChatsPageModule)
           }
         ]
       },
@@ -54,6 +54,10 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'board/:boardId',
+        loadChildren: () => import('./board/board.module').then( m => m.BoardPageModule)
+      },
+      {
         path: '',
         redirectTo: '/pages/tabs/feed',
         pathMatch: 'full'
@@ -64,11 +68,11 @@ const routes: Routes = [
     path: '',
     redirectTo: '/pages/tabs/feed',
     pathMatch: 'full'
-  },
-  {
-    path: 'board',
-    loadChildren: () => import('./board/board.module').then( m => m.BoardPageModule)
   }
+  // {
+  //   path: 'chats',
+  //   loadChildren: () => import('./chats/chats.module').then( m => m.ChatsPageModule)
+  // }
 ];
 
 @NgModule({

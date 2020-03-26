@@ -1,0 +1,411 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-button routerLink="/pages/tabs/user" color="primary">
+        <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title class="ion-text-center">Chats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+
+        <form>
+          <ion-searchbar showCancelButton="always"></ion-searchbar>
+        </form>
+
+        <div class="ion-no-margin ion-no-padding">
+          <ion-list class="ion-margin-top">
+            
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item (click)="onOpenExperience('123')">
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/woman2.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <ion-badge>3</ion-badge>
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/dog.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Dónde encuentro una piñata de obama?</h2>
+                  <h3 class="text-truncated-one-line text-medium">juanx: Ya te la conseguí, donde te veo </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <ion-badge>9</ion-badge>
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/friendship.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Mi bocina se descompuso, qué chingados!</h2>
+                  <h3 class="text-truncated-one-line text-medium">bencastro: te presto la mia wey </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <ion-badge>133</ion-badge>
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/party.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" class="rotated-15" name="hand-left"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/woman.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" name="flash"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/bar.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" name="flash"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/cake.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" class="rotated-15" name="hand-left"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/couple.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" name="flash"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/dj.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" name="flash"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/dog1.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" class="rotated-15" name="hand-left"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/girl2.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" class="rotated-15" name="hand-left"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/hairdresser.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" class="rotated-15" name="hand-left"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/lamp.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" name="flash"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/lamp2.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" name="flash"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/laura.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" class="rotated-15" name="hand-left"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/laura2.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" name="flash"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/stress.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Hablamamos weiowejf weogjeiw oweowejf ijweofijw e</h2>
+                  <h3 class="text-truncated-one-line text-medium">ben: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" class="rotated-15" name="hand-left"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/party.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" name="flash"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+            <ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="light">
+                  <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src="../../assets/media/woman2.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2 class="text-truncated-one-line">Necesito un pastel para mi sobrina que me qued eciega se pudran mis dientes si no puedo verte ya ni me</h2>
+                  <h3 class="text-truncated-one-line text-medium">laurap: Ya estamos esperando el pastel, donde estás? si llegas q que pex, no te vamos a pagar cabron! </h3>
+                </ion-label>
+                <ion-note slot="end" color="dark">
+                  <p class="text-medium"><small>2:33 PM</small></p>
+                  <!--<ion-icon color="medium" class="rotated-15" name="hand-left"></ion-icon>-->
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+          </ion-list>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -32,7 +32,7 @@ export class ExperiencesPage implements OnInit {
     }
   }
 
-  openExp(id: string) {
+  onOpenPost(id: string) {
     console.log(id);
     this.router.navigate(['/', 'pages', 'tabs', 'experiences', id]);
   }

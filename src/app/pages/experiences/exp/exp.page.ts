@@ -10,7 +10,7 @@ import { ActionSheetController } from '@ionic/angular';
 export class ExpPage implements OnInit {
 
   sliderConfigOffer = {
-    slidesPerView: 2.25
+    slidesPerView: 1.5
   };
 
 
@@ -50,6 +50,10 @@ export class ExpPage implements OnInit {
       }]
     });
     await actionSheet.present();
+  }
+
+  onOpenExperience(id: string) {
+    this.router.navigate(['/', 'exp-chat', id]);
   }
 
 }
