@@ -18,25 +18,10 @@
   <ion-grid class="ion-no-padding">
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
-        <!-- <ion-searchbar></ion-searchbar> -->
-        <div class="ion-margin-top ion-margin-bottom ion-padding-start ion-padding-end d-flex-row-between-centered">
-          <h1><b>Febrero, 2020</b></h1> 
-          <!-- <ion-button shape="round" color="light">
-            <ion-icon name="calendar-outline"></ion-icon>
-          </ion-button> -->
-        </div>
-
-        <!-- <div class="ion-padding-start ion-padding-end">
-          <ion-segment (ionChange)="experienceStatusToggle($event)" value="wip">
-            (ionChange)="onFilterUpdate($event)"
-            <ion-segment-button value="wip">
-              <ion-label>Activas</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="done">
-              <ion-label>Terminadas</ion-label>
-            </ion-segment-button>
-          </ion-segment>
-        </div> -->
+        <ion-searchbar></ion-searchbar>
+        <ion-text class="ion-margin-top ion-margin-bottom ion-padding-start ion-padding-end d-flex-row-between-centered">
+          <h3><b>Febrero, 2020</b></h3> 
+        </ion-text>
 
         <ion-card class="d-flex-row-start-centered ion-no-padding simple-card">
           <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-top ion-padding-bottom">
@@ -58,210 +43,258 @@
           </ion-card-content>
         </ion-card>
 
-        <div class="ion-no-padding ion-no-margin" *ngIf="showActiveFlg">
-          
-          <ion-card (click)="onOpenPost('123')">
-            <img class="img-simple-card" src="../../assets/media/dog1.jpg">
-            <ion-card-header>
-              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-              <ion-card-title>
-                <h5 class="text-truncated-one-line">Me voy de viaje y mi perro se va a quedar solo, quièn lo cuida?</h5>
-              </ion-card-title>
-              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 0</h6>
-                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 0</h6>
-                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon> 0</h6>
-                <h6 class="ph-margin-right-0"><b>$0.00</b></h6>
-              </ion-card-subtitle>
-            </ion-card-header>
-          </ion-card>          
-          
-          <ion-card (click)="onOpenPost('123')">
-            <img class="img-simple-card" src="../../assets/media/woman2.jpg">
-            <ion-card-header>
-              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-              <ion-card-title>
-                <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-                  también unas estripers, escorts, o como sea... urge por favor!</h5>
-              </ion-card-title>
-              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
-                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
-                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
-                <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
-              </ion-card-subtitle>
-            </ion-card-header>
-          </ion-card>          
-          
-          <ion-card (click)="onOpenPost('123')">
-            <!-- <img class="img-simple-card" src="../../assets/media/woman2.jpg"> -->
-            <ion-card-header>
-              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-              <ion-card-title>
-                <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-                  también unas estripers, escorts, o como sea... urge por favor!</h5>
-              </ion-card-title>
-              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
-                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
-                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
-                <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
-              </ion-card-subtitle>
-            </ion-card-header>
-          </ion-card>
+        <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="showActiveFlg">
 
-          <ion-card (click)="onOpenPost('123')">
-            <img class="img-simple-card" src="../../assets/media/friendship.jpg">
-            <ion-card-header>
-              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-              <ion-card-title>
-                <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-                  también unas estripers, escorts, o como sea... urge por favor!</h5>
-              </ion-card-title>
-              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
-                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
-                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
-                <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
-              </ion-card-subtitle>
-            </ion-card-header>
-          </ion-card>
+          <ion-segment (ionChange)="displayExpStyle($event)" value="blocks">
+            <ion-segment-button value="blocks">
+              <ion-icon name="grid-outline"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="list">
+              <ion-icon name="menu-outline"></ion-icon>
+            </ion-segment-button>
+          </ion-segment>
 
-          <ion-card (click)="onOpenPost('123')">
-            <img class="img-simple-card" src="../../assets/media/woman2.jpg">
-            <ion-card-header>
-              <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-              <ion-card-title>
-                <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-                  también unas estripers, escorts, o como sea... urge por favor!</h5>
-              </ion-card-title>
-              <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
-                <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
-                <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
-                <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
-              </ion-card-subtitle>
-            </ion-card-header>
-          </ion-card>
+          <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="displayBlockStyle">
+            
+            <ion-grid class="ion-no-padding ion-margin-top">
+              <ion-row>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/dog1.jpg"></ion-img>
+                </ion-col>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/woman2.jpg"></ion-img>
+                </ion-col>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/friendship.jpg"></ion-img>
+                </ion-col>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/dj.jpg"></ion-img>
+                </ion-col>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/cake.jpg"></ion-img>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
 
-        </div>
+          </ion-item-group>
 
-        <ion-grid class="ion-no-padding ion-no-margin" *ngIf="!showActiveFlg">
-          <ion-row>
-            <ion-col size="6" size-lg="12">
-              <ion-card class="simple-card ion-no-padding">
-                <img class="img-simple-card" src="../../assets/media/friendship.jpg">
-                <ion-card-content class="ion-no-padding">
-                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                  <ion-card-title>
-                    <h5 class="text-truncated"><b>¡Laura cumple años el siguiente fin! 🎉</b></h5>
-                  </ion-card-title>
-                  <ion-item class="ion-no-padding d-flex-row-start-centered">
-                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
-                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
-                    <h6 class="ph-margin-right-0">$5,6K+</h6>
-                  </ion-item>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-col size="6" size-lg="12">
-              <ion-card class="simple-card ion-no-padding">
-                <img class="img-simple-card" src="../../assets/media/hairdresser.jpg">
-                <ion-card-content class="ion-no-padding">
-                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                  <ion-card-title>
-                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
-                  </ion-card-title>
-                  <ion-item class="ion-no-padding d-flex-row-start-centered">
-                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
-                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
-                    <h6 class="ph-margin-right-0">$5,6K+</h6>
-                  </ion-item>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-col size="6" size-lg="12">
-              <ion-card class="simple-card ion-no-padding">
-                <img class="img-simple-card" src="../../assets/media/woman.jpg">
-                <ion-card-content class="ion-no-padding">
-                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                  <ion-card-title>
-                    <h5 class="text-truncated"><b>¡Laura cumple años el siguiente fin! 🎉</b></h5>
-                  </ion-card-title>
-                  <ion-item class="ion-no-padding d-flex-row-start-centered">
-                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
-                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
-                    <h6 class="ph-margin-right-0">$5,6K+</h6>
-                  </ion-item>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-col size="6" size-lg="12" (click)="onOpenPost('123')">
-              <ion-card class="simple-card ion-no-padding">
-                <img class="img-simple-card" src="../../assets/media/woman2.jpg">
-                <ion-card-content class="ion-no-padding">
-                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                  <ion-card-title>
-                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
-                  </ion-card-title>
-                  <ion-item class="ion-no-padding d-flex-row-start-centered">
-                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
-                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
-                    <h6 class="ph-margin-right-0">$5,6K+</h6>
-                  </ion-item>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-col size="6" size-lg="12">
-              <ion-card class="simple-card ion-no-padding">
-                <img class="img-simple-card" src="../../assets/media/hairdresser.jpg">
-                <ion-card-content class="ion-no-padding">
-                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                  <ion-card-title>
-                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
-                  </ion-card-title>
-                  <ion-item class="ion-no-padding d-flex-row-start-centered">
-                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
-                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
-                    <h6 class="ph-margin-right-0">$5,6K+</h6>
-                  </ion-item>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-col size="6" size-lg="12" (click)="onOpenPost('123')">
-              <ion-card class="simple-card ion-no-padding">
-                <img class="img-simple-card" src="../../assets/media/woman2.jpg">
-                <ion-card-content class="ion-no-padding">
-                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                  <ion-card-title>
-                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
-                  </ion-card-title>
-                  <ion-item class="ion-no-padding d-flex-row-start-centered">
-                    <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 35</h6>
-                    <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 3</h6>
-                    <h6 class="ph-margin-right-0">$5,6K+</h6>
-                  </ion-item>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-col size="6" size-lg="12">
-              <ion-card class="simple-card ion-no-padding">
-                <img class="img-simple-card" src="../../assets/media/hairdresser.jpg">
-                <ion-card-content class="ion-no-padding">
-                  <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                  <ion-card-title>
-                    <h5 class="text-truncated"><b>Necesito una lámpara para mi escritorio</b></h5>
-                  </ion-card-title>
-                  <ion-card-subtitle class="d-flex-row-start-centered">
-                    <ion-label><ion-icon name="flash" slot="start"></ion-icon> <b> 35</b></ion-label>
-                    <ion-label class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left" slot="start"></ion-icon> <b> 3</b></ion-label>
-                    <ion-label class="ion-margin-start"> <b> $5,6K+</b></ion-label>
-                  </ion-card-subtitle>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+          <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="!displayBlockStyle">
+
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <img class="img-simple-card" src="../../assets/media/dog1.jpg">
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Me voy de viaje y mi perro se va a quedar solo, quièn lo cuida?</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 0</h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 0</h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon> 0</h6>
+                  <h6 class="ph-margin-right-0">$0.00</h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>          
+            
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <img class="img-simple-card" src="../../assets/media/woman2.jpg">
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                    también unas estripers, escorts, o como sea... urge por favor!</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>          
+            
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <!-- <img class="img-simple-card" src="../../assets/media/woman2.jpg"> -->
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                    también unas estripers, escorts, o como sea... urge por favor!</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <img class="img-simple-card" src="../../assets/media/friendship.jpg">
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                    también unas estripers, escorts, o como sea... urge por favor!</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <img class="img-simple-card" src="../../assets/media/woman2.jpg">
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                    también unas estripers, escorts, o como sea... urge por favor!</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+
+          </ion-item-group>
+
+        </ion-item-group>
+
+        <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="!showActiveFlg">
+
+          <ion-segment (ionChange)="displayExpStyle($event)" value="blocks">
+            <ion-segment-button value="blocks">
+              <ion-icon name="grid-outline"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="list">
+              <ion-icon name="menu-outline"></ion-icon>
+            </ion-segment-button>
+          </ion-segment>
+
+          <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="displayBlockStyle">
+            
+            <ion-grid class="ion-no-padding ion-margin-top">
+              <ion-row>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/friendship.jpg"></ion-img>
+                </ion-col>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/dj.jpg"></ion-img>
+                </ion-col>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/cake.jpg"></ion-img>
+                </ion-col>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/dog1.jpg"></ion-img>
+                </ion-col>
+                <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/woman2.jpg"></ion-img>
+                </ion-col>
+                <!-- <ion-col (click)="onOpenPost('123')" size="6">
+                  <ion-img src="../../assets/media/laura.jpg"></ion-img>
+                </ion-col> -->
+              </ion-row>
+            </ion-grid>
+
+          </ion-item-group>
+
+          <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="!displayBlockStyle">
+
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <!-- <img class="img-simple-card" src="../../assets/media/woman2.jpg"> -->
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                    también unas estripers, escorts, o como sea... urge por favor!</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>        
+            
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <img class="img-simple-card" src="../../assets/media/woman2.jpg">
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                    también unas estripers, escorts, o como sea... urge por favor!</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>          
+
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <img class="img-simple-card" src="../../assets/media/friendship.jpg">
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                    también unas estripers, escorts, o como sea... urge por favor!</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <img class="img-simple-card" src="../../assets/media/woman2.jpg">
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
+                    también unas estripers, escorts, o como sea... urge por favor!</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
+                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
+              <img class="img-simple-card" src="../../assets/media/dog1.jpg">
+              <ion-card-header>
+                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
+                <ion-card-title>
+                  <h5 class="text-truncated-one-line">Me voy de viaje y mi perro se va a quedar solo, quièn lo cuida?</h5>
+                </ion-card-title>
+                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
+                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 0</h6>
+                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 0</h6>
+                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon> 0</h6>
+                  <h6 class="ph-margin-right-0"><b>$0.00</b></h6>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>  
+
+          </ion-item-group>
+
+        </ion-item-group>
 
       </ion-col>
     </ion-row>

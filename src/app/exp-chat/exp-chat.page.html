@@ -1,9 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button routerLink="/pages/tabs/experiences/123" color="primary">
+      <ion-back-button color="dark"></ion-back-button>
+      <!-- <ion-button routerLink="/pages/tabs/experiences/123" color="primary">
         <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
-      </ion-button>
+      </ion-button> -->
     </ion-buttons>
     <ion-title>
       <div class="d-flex-row-start-centered">
@@ -32,9 +33,13 @@
                 <img src="../../assets/media/hairdresser.jpg">
               </ion-thumbnail>
               <ion-label>
-                <b>Corte de cabello hombre werwerewr wer wer werw</b>
+                <b>Corte de cabello Mujer</b>
+                <div class="d-flex-row-start-centered">
+                  <ion-text color="medium"><h3><ion-icon color="medium" name="flash" slot="start"></ion-icon> 35</h3></ion-text>
+                  <ion-text color="medium"><h3><ion-icon class="ion-margin-start" color="medium" name="navigate" slot="start"></ion-icon> A 5km</h3></ion-text>
+                </div>
               </ion-label>
-              <ion-chip color="success">
+              <ion-chip color="dark">
                 <b>$90.00</b>
               </ion-chip>
             </ion-item>
@@ -55,9 +60,8 @@
               <!-- <ion-label class="ph-margin-right-0">Ir al mapa</ion-label> -->
             </ion-item>
             <ion-item>
-            <!-- Pausar or Editar o qué? -->
-              <ion-label>Iniciar experiencia</ion-label>
-              <ion-toggle disabled="true" checked color="primary"></ion-toggle>
+              <ion-label>Exp iniciada 13 marzo 14:55</ion-label>
+              <ion-toggle slot="start" disabled="true" checked color="primary"></ion-toggle>
             </ion-item>
 
         </ion-item-group>
@@ -72,6 +76,7 @@
                 <div class="msg-chat-time other-msg-time ">
                     {{ message.createdAt | date: 'short' }}
                 </div>
+                <!-- <ion-img class="img-feed-post" src="{{ message.photoMsg }}"></ion-img> -->
               </div>
             </ion-col>
             <ion-col offset="3" size="9" *ngIf="currentUser === message.user" class="ion-text-end" class="msg-chat my-msg-chat">
@@ -81,6 +86,7 @@
                   {{ message.createdAt | date: 'short' }}
                   <ion-icon slot="end" color="primary" name="mail-open-outline"></ion-icon>
               </div>
+              <!-- <ion-img class="img-feed-post" src="{{ message.photoMsg }}"></ion-img> -->
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -103,7 +109,7 @@
                 <textarea autosize maxRows="3" [(ngModel)]="newMsg" class="msg-chat-input w-100"></textarea>
               </ion-col>
               <ion-col size="2">
-                <ion-button expand="block" fill="clear" color="primary" *ngIf="newMsg === '' " class="msg-chat-btn">
+                <ion-button (click)="onTakePhoto()" expand="block" fill="clear" color="primary" *ngIf="newMsg === '' " class="msg-chat-btn">
                     <ion-icon name="camera"></ion-icon>
                 </ion-button>
                 <ion-button (click)="sendMessage()" expand="block" fill="clear" color="primary" *ngIf="newMsg !== '' " class="msg-chat-btn">

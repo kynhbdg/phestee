@@ -11,6 +11,7 @@ import { ExpPage } from './exp/exp.page';
 export class ExperiencesPage implements OnInit {
 
   showActiveFlg = true;
+  displayBlockStyle = true;
 
   constructor(
     public router: Router,
@@ -21,15 +22,12 @@ export class ExperiencesPage implements OnInit {
   }
 
   experienceStatusToggle(event: any) {
-    console.log(event.detail.value);
-    if (event.detail.value === 'done') {
-      this.showActiveFlg = false;
-      console.log(this.showActiveFlg);
-    }
-    if (event.detail.value === 'wip') {
-      this.showActiveFlg = true;
-      console.log(this.showActiveFlg);
-    }
+    this.showActiveFlg = event.detail.value === 'done' ? false : true ;
+    this.displayBlockStyle = this.showActiveFlg === true || false ? true : true;
+  }
+
+  displayExpStyle(event: any) {
+    this.displayBlockStyle = event.detail.value === 'list' ? false : true;
   }
 
   onOpenPost(id: string) {

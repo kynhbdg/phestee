@@ -46,6 +46,10 @@ p, h1, h2, h3, h4, h5, h6 {
     background: transparent;
 }
 
+.border-radius-0 {
+    border-radius: 0px;
+}
+
 .ph-img-thumbnail {
     width: 48px;
     height: 48px;
@@ -275,6 +279,10 @@ p, h1, h2, h3, h4, h5, h6 {
     color: var(--ion-color-medium);
 }
 
+.text-danger {
+    color: var(--ion-color-danger);
+}
+
 .img-feed-post {
     height: 45vh;
     width: 100%;
@@ -284,6 +292,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .img-feed-exp {
     height: 25vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-block-exp {
+    height: 15vh !important;
     width: 100%;
     object-fit: cover;
     object-position: center;
@@ -303,7 +318,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .btn-no-padding {
     padding: 0px;
-}
+}ƒ
 
 .text-truncated {
     max-width: 190px;

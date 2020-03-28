@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
+import { CameraService } from '../services/camera.service';
 
 @Component({
   selector: 'app-exp-chat',
@@ -18,22 +19,26 @@ export class ExpChatPage implements OnInit {
     {
       user: 'Estética México',
       createdAt: 1554090856000,
-      msg: 'hey whats up'
+      msg: 'hey whats up',
+      photoMsg: {}
     },
     {
       user: 'Pedro Perez',
       createdAt: 1554090856000,
-      msg: 'not much, whats up'
+      msg: 'not much, whats up',
+      photoMsg: {}
     },
     {
       user: 'Estética México',
       createdAt: 1554090856000,
-      msg: 'all good'
+      msg: 'all good',
+      photoMsg: {}
     }
   ]
 
   constructor(
-    public router: Router
+    public router: Router,
+    public cameraService: CameraService
   ) { }
 
   ngOnInit() {
@@ -48,13 +53,24 @@ export class ExpChatPage implements OnInit {
     this.messages.push({
       user: 'Pedro Perez',
       createdAt: new Date().getTime(),
-      msg: this.newMsg
+      msg: this.newMsg,
+      photoMsg: {}
     });
     this.newMsg = '';
 
     setTimeout(() => {
       this.content.scrollToBottom(100);
-    })
+    });
+  }
+
+  onTakePhoto() {
+    this.cameraService.addNewToGallery();
+    // this.messages.push({
+    //   user: 'Pedro Perez',
+    //   createdAt: new Date().getTime(),
+    //   msg: '',
+    //   photoMsg: this.cameraService.photos[0]
+    // });
   }
 
 
