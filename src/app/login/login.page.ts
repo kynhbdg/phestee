@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { User } from '../models/user.model';
+import { UserService } from '../services/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -12,10 +15,13 @@ export class LoginPage implements OnInit {
 
   isLoading = false;
   loginForm: FormGroup;
+  rememberme = false;
 
   constructor(
     public router: Router,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    public _userService: UserService
+
   ) { }
 
   ngOnInit() {
@@ -36,7 +42,16 @@ export class LoginPage implements OnInit {
 
   onUserLogin() {
     console.log(this.loginForm.value);
-    this.loadingCtrl
+    if(this.loginForm.invalid)
+    {
+      return;
+    }
+    let user = new User(null, this.loginForm.value.email, this.loginForm.value.password);
+    this._userService.login(user,false).subscribe(
+      () => this.router.navigateByUrl('/pages/tabs/feed'),error =>{
+        alert("Por favor ingrese sus datos correctamente: "+error);
+      });
+    /*this.loadingCtrl
       .create({ keyboardClose: true, message: 'Abriendo cuenta...' })
       .then( loadingEl => {
         loadingEl.present();
@@ -45,9 +60,8 @@ export class LoginPage implements OnInit {
           loadingEl.dismiss();
           this.router.navigateByUrl('/pages/tabs/feed');
         }, 1500);
-      });
-    // this.authService.login();
-    // this.loginForm.reset();
+      });*/
+
   }
 
 }
