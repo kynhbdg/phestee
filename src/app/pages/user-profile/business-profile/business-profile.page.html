@@ -1,9 +1,168 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar>
-    <ion-title>businessProfile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">cakesinGDL  <ion-icon name="chevron-down-outline"></ion-icon>
+     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+
+        <ion-card>
+          <ion-card-header class="d-flex-col-center-centered w-100"> 
+              <img class="ph-avatar-xlg" src="./../assets/media/cake2.jpg">
+              <ion-card-header class="ion-text-center">
+                <ion-card-title><h6><b>Pasteles Guadalajara</b></h6></ion-card-title>
+                <ion-card-title><h6>cakesinGDL</h6></ion-card-title>
+              </ion-card-header>
+          </ion-card-header>
+
+          <ion-item-divider lines="full">
+            <div class="w-100 d-flex-row-between-centered ion-padding">
+              <ion-text class="ion-text-center">
+                <h6><b>35,1</b></h6>
+                <h6>Exp</h6>
+              </ion-text>
+              <ion-text class="ion-text-center">
+                <h6><b>$63,2K</b></h6>
+                <h6>Ingresos</h6>
+              </ion-text>
+              <ion-text class="ion-text-center">
+                <h6><b>4.98</b></h6>
+                <h6><ion-icon color="warning" name="star" slot="start"></ion-icon></h6>
+              </ion-text>
+            </div>
+
+          </ion-item-divider>
+
+          <ion-item lines="none">
+            <ion-label>Tipo</ion-label>
+            <ion-select>
+              <ion-select-option *ngFor="let tipo of busTypes; let i of index" [value]="tipo">{{ tipo }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label>Mode</ion-label>
+            <ion-select>
+              <ion-select-option *ngFor="let mode of busMode; let i of index" [value]="mode">{{ mode }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+
+          <ion-item-divider>
+            <ion-label class="ion-text-center">Febrero 2019</ion-label>
+          </ion-item-divider>
+
+          <ion-item>
+            <div class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-top ion-padding-bottom">
+              <ion-text class="ion-text-center">
+                <h6><b>35</b></h6>
+                <h6>Exp</h6>
+              </ion-text>
+              <ion-text class="ion-text-center">
+                <h6><b>$5,2K</b></h6>
+                <h6>Ingresos</h6>
+              </ion-text>
+              <ion-text class="ion-text-center">
+                <h6><b>3</b></h6>
+                <h6>Clientes</h6>
+              </ion-text>
+            </div>
+          </ion-item>
+
+        </ion-card>
+
+        <ion-item-divider>
+          <ion-label>2 Items</ion-label>
+        </ion-item-divider>
+
+        <ion-item-group>
+          <ion-card class="ion-no-padding ion-padding-bottom">
+            <ion-card-header>
+              <ion-card-title color="dark">
+                <h6><b>Pastel de avellana</b></h6>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-header class="ion-no-padding ion-padding-bottom">
+              <img src="./../assets/media/cake.jpg" alt="">
+            </ion-card-header>
+            <ion-item-group>
+              <ion-item lines="full">
+                <ion-label color="medium" position="floating">Descripción</ion-label>
+                <ion-input value="something"></ion-input>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-label color="medium" position="floating">Detalles</ion-label>
+                <ion-textarea value="something else" placeholder="Enter more information here..."></ion-textarea>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-label color="medium">Tipo de transacción</ion-label>
+                <ion-select>
+                  <ion-select-option *ngFor="let tipoTxn of txnType; let i of index" [value]="tipoTxn">{{ tipoTxn }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-label color="medium" position="floating">Precio (MXN)</ion-label>
+                <ion-input value="$200.00" placeholder="Enter more information here..."></ion-input>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-label color="medium" position="floating">Palabras clave <ion-icon size="small" color="primary" name="help-circle"></ion-icon> </ion-label>
+                <ion-textarea value="#comer #cumpleaños #postre #mamá #papá #gusguera" placeholder="Enter more information here..."></ion-textarea>
+              </ion-item>
+            </ion-item-group>
+          </ion-card>
+        </ion-item-group>
+
+
+        <ion-item-group>
+          <ion-card class="ion-no-padding ion-padding-bottom">
+            <ion-card-header>
+              <ion-card-title color="dark">
+                <h6><b>Pastel de queso</b></h6>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-header class="ion-no-padding ion-padding-bottom">
+              <img src="./../assets/media/cake2.jpg" alt="">
+            </ion-card-header>
+            <ion-item-group>
+              <ion-item lines="full">
+                <ion-label color="medium" position="floating">Descripción</ion-label>
+                <ion-input value="something"></ion-input>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-label color="medium" position="floating">Detalles</ion-label>
+                <ion-textarea value="something else" placeholder="Enter more information here..."></ion-textarea>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-label color="medium">Tipo de transacción</ion-label>
+                <ion-select>
+                  <ion-select-option *ngFor="let tipoTxn of txnType; let i of index" [value]="tipoTxn">{{ tipoTxn }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-label color="medium" position="floating">Precio (MXN)</ion-label>
+                <ion-input value="$200.00" placeholder="Enter more information here..."></ion-input>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-label color="medium" position="floating">Palabras clave <ion-icon size="small" color="primary" name="help-circle"></ion-icon> </ion-label>
+                <ion-textarea value="#comer #cumpleaños #postre #mamá #papá #gusguera" placeholder="Enter more information here..."></ion-textarea>
+              </ion-item>
+            </ion-item-group>
+          </ion-card>
+        </ion-item-group>
+
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

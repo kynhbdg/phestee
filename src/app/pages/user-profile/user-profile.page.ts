@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class UserProfilePage implements OnInit {
 
   constructor(
-    public router: Router
+    public router: Router,
+    public actionSheetController: ActionSheetController
   ) { }
 
   ngOnInit() {
@@ -17,7 +19,7 @@ export class UserProfilePage implements OnInit {
 
   openBoard(id: string) {
     console.log(id);
-    this.router.navigate(['/', 'pages', 'tabs', 'board', id]);
+    this.router.navigate(['/', 'pages', 'tabs', 'user', 'board', id]);
   }
 
 }

@@ -17,7 +17,7 @@ export class PostModalPage implements OnInit {
 
   postForm: FormGroup;
   isIncognitoFlag: true;
-  postMaxLngth = 250;
+  postMaxLngth = 140;
   characterleft = this.postMaxLngth;
   userPost: Post;
   rowsInput = 1;
@@ -30,7 +30,7 @@ export class PostModalPage implements OnInit {
     public router: Router
   ) {
     this.postForm = new FormGroup({
-      postString: new FormControl( '', [Validators.required, Validators.maxLength(210)] ),
+      postString: new FormControl( '', [Validators.required, Validators.maxLength(this.postMaxLngth)] ),
       // postImage: new FormControl(),
       // postWhere: new FormControl(),
       postWhen: new FormControl(),

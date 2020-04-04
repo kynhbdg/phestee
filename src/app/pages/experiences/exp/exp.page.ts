@@ -10,7 +10,7 @@ import { ActionSheetController } from '@ionic/angular';
 export class ExpPage implements OnInit {
 
   sliderConfigOffer = {
-    slidesPerView: 1.35
+    slidesPerView: 1.1
   };
 
 

@@ -11,6 +11,43 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  pages = [
+    {
+      title: 'Ajustes de Perfil',
+      icon: 'settings-outline',
+      url: '/pages/tabs/user/user-settings'
+    },
+    {
+      title: 'Archivo',
+      icon: 'archive-outline',
+      url: 'pending'
+    },
+    {
+      title: 'Membresía',
+      icon: 'person-outline',
+      url: 'pending'
+    },
+    {
+      title: 'TyC',
+      icon: 'shield-checkmark-outline',
+      url: 'pending'
+    },
+    {
+      title: 'Feedback',
+      icon: 'document-text-outline',
+      url: 'pending'
+    },
+    {
+      title: 'Información',
+      icon: 'information-circle-outline',
+      url: 'pending'
+    }
+
+
+  ]
+
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -18,6 +55,7 @@ export class AppComponent {
   ) {
     this.initializeApp();
   }
+
 
   initializeApp() {
     this.platform.ready().then(() => {

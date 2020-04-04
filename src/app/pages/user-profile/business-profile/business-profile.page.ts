@@ -7,6 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BusinessProfilePage implements OnInit {
 
+  busTypes = [
+    'Negocio',
+    'Freelancer',
+    'Servicio',
+    'Oficio',
+    'Comunidad',
+  ];
+
+  busMode = [
+    'Fijo con Servicio a Dom',
+    'Fijo',
+    'Móvil',
+  ];
+
+  txnType = [
+    'Venta',
+    'Renta',
+    'Donación'
+  ]
+
   constructor() { }
 
   ngOnInit() {

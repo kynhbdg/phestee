@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./user-settings/user-settings.module').then( m => m.UserSettingsPageModule)
   },
   {
-    path: 'business-profile',
+    path: 'board/:id',
     loadChildren: () => import('./business-profile/business-profile.module').then( m => m.BusinessProfilePageModule)
   },
   {

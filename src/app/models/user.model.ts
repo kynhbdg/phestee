@@ -1,15 +1,15 @@
 export class User {
 
   constructor(
-    public userProfile: string,
+    public userName: string,
     public email: string,
     public password: string,
     public tandc?: boolean,
-    public userName?: string,
+    public name?: string,
     public google?: boolean,
     public userImage?: string,
     public resetToken?: string,
-    public dateBirth?: string,
+    public birthday?: string,
     public dateCreated?: string,
     public lastUpdated?: string,
     public sessionId?: string,
@@ -19,6 +19,7 @@ export class User {
     public active?: string,
     public city?: string,
     public state?: string,
+    public country?: string,
     public phone?: string,
     public twitterURL?: string,
     public instagramURL?: string,

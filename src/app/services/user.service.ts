@@ -33,7 +33,7 @@ export class UserService {
      catchError(this._handleError.handleError));
   } // end login
 
-  saveStorage( id: string, token: string, user: User, bus:Bus ) {
+  saveStorage( id: string, token: string, user: User, bus: Bus ) {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));

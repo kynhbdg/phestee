@@ -8,7 +8,7 @@
     </ion-buttons>
     <ion-title>
       <div class="d-flex-row-start-centered">
-        <img class="img-avatar-chat" src="../../assets/media/woman2.jpg" alt="">
+        <img class="img-avatar-xs" src="../../assets/media/woman2.jpg" alt="">
         <ion-label class="ion-margin-start">Tengo dos amigos que cumplen años, uno el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
           también unas estripers, escorts o como se les conozca... urge por favor!</ion-label>
       </div>
@@ -69,7 +69,7 @@
         <ion-grid class="ion-margin-top">
           <ion-row *ngFor="let message of messages">
             <ion-col size="9" *ngIf="currentUser !== message.user" class="d-flex-row-start-start">
-              <img class="img-avatar-chat" src="../../assets/media/laura.jpg">
+              <img class="img-avatar-xs" src="../../assets/media/laura.jpg">
               <div class="msg-chat other-msg-chat w-100 ion-margin-start">
                 <p><b>{{ message.user }}</b></p>
                 <p>{{ message.msg }}</p>

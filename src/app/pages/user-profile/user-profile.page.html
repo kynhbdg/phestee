@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-menu-button color="dark" menu="m1"></ion-menu-button>
+        <ion-menu-button color="dark"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Febrero, 2020</ion-title>
+    <ion-title>Abril, 2020</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,50 +16,53 @@
           <small>Aquí se muestra información del mes actual de tu cuenta personal y tus tableros. Si quieres ver el histórico, ve al Menu Archivo ubicado en la parte superior derecha.</small>
         </ion-label> -->
 
-        <div class="ion-margin-top ion-padding-start ion-padding-end d-flex-row-between-centered">
-          <h4><b>Gasto personal</b></h4>
-          <ion-text color="primary"><h4><b>$5,283.50</b></h4></ion-text>
-        </div>
+        <!-- <div class="ion-margin-top ion-padding-start ion-padding-end d-flex-row-between-centered"> -->
 
-        <ion-card class="d-flex-col-start-centered">
+          <ion-item-divider>
+            <b>Gasto personal</b>
+            <ion-chip slot="end" color="primary"><b>$1,283.50</b></ion-chip>
+          </ion-item-divider>
+        <!-- </div> -->
+          
+          <ion-card class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
 
-          <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom ion-margin-top">
-            <ion-avatar>
-              <img src="./../assets/media/woman.jpg">
-            </ion-avatar>
-            <ion-text class="ion-margin-start" color="dark">
-              <h2><b>@lauraG21</b></h2>
-            </ion-text>
-            <ion-card-title class="ion-text-center ph-margin-right-0">
-              <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,95</h2>
-            </ion-card-title>
-          </ion-card-content>
+            <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom ion-margin-top">
+              <ion-avatar>
+                <img src="./../assets/media/woman.jpg">
+              </ion-avatar>
+              <ion-text class="ion-margin-start" color="dark">
+                <h2><b>lauraGarcia</b></h2>
+              </ion-text>
+              <ion-card-title class="ion-text-center ph-margin-right-0">
+                <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,95</h2>
+              </ion-card-title>
+            </ion-card-content>
 
-          <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-            <ion-card-title class="ion-text-center">
-              <h3>25 Experiencias</h3>
-            </ion-card-title>
-            <ion-card-title class="ion-text-center">
-              <h3>Gasto $5,1K</h3>
-            </ion-card-title>
-          </ion-card-content>
+            <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
+              <ion-card-title class="ion-text-center">
+                <h3>25 Experiencias</h3>
+              </ion-card-title>
+              <ion-card-title class="ion-text-center">
+                <h3>Gasto $1,2K</h3>
+              </ion-card-title>
+            </ion-card-content>
 
-        </ion-card>
+          </ion-card>
 
-        <div class="ion-margin-top ion-padding-start ion-padding-end d-flex-row-between-centered">
-          <h4><b>Ingreso de tableros</b></h4>
-          <ion-text color="primary"><h4><b>$55,299.32</b></h4></ion-text>
-        </div>
+        <ion-item-divider>
+          <b>Ingreso de tableros</b>
+          <ion-chip slot="end" color="primary"><b>$7,299.32</b></ion-chip>
+        </ion-item-divider>
 
-        <ion-card (click)="openBoard('123')" class="d-flex-col-start-centered">
+        <ion-card (click)="openBoard('123')" class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
 
           <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom ion-margin-top">
             <ion-avatar>
               <img src="./../assets/media/cake.jpg">
             </ion-avatar>
             <ion-text class="ion-margin-start" color="dark">
-              <h2><b>pastelesMX</b></h2>
-              <h3>Comunidad</h3>
+              <h2><b>pastelesGDL</b></h2>
+              <h3>Negocio</h3>
             </ion-text>
             <ion-card-title class="ion-text-center ph-margin-right-0">
               <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,95</h2>
@@ -71,21 +74,21 @@
               <h3>25 Interacciones</h3>
             </ion-card-title>
             <ion-card-title class="ion-text-center">
-              <h3>Ingreso $5,1K</h3>
+              <h3>Ingreso $4,6K</h3>
             </ion-card-title>
           </ion-card-content>
 
         </ion-card>
 
-        <ion-card class="d-flex-col-start-centered">
+        <ion-card class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
 
           <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom ion-margin-top">
             <ion-avatar>
-              <img src="./../assets/media/laura.jpg">
+              <img src="./../assets/media/woman.jpg">
             </ion-avatar>
             <ion-text class="ion-margin-start" color="dark">
-              <h2><b>lavadoAutos</b></h2>
-              <h3>Servicio</h3>
+              <h2><b>lauraGarcia</b></h2>
+              <h3>Comunidad</h3>
             </ion-text>
             <ion-card-title class="ion-text-center ph-margin-right-0">
               <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,75</h2>
@@ -97,13 +100,13 @@
               <h3>22 Interacciones</h3>
             </ion-card-title>
             <ion-card-title class="ion-text-center">
-              <h3>Ingreso $1,8K</h3>
+              <h3>Ingreso $2,6K</h3>
             </ion-card-title>
           </ion-card-content>
 
         </ion-card>
 
-        <ion-card class="d-flex-col-start-centered">
+        <!-- <ion-card class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
 
           <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom ion-margin-top">
             <ion-avatar>
@@ -127,7 +130,7 @@
             </ion-card-title>
           </ion-card-content>
 
-        </ion-card>
+        </ion-card> -->
 
         <ion-button expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon>Agregar tablero</ion-button>
 

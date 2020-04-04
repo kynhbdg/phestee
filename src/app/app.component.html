@@ -1,65 +1,36 @@
 <ion-app>
-  <ion-menu side="end" menuId="m1">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title class="font-brand-normal">
-          phestee
-        </ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-menu-toggle>
-          <ion-item lines="none" button>
-            <ion-icon name="settings-outline" slot="start"></ion-icon>
-            <ion-label>Ajustes de Perfil</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item lines="none" button>
-            <ion-icon name="archive-outline" slot="start"></ion-icon>
-            <ion-label>Archivo</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item lines="none" button>
-            <ion-icon name="person-outline" slot="start"></ion-icon>
-            <ion-label>Membresía</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item lines="none" button>
-            <ion-icon name="shield-checkmark-outline" slot="start"></ion-icon>
-            <ion-label>TyC</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item lines="none" button>
-            <ion-icon name="document-text-outline" slot="start"></ion-icon>
-            <ion-label>Feedback</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item lines="none" button>
-            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
-            <ion-label>Información</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item lines="none" routerLink="/home" button>
-            <ion-icon name="exit-outline" slot="start"></ion-icon>
-            <ion-label>Cerrar sesión</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item>
-            <!-- Pausar or Editar o qué? -->
-            <ion-label>Modo obscuro</ion-label>
-            <ion-toggle color="primary"></ion-toggle>
-          </ion-item>
-        </ion-menu-toggle>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <ion-router-outlet main></ion-router-outlet>
+
+    <ion-menu side="end" menuId="m1" contentId="content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title class="font-brand-normal">
+            phestee
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of pages"> 
+            <ion-item [routerLink]="p.url" routerDirection="root" lines="none" button>
+              <ion-icon [name]="p.icon" slot="start"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle> 
+          <ion-menu-toggle> 
+            <ion-item lines="none" routerLink="/home" button>
+              <ion-icon name="exit-outline" slot="start"></ion-icon>
+              <ion-label>Cerrar sesión</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item>
+              <ion-label>Modo obscuro</ion-label>
+              <ion-toggle color="primary"></ion-toggle>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+  <ion-router-outlet id="content" main></ion-router-outlet>
 </ion-app>

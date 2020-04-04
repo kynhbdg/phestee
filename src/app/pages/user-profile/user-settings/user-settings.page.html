@@ -1,9 +1,133 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>userSettings</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Editar usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+
+<ion-content fullscreen>
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+
+          <ion-card class="simple-card">
+            <ion-card-header class="d-flex-col-center-centered"> 
+                <img class="ph-avatar-xlg" src="./../assets/media/woman.jpg">
+                <ion-button (click)="presentPhotoOptions()" type="button" class="ion-margin-top" color="primary" size="small" fill="clear">
+                  Cambiar foto de perfil
+                </ion-button>
+            </ion-card-header>
+          </ion-card>
+
+          <ion-list class="ion-padding-bottom">
+
+            <form ngNativeValidate [formGroup]="userSettingForm" (ngSubmit)="onUserUpdate()">
+
+              <ion-item-divider>
+                <ion-label>General</ion-label>
+              </ion-item-divider>
+
+              <ion-item>
+                <ion-label position="fixed"><small>Nombre</small></ion-label>
+                <ion-input formControlName="name" name="name" type="text" class="ion-text-end"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="fixed"><small>Usuario</small></ion-label>
+                <ion-input formControlName="userName" name="userName" type="text" class="ion-text-end"></ion-input>
+              </ion-item>
+
+              <ion-item-divider>
+                <ion-label>Información privada</ion-label>
+              </ion-item-divider>
+              
+              <ion-item>
+                <ion-label position="fixed"><small>Email</small></ion-label>
+                <ion-input formControlName="email" name="email" type="email" class="ion-text-end"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!emailForm.valid && emailForm.touched">
+                <ion-note color="danger"><small>Ingresa un correo válido</small></ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label position="fixed"><small>Teléfono</small></ion-label>
+                <ion-input formControlName="phone" name="phone" type="number" class="ion-text-end" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label><small>Cumpleaños</small></ion-label>
+                <ion-datetime formControlName="birthday" name="birthday" placeholder="Fecha de nacimiento"></ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label><small>Ciudad</small></ion-label>
+                <ion-select formControlName="city" name="city" okText="Ok" cancelText="Cancelar">
+                  <ion-select-option *ngFor="let cityJal of citiesJal; let i of index" [value]="cityJal">{{ cityJal }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label position="fixed"><small>Estado</small></ion-label>
+                <ion-input formControlName="state" name="state" type="text" class="ion-text-end"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="fixed"><small>País</small></ion-label>
+                <ion-input formControlName="country" name="country" type="text" class="ion-text-end"></ion-input>
+              </ion-item>
+
+
+              <div class="d-flex-row-center-centered ion-margin-top ion-margin-bottom">
+                <ion-button [disabled]="userSettingForm.invalid" type="submit" class="ion-margin-top" expand="block" shape="round" color="primary">
+                  Guardar cambios
+                </ion-button>
+              </div>
+            </form>
+
+            <form ngNativeValidate [formGroup]="pwdResetForm" (ngSubmit)="onPwdUpdate()">
+
+              <ion-item-divider>
+                <ion-label>Contraseña</ion-label>
+              </ion-item-divider>
+              
+              <ion-item>
+                <ion-label position="fixed"><small>Vieja</small></ion-label>
+                <ion-input required type="password" formControlName="oldPwd" name="oldPwd"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="fixed"><small>Nueva</small></ion-label>
+                <ion-input required type="password" formControlName="newPwd" name="newPwd"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="fixed"><small>Confirmar</small></ion-label>
+                <ion-input required type="password" formControlName="confirmPwd" name="confirmPwd"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="confirmPwdForm.dirty && !pwdUpdateMatch">
+                <ion-note color="danger"><small>Las contraseñas no coinciden</small></ion-note>
+              </ion-item>
+
+              <div class="d-flex-row-center-centered ion-margin-top ion-margin-bottom">
+                <ion-button [disabled]="!pwdUpdateMatch" type="submit" class="ion-margin-top" expand="block" shape="round" color="primary" fill="outline" >
+                  Cambiar contraseña
+                </ion-button>
+              </div>
+
+            </form>
+
+              <ion-item-divider class="ion-padding-top">
+                <ion-label>Zona de peligro</ion-label>
+              </ion-item-divider>
+
+               <div class="d-flex-row-center-centered">
+                  <ion-button class="ion-margin-top" expand="block" fill="clear" shape="round" color="danger">
+                    <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+                    Eliminar cuenta
+                  </ion-button>
+                </div>
+              
+
+          </ion-list>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
 
 </ion-content>

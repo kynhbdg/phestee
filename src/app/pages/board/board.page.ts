@@ -19,7 +19,7 @@ export class BoardPage implements OnInit {
   ngOnInit() {
   }
 
-  async presentActionSheet() {
+  async presentMoreBoards() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Tableros',
       buttons: [{

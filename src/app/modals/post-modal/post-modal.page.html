@@ -19,7 +19,7 @@
 
           <ion-item lines="none" class="d-flex-row-start-centered ion-margin-top">
             <ion-label position="floating">¿Qué necesitas?</ion-label>
-            <ion-textarea (keyup)="onCharacterCount(postStringControl.value)" required formControlName="postString" id="postString" name="postString" type="text" maxlength="250" rows="4" ></ion-textarea>
+            <ion-textarea (keyup)="onCharacterCount(postStringControl.value)" required formControlName="postString" id="postString" name="postString" type="text" [maxlength]="postMaxLngth" rows="4" ></ion-textarea>
           </ion-item>
           <ion-item lines="none">
             <ion-label>
