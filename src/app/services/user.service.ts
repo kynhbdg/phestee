@@ -16,7 +16,10 @@ export class UserService {
   user: User;
   token:string;
   constructor(public http: HttpClient,
-              public _handleError: HandleErrorService) { }
+              public _handleError: HandleErrorService)
+  {
+     this.loadStorage();
+  }
 
   login( user: User, rememberme: boolean = false ) {
 
@@ -27,6 +30,7 @@ export class UserService {
     }
     let url = urlService + '/user/login';
     return this.http.post (url, user).pipe(map( (res: any) => {
+      console.log("Res: "+JSON.stringify(res));
       this.saveStorage(res.user._id, res.token, res.user, res.bus );
       return true;
     }),
@@ -42,5 +46,42 @@ export class UserService {
     this.user = user;
     this.token = token;
   }// end saveStorage
+
+  createUser(user: User)
+  {
+    let url = urlService + '/user/signin';
+    return this.http.post(url, user).pipe(map( (res: any) => {
+      return true;
+    }),
+    catchError(this._handleError.handleError));
+  }// end createUser
+
+  userLoggedIn() {
+    if(this.token !== undefined)
+    {
+      if(this.token.length > 5)
+        return true;
+      else
+       return false;
+    }
+    else
+     return false;
+  }// end userLoggedIn
+
+  loadStorage() {
+    if ( localStorage.getItem('token')) {
+      this.token = localStorage.getItem('token');
+      this.user = JSON.parse(localStorage.getItem('user'));
+    }
+    else {
+      this.token = '';
+      this.user = null;
+    }
+  } // end loadStorage
+
+
+
+
+
 
 }
