@@ -49,7 +49,7 @@ export class LoginPage implements OnInit {
     let user = new User(null, this.loginForm.value.email, this.loginForm.value.password);
     this._userService.login(user,false).subscribe(
       () => this.router.navigateByUrl('/pages/tabs/feed'),error =>{
-        alert("Por favor ingrese sus datos correctamente: "+error);
+        alert(error);
       });
     /*this.loadingCtrl
       .create({ keyboardClose: true, message: 'Abriendo cuenta...' })

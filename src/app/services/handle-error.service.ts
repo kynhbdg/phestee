@@ -13,9 +13,9 @@ export class HandleErrorService {
   handleError(errorResponse: HttpErrorResponse)
   {
     let messageErrorB: any;
-    if(errorResponse.error != undefined && errorResponse.error.transactionStatus == false)
+    if(typeof errorResponse.error !== undefined)
     {
-          if(errorResponse.error.error != "" && errorResponse.error.error != undefined && errorResponse.error.error != null)
+          if(typeof errorResponse.error.transactionStatus === undefined)
           {
             let finalmessage;
             finalmessage = errorResponse.error.error.errmsg.split('index: ');
@@ -23,10 +23,12 @@ export class HandleErrorService {
             messageErrorB = finalmessage[0];
           }
           else
-            messageErrorB = errorResponse.error.messages[errorResponse.error.messages.length - 1];
+            messageErrorB = errorResponse.error.messages[0];
     }
     else
+    {
           messageErrorB = errorResponse;
+    }
 
     return throwError(messageErrorB);
   }

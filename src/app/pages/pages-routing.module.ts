@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginguardGuard } from '../services/loginguard.guard';
+
 
 import { PagesPage } from './pages.page';
 
@@ -7,6 +9,7 @@ const routes: Routes = [
   {
     path: 'tabs',
     component: PagesPage,
+    canActivate: [LoginguardGuard],
     children: [
       {
         path: 'feed',
