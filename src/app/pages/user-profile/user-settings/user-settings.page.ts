@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { ActionSheetController } from '@ionic/angular';
 
 import { User } from 'src/app/models/user.model';
@@ -24,7 +25,7 @@ export class UserSettingsPage implements OnInit {
     'Tonalá',
     'Zapopan',
     'Otra'
-  ]
+  ];
 
 
 
@@ -38,7 +39,7 @@ export class UserSettingsPage implements OnInit {
       name: new FormControl( ''),
       userName: new FormControl('', [Validators.required]),
       email: new FormControl( '', [Validators.required, Validators.email] ),
-      phone: new FormControl(''),
+      phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10) ]),
       birthday: new FormControl(''),
       city: new FormControl(''),
       state: new FormControl( {value: 'Jalisco', disabled: true} ),

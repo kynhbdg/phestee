@@ -18,8 +18,11 @@ export class UserProfilePage implements OnInit {
   }
 
   openBoard(id: string) {
-    console.log(id);
     this.router.navigate(['/', 'pages', 'tabs', 'user', 'board', id]);
+  }
+
+  onAddNewBusiness() {
+    this.router.navigate(['/', 'pages', 'tabs', 'user', 'business-new']);
   }
 
 }

@@ -280,8 +280,25 @@ p, h1, h2, h3, h4, h5, h6 {
     background: transparent;
 } 
 
+.bg-light {
+    background: var(--ion-color-light);
+} 
+
+.bg-medium {
+    background: var(--ion-color-medium);
+} 
+
 .no-border {
     border: none;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ph-border-top {
+    border-top: 1.75px solid var(--ion-color-light);
 }
 
 .ph-border-bottom {

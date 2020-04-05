@@ -17,7 +17,11 @@ const routes: Routes = [
     loadChildren: () => import('./business-profile/business-profile.module').then( m => m.BusinessProfilePageModule)
   },
   {
-    path: 'business-settings',
+    path: 'business-settings/:id',
+    loadChildren: () => import('./business-settings/business-settings.module').then( m => m.BusinessSettingsPageModule)
+  },
+  {
+    path: 'business-new',
     loadChildren: () => import('./business-settings/business-settings.module').then( m => m.BusinessSettingsPageModule)
   }
 ];

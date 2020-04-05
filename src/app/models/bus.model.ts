@@ -3,13 +3,14 @@ export class Bus {
   constructor(
     public busName: string,
     public busProfile: string,
+    public busType: string,
+    public rtmMode: string, // BC: added it 04/05, this is for servicio a dom, fijo, móvil a nivel de header
     public busImage?: string,
     public busRating?: number,
     public active?: boolean,
-    public busType?: string,
-    public licenseType?: string,
+    public licenseType?: string, // BC: can this be replaced by certification.docType?
     public landline?: string,
-    public mobile?: string,
+    public cellphone?: string,
     public email?: string,
     public delegatedUsers?: boolean,
     public isHeadBusiness?: string,
@@ -25,9 +26,16 @@ export class Bus {
       neighborhood: string,
       lastUpdated: string,
     },
+    public socialNetworks?: {
+      instagram?: string,
+      facebook?: string,
+      linkedin?: string,
+      website?: string,
+    },
     public certification?: {
       isCertified?: boolean,
-      gvmntPermissionId?: string,
+      docType?: string;
+      docID?: string,
       permissionFile?: string
     },
     public busLocation?: {
@@ -37,15 +45,16 @@ export class Bus {
     public busItems?: [{
       itemTitle: string,
       itemDesc: string,
+      txnType: string,
+      rentPeriod: string,
       price: number,
+      hshtgs: string,
       busItemRating: number,
       homeService: boolean,
       isMobileOffering: boolean,
       establishedBus: boolean,
-      hshtgs: string,
-      type: string,
       imgs: [],
-      itemAdded: boolean; // need to add this flag in bE, it has no purpose but only for UI :(
+      itemAdded: boolean
     }]
     ) {}
 

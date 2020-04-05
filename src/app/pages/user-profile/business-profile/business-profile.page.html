@@ -5,6 +5,11 @@
     </ion-buttons>
     <ion-title class="ion-text-center">cakesinGDL  <ion-icon name="chevron-down-outline"></ion-icon>
      </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onSaveItems('123')" [disabled]="!addItemToArray">
+        Guardar
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,151 +18,289 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-        <ion-card>
-          <ion-card-header class="d-flex-col-center-centered w-100"> 
-              <img class="ph-avatar-xlg" src="./../assets/media/cake2.jpg">
-              <ion-card-header class="ion-text-center">
-                <ion-card-title><h6><b>Pasteles Guadalajara</b></h6></ion-card-title>
-                <ion-card-title><h6>cakesinGDL</h6></ion-card-title>
-              </ion-card-header>
+        <ion-card class="simple-card ion-no-padding ion-no-margin ph-border-bottom">
+          <ion-card-header class="d-flex-col-center-centered w-100 ion-no-padding ion-padding-top ion-padding-end ion-padding-start">
+              <img class="ph-avatar-lg" src="./../assets/media/cake2.jpg">
+              <ion-card-title class="ion-text-center ion-margin-top">
+                <h6>
+                  <b>cakesinGDL <ion-icon color="primary" size="small" name="shield-checkmark"></ion-icon></b>
+                </h6>
+                <h6> Pasteles Guadalajara</h6>
+              </ion-card-title>
           </ion-card-header>
 
-          <ion-item-divider lines="full">
-            <div class="w-100 d-flex-row-between-centered ion-padding">
-              <ion-text class="ion-text-center">
-                <h6><b>35,1</b></h6>
-                <h6>Exp</h6>
-              </ion-text>
-              <ion-text class="ion-text-center">
-                <h6><b>$63,2K</b></h6>
-                <h6>Ingresos</h6>
-              </ion-text>
-              <ion-text class="ion-text-center">
-                <h6><b>4.98</b></h6>
-                <h6><ion-icon color="warning" name="star" slot="start"></ion-icon></h6>
-              </ion-text>
-            </div>
+          <ion-card-header class="ion-no-padding">
 
-          </ion-item-divider>
+            <ion-grid class="ph-border-bottom">
+              <ion-row class="ion-margin-top ion-margin-bottom">
+                <ion-col size="4">
+                  <ion-card-title color="dark" class="ion-text-center">
+                    <h6>35,1K</h6>
+                    <h6><ion-icon color="dark" name="flash-outline" slot="start"></ion-icon></h6>
+                  </ion-card-title>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-card-title color="dark" class="ion-text-center">
+                    <h6>$63,5K</h6>
+                    <h6><small>Ingresos</small></h6>
+                  </ion-card-title>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-card-title color="dark" class="ion-text-center">
+                    <h6>4.98</h6>
+                    <h6><ion-icon color="warning" name="star" slot="start"></ion-icon></h6>
+                  </ion-card-title>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
 
-          <ion-item lines="none">
-            <ion-label>Tipo</ion-label>
-            <ion-select>
-              <ion-select-option *ngFor="let tipo of busTypes; let i of index" [value]="tipo">{{ tipo }}</ion-select-option>
-            </ion-select>
-          </ion-item>
+          </ion-card-header>
 
-          <ion-item lines="none">
-            <ion-label>Mode</ion-label>
-            <ion-select>
-              <ion-select-option *ngFor="let mode of busMode; let i of index" [value]="mode">{{ mode }}</ion-select-option>
-            </ion-select>
-          </ion-item>
+          <!-- <ion-card-content class="ion-no-padding ion-padding-top ion ion-padding-end ion-padding-start">
+            <ion-grid>
+              <ion-row>
+                <ion-col class="d-flex-row-center-centered" size="6">
+                  <ion-chip color="medium">
+                    <ion-icon color="dark" name="shield-checkmark-outline"></ion-icon>
+                    <ion-label color="dark">Documentos</ion-label>
+                  </ion-chip>
+                </ion-col>
+                <ion-col class="d-flex-row-center-centered" size="6">
+                  <ion-chip color="medium">
+                    <ion-icon color="dark" name="briefcase-outline"></ion-icon>
+                    <ion-label color="dark">Negocio</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="d-flex-row-center-centered" size="6">
+                  <ion-chip color="medium">
+                    <ion-icon color="dark" name="call-outline"></ion-icon>
+                    <ion-label color="dark">Teléfono</ion-label>
+                  </ion-chip>
+                </ion-col>
+                <ion-col class="d-flex-row-center-centered" size="6">
+                  <ion-chip color="medium">
+                    <ion-icon color="dark" name="navigate-outline"></ion-icon>
+                    <ion-label color="dark">Ubicación</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="d-flex-row-center-centered" size="6">
+                  <ion-chip color="medium">
+                    <ion-icon color="dark" name="bicycle-outline"></ion-icon>
+                    <ion-label color="dark">A domicilio</ion-label>
+                  </ion-chip>
+                </ion-col>
+                <ion-col class="d-flex-row-center-centered" size="6">
+                  <ion-chip color="medium">
+                    <ion-icon color="dark" name="timer-outline"></ion-icon>
+                    <ion-label color="dark">Desde Ene 2019</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content> -->
+
+          <ion-card-content class="ion-no-padding ion ion-padding-end ion-padding-start ion-padding-bottom ion-margin-bottom ion-margin-top ph-border-bottom">
+
+            <ion-button (click)="onEditBusiness('123')" expand="block" fill="clear" color="dark" size="small">
+              <ion-icon name="create-outline" slot="start"></ion-icon>Editar
+            </ion-button>
+
+          </ion-card-content>
+
+          <!-- <ion-card-content class="ion-no-padding ion-padding-top ion ion-padding-end ion-padding-start ion-margin-bottom">
+
+            <ion-button expand="block" fill="clear" color="dark" size="small">
+              <ion-icon name="add-outline" slot="start"></ion-icon>Ver más
+            </ion-button>
+
+          </ion-card-content> -->
+          
+
         </ion-card>
 
-        <ion-card>
+        <form ngNativeValidate [formGroup]="itemsArrayForm" (ngSubmit)="onSaveItems()">
 
-          <ion-item-divider>
-            <ion-label class="ion-text-center">Febrero 2019</ion-label>
-          </ion-item-divider>
+          <div *ngIf="addItemToArray" class="ion-no-margin ion-no-padding">
 
-          <ion-item>
-            <div class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-top ion-padding-bottom">
-              <ion-text class="ion-text-center">
-                <h6><b>35</b></h6>
-                <h6>Exp</h6>
-              </ion-text>
-              <ion-text class="ion-text-center">
-                <h6><b>$5,2K</b></h6>
-                <h6>Ingresos</h6>
-              </ion-text>
-              <ion-text class="ion-text-center">
-                <h6><b>3</b></h6>
-                <h6>Clientes</h6>
-              </ion-text>
+            <ion-text class="ion-margin-top ion-margin-bottom ion-padding-start ion-padding-end d-flex-row-between-centered">
+              <h6><b>{{ busItemsForm['controls'].length }} Items</b></h6> 
+            </ion-text>
+
+            <div formArrayName="busItems" *ngFor="let busItem of busItemsForm['controls']; let i = index" class="ion-no-margin ion-no-padding">
+              <div [formGroupName]="i" class="ion-no-margin ion-no-padding">
+
+                <ion-item-group>
+                  <ion-card class="ion-no-padding ion-padding-bottom">
+                    <ion-card-header>
+                      <ion-card-title class="d-flex-row-between-centered" color="dark">
+                        <h6><b>Pastel de avellana</b></h6>
+                        <h6><ion-icon name="flash-outline" color="dark"></ion-icon> 55</h6>
+                      </ion-card-title>
+                    </ion-card-header>
+                    <ion-card-header class="ion-no-padding ion-padding-bottom">
+                      <img src="./../assets/media/cake.jpg" alt="">
+                    </ion-card-header>
+                    <ion-item-group>
+                      <ion-item lines="full">
+                        <ion-label color="medium" position="floating">Descripción</ion-label>
+                        <ion-input formControlName="itemTitle" name="itemTitle" ></ion-input>
+                      </ion-item>
+                      <ion-item lines="full">
+                        <ion-label color="medium" position="floating">Detalles</ion-label>
+                        <ion-textarea formControlName="itemDesc" name="itemDesc" ></ion-textarea>
+                      </ion-item>
+                      <ion-item lines="full">
+                        <ion-label color="medium"><small>Tipo de transacción</small></ion-label>
+                        <ion-select formControlName="txnType" name="txnType" >
+                          <ion-select-option *ngFor="let tipoTxn of txnTypes; let i of index" [value]="tipoTxn">{{ tipoTxn }}</ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item *ngIf="busItemsForm['controls'][i].tipoTxn === 'Renta' " lines="full">
+                        <ion-label color="medium"><small>Periodo de renta</small></ion-label>
+                        <ion-select formControlName="rentPeriod" name="rentPeriod" >
+                          <ion-select-option *ngFor="let rentPeriod of rentPeriods; let i of index" [value]="rentPeriod">{{ rentPeriod }}</ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item lines="full">
+                        <ion-label color="medium" position="floating">Precio (MXN)</ion-label>
+                        <ion-input  formControlName="price" name="price" ></ion-input>
+                      </ion-item>
+                      <ion-item lines="full">
+                        <ion-label color="medium" position="floating">Palabras clave <ion-icon size="small" color="primary" name="help-circle"></ion-icon> </ion-label>
+                        <ion-textarea formControlName="hshtgs" name="hshtgs" ></ion-textarea>
+                      </ion-item>
+                      <ion-button type="submit" class="ion-margin" color="primary" expand="block" shape="round">Guardar item</ion-button>
+                    </ion-item-group>
+                  </ion-card>
+                </ion-item-group>
+
+              </div>
+
             </div>
-          </ion-item>
 
-        </ion-card>
+          </div>
 
-        <ion-item-divider>
-          <ion-label>2 Items</ion-label>
-        </ion-item-divider>
+          <ion-button (click)='onAddBusItem()' expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon>Agregar item</ion-button>
 
-        <ion-item-group>
-          <ion-card class="ion-no-padding ion-padding-bottom">
-            <ion-card-header>
-              <ion-card-title color="dark">
-                <h6><b>Pastel de avellana</b></h6>
-              </ion-card-title>
-            </ion-card-header>
-            <ion-card-header class="ion-no-padding ion-padding-bottom">
-              <img src="./../assets/media/cake.jpg" alt="">
-            </ion-card-header>
-            <ion-item-group>
-              <ion-item lines="full">
-                <ion-label color="medium" position="floating">Descripción</ion-label>
-                <ion-input value="something"></ion-input>
-              </ion-item>
-              <ion-item lines="full">
-                <ion-label color="medium" position="floating">Detalles</ion-label>
-                <ion-textarea value="something else" placeholder="Enter more information here..."></ion-textarea>
-              </ion-item>
-              <ion-item lines="full">
-                <ion-label color="medium">Tipo de transacción</ion-label>
-                <ion-select>
-                  <ion-select-option *ngFor="let tipoTxn of txnType; let i of index" [value]="tipoTxn">{{ tipoTxn }}</ion-select-option>
-                </ion-select>
-              </ion-item>
-              <ion-item lines="full">
-                <ion-label color="medium" position="floating">Precio (MXN)</ion-label>
-                <ion-input value="$200.00" placeholder="Enter more information here..."></ion-input>
-              </ion-item>
-              <ion-item lines="full">
-                <ion-label color="medium" position="floating">Palabras clave <ion-icon size="small" color="primary" name="help-circle"></ion-icon> </ion-label>
-                <ion-textarea value="#comer #cumpleaños #postre #mamá #papá #gusguera" placeholder="Enter more information here..."></ion-textarea>
-              </ion-item>
-            </ion-item-group>
-          </ion-card>
-        </ion-item-group>
+          <!-- <ion-item-group>
+            <ion-card class="ion-no-padding ion-padding-bottom">
+              <ion-card-header>
+                <ion-card-title class="d-flex-row-between-centered" color="dark">
+                  <h6><b>Pastel de avellana</b></h6>
+                  <h6><ion-icon name="flash-outline" color="dark"></ion-icon> 55</h6>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-header class="ion-no-padding ion-padding-bottom">
+                <img src="./../assets/media/cake.jpg" alt="">
+              </ion-card-header>
+              <ion-item-group>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Descripción</ion-label>
+                  <ion-input value="something"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Detalles</ion-label>
+                  <ion-textarea value="something else" placeholder="Enter more information here..."></ion-textarea>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium"><small>Tipo de transacción</small></ion-label>
+                  <ion-select>
+                    <ion-select-option *ngFor="let tipoTxn of txnTypes; let i of index" [value]="tipoTxn">{{ tipoTxn }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Precio (MXN)</ion-label>
+                  <ion-input value="$200.00" placeholder="Enter more information here..."></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Palabras clave <ion-icon size="small" color="primary" name="help-circle"></ion-icon> </ion-label>
+                  <ion-textarea value="#comer #cumpleaños #postre #mamá #papá #gusguera" placeholder="Enter more information here..."></ion-textarea>
+                </ion-item>
+              </ion-item-group>
+            </ion-card>
+          </ion-item-group>
 
+          <ion-item-group>
+            <ion-card class="ion-no-padding ion-padding-bottom">
+              <ion-card-header>
+                <ion-card-title class="d-flex-row-between-centered" color="dark">
+                  <h6><b>Pastel de avellana</b></h6>
+                  <h6><ion-icon name="flash-outline" color="dark"></ion-icon> 55</h6>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-header class="ion-no-padding ion-padding-bottom">
+                <img src="./../assets/media/cake.jpg" alt="">
+              </ion-card-header>
+              <ion-item-group>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Descripción</ion-label>
+                  <ion-input value="something"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Detalles</ion-label>
+                  <ion-textarea value="something else" placeholder="Enter more information here..."></ion-textarea>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium"><small>Tipo de transacción</small></ion-label>
+                  <ion-select>
+                    <ion-select-option *ngFor="let tipoTxn of txnTypes; let i of index" [value]="tipoTxn">{{ tipoTxn }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Precio (MXN)</ion-label>
+                  <ion-input value="$200.00" placeholder="Enter more information here..."></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Palabras clave <ion-icon size="small" color="primary" name="help-circle"></ion-icon> </ion-label>
+                  <ion-textarea value="#comer #cumpleaños #postre #mamá #papá #gusguera" placeholder="Enter more information here..."></ion-textarea>
+                </ion-item>
+              </ion-item-group>
+            </ion-card>
+          </ion-item-group>
 
-        <ion-item-group>
-          <ion-card class="ion-no-padding ion-padding-bottom">
-            <ion-card-header>
-              <ion-card-title color="dark">
-                <h6><b>Pastel de queso</b></h6>
-              </ion-card-title>
-            </ion-card-header>
-            <ion-card-header class="ion-no-padding ion-padding-bottom">
-              <img src="./../assets/media/cake2.jpg" alt="">
-            </ion-card-header>
-            <ion-item-group>
-              <ion-item lines="full">
-                <ion-label color="medium" position="floating">Descripción</ion-label>
-                <ion-input value="something"></ion-input>
-              </ion-item>
-              <ion-item lines="full">
-                <ion-label color="medium" position="floating">Detalles</ion-label>
-                <ion-textarea value="something else" placeholder="Enter more information here..."></ion-textarea>
-              </ion-item>
-              <ion-item lines="full">
-                <ion-label color="medium">Tipo de transacción</ion-label>
-                <ion-select>
-                  <ion-select-option *ngFor="let tipoTxn of txnType; let i of index" [value]="tipoTxn">{{ tipoTxn }}</ion-select-option>
-                </ion-select>
-              </ion-item>
-              <ion-item lines="full">
-                <ion-label color="medium" position="floating">Precio (MXN)</ion-label>
-                <ion-input value="$200.00" placeholder="Enter more information here..."></ion-input>
-              </ion-item>
-              <ion-item lines="full">
-                <ion-label color="medium" position="floating">Palabras clave <ion-icon size="small" color="primary" name="help-circle"></ion-icon> </ion-label>
-                <ion-textarea value="#comer #cumpleaños #postre #mamá #papá #gusguera" placeholder="Enter more information here..."></ion-textarea>
-              </ion-item>
-            </ion-item-group>
-          </ion-card>
-        </ion-item-group>
+          <ion-item-group>
+            <ion-card class="ion-no-padding ion-padding-bottom">
+              <ion-card-header>
+                <ion-card-title class="d-flex-row-between-centered" color="dark">
+                  <h6><b>Pastel de queso</b></h6>
+                  <h6><ion-icon name="flash-outline" color="dark"></ion-icon> 45</h6>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-header class="ion-no-padding ion-padding-bottom">
+                <img src="./../assets/media/cake2.jpg" alt="">
+              </ion-card-header>
+              <ion-item-group>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Descripción</ion-label>
+                  <ion-input value="something"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Detalles</ion-label>
+                  <ion-textarea value="something else" placeholder="Enter more information here..."></ion-textarea>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium"><small>Tipo de transacción</small></ion-label>
+                  <ion-select>
+                    <ion-select-option *ngFor="let tipoTxn of txnTypes; let i of index" [value]="tipoTxn">{{ tipoTxn }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Precio (MXN)</ion-label>
+                  <ion-input value="$200.00" placeholder="Enter more information here..."></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                  <ion-label color="medium" position="floating">Palabras clave <ion-icon size="small" color="primary" name="help-circle"></ion-icon> </ion-label>
+                  <ion-textarea value="#comer #cumpleaños #postre #mamá #papá #gusguera" placeholder="Enter more information here..."></ion-textarea>
+                </ion-item>
+              </ion-item-group>
+            </ion-card>
+          </ion-item-group> -->
+
+        </form>
 
 
 

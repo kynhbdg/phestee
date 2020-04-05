@@ -39,6 +39,10 @@
                 <ion-input formControlName="userName" name="userName" type="text" class="ion-text-end"></ion-input>
               </ion-item>
 
+              <!-- <ion-item >
+                <ion-note color="danger"><small>El nombre de usuario ya está registrado</small></ion-note>
+              </ion-item> -->
+
               <ion-item-divider>
                 <ion-label>Información privada</ion-label>
               </ion-item-divider>
@@ -52,7 +56,7 @@
               </ion-item>
               <ion-item>
                 <ion-label position="fixed"><small>Teléfono</small></ion-label>
-                <ion-input formControlName="phone" name="phone" type="number" class="ion-text-end" ></ion-input>
+                <ion-input formControlName="phone" name="phone" type="string" class="ion-text-end" minlength="10" maxlength="10" ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label><small>Cumpleaños</small></ion-label>
@@ -111,16 +115,23 @@
 
             </form>
 
-              <ion-item-divider class="ion-padding-top">
-                <ion-label>Zona de peligro</ion-label>
-              </ion-item-divider>
-
-               <div class="d-flex-row-center-centered">
-                  <ion-button class="ion-margin-top" expand="block" fill="clear" shape="round" color="danger">
-                    <ion-icon slot="start" name="close-circle-outline"></ion-icon>
-                    Eliminar cuenta
-                  </ion-button>
-                </div>
+            <ion-item-divider class="ion-padding-top">
+              <ion-label color="danger">Zona de peligro</ion-label>
+            </ion-item-divider>
+  
+            <ion-button expand="full" color="danger">
+              <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+              Eliminar perfil
+            </ion-button>
+            <ion-item-divider lines="none">
+              <ion-text class="ion-margin-top ion-margin-bottom ion-text-center">
+                <small>
+                  
+                  El perfil sólo se podrá eliminar si no tienes experiencias activas.
+                                  
+                </small>
+              </ion-text>
+            </ion-item-divider>
               
 
           </ion-list>
