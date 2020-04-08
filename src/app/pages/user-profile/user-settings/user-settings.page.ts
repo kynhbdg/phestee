@@ -36,7 +36,7 @@ export class UserSettingsPage implements OnInit {
   ngOnInit() {
 
     this.userSettingForm = new FormGroup({
-      name: new FormControl( ''),
+      name: new FormControl( '', [Validators.required]),
       userName: new FormControl('', [Validators.required]),
       email: new FormControl( '', [Validators.required, Validators.email] ),
       phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10) ]),

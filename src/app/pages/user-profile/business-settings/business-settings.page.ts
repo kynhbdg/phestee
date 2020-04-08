@@ -17,17 +17,17 @@ export class BusinessSettingsPage implements OnInit {
   business: Bus;
 
   busTypes = [
-    'Comunidad',
-    'Freelancer',
-    'Negocio',
-    'Oficio',
+    0, // 'Negocio',
+    1, // 'Freelancer',
+    2, // 'Comunidad',
+    3, // 'Oficio',
     // 'Servicio',
   ];
 
   rtmModes = [
-    'Fijo',
-    'Móvil',
-    'Servicio a domicilio',
+    0, // Fijo
+    1, // Ambulante
+    2 // Con servicio a domicilio
   ];
 
   citiesJal = [
@@ -41,9 +41,12 @@ export class BusinessSettingsPage implements OnInit {
   ];
 
   certificationTypes = [
-    'Cédula Profesional',
-    'IFE o Pasaporte',
-    'Permiso Gubernamental'
+    0, // 'Cédula Profesional',
+    1, // 'IFE,
+    2, // 'Pasaporte',
+    3, // 'Licencia de conducir',
+    4, // 'Permiso Gubernamental'
+    5, // 'Comprobante de domicilio'
   ];
 
   // this is for the items
@@ -64,7 +67,7 @@ export class BusinessSettingsPage implements OnInit {
     this.businessSettingForm = this.formBuilder.group({
       busName: new FormControl('', [ Validators.required ] ),
       busProfile: new FormControl('', [ Validators.required ]),
-      busType: new FormControl(this.busTypes[2], [ Validators.required ]),
+      busType: new FormControl(this.busTypes[0], [ Validators.required ]),
       rtmMode: new FormControl(this.rtmModes[0], [ Validators.required ]),
       busImage: new FormControl(''),
       busRating: new FormControl(''),
@@ -76,6 +79,10 @@ export class BusinessSettingsPage implements OnInit {
       delegatedUsers: new FormControl(''),
       isheadBusiness: new FormControl(false),
       branches: this.formBuilder.array([]),
+      instagram: new FormControl(''),
+      facebook: new FormControl(''),
+      linkedin: new FormControl(''),
+      website: new FormControl(''),
       address: new FormGroup({
         streetName: new FormControl(''),
         streetNum: new FormControl(''),
@@ -86,17 +93,11 @@ export class BusinessSettingsPage implements OnInit {
         country: new FormControl({ value: 'México', disabled: true }),
         neighborhood: new FormControl('')
       }),
-      socialNetworks: new FormGroup({
-        instagram: new FormControl(''),
-        facebook: new FormControl(''),
-        linkedin: new FormControl(''),
-        website: new FormControl(''),
-      }),
       certification: new FormGroup({
-        isCertified: new FormControl(''),
+        isCertified: new FormControl(false),
         docType: new FormControl(''),
         docID: new FormControl(''),
-        permissionFile: new FormControl('')
+        docImage: new FormControl('')
       }),
       busLocation: new FormGroup({
         lat: new FormControl(''),
