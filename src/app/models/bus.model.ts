@@ -15,6 +15,10 @@ export class Bus {
     public delegatedUsers?: boolean,
     public isHeadBusiness?: string,
     public branches?: [{}],
+    public instagram?: string,
+    public facebook?: string,
+    public linkedin?: string,
+    public website?: string,
     public address?: {
       streetName: string,
       streetNum: string,
@@ -26,18 +30,14 @@ export class Bus {
       neighborhood: string,
       lastUpdated: string,
     },
-    public socialNetworks?: {
-      instagram?: string,
-      facebook?: string,
-      linkedin?: string,
-      website?: string,
-    },
-    public certification?: {
+    public certification?: [{
       isCertified?: boolean,
-      docType?: string;
-      docID?: string,
-      permissionFile?: string
-    },
+      documents: [{
+        docId?: string,
+        docImage?: string
+        docType?: number;
+      }]
+    }],
     public busLocation?: {
       lat: number,
       len: number
@@ -46,15 +46,14 @@ export class Bus {
       itemTitle: string,
       itemDesc: string,
       txnType: string,
-      rentPeriod: string,
+      usagePeriod: string,
       price: number,
-      hshtgs: string,
       busItemRating: number,
-      homeService: boolean,
-      isMobileOffering: boolean,
-      establishedBus: boolean,
-      imgs: [],
-      itemAdded: boolean
+      hshtgs: string,
+      // homeService: boolean, // agreed to remove and leave RTM at header level
+      // isMobileOffering: boolean, // agreed to remove and leave RTM at header level
+      // establishedBus: boolean,// agreed to remove and leave RTM at header level
+      imgs: []
     }]
     ) {}
 

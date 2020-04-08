@@ -10,17 +10,18 @@ import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@ang
 export class BusinessProfilePage implements OnInit {
 
   txnTypes = [
-    'Venta',
-    'Renta',
-    'Donación',
-    'Préstamo'
+    0, // 'Venta'
+    1, // 'Renta',
+    2, // 'Donación',
+    3 // 'Préstamo'
   ];
 
   rentPeriods = [
-    'Hora',
-    'Día',
-    'Noche',
-    'Mes'
+    0, // 'Hora',
+    1, // 'Día',
+    2, // 'Noche',
+    3, // 'Semana',
+    4, // 'Mes'
   ]
 
   addItemToArray: boolean;
@@ -58,15 +59,11 @@ export class BusinessProfilePage implements OnInit {
       itemTitle: new FormControl(''),
       itemDesc: new FormControl(''),
       txnType: new FormControl(''),
-      rentPeriod: new FormControl(''),
+      usagePeriod: new FormControl(''),
       price: new FormControl(''),
-      hshtgs: new FormControl(''),
       busItemRating: new FormControl(5),
-      homeService: new FormControl(''),
-      isMobileOffering: new FormControl(''),
-      establishedBus: new FormControl(''),
+      hshtgs: this.formBuilder.array([]),
       imgs: this.formBuilder.array([]),
-      itemAdded: new FormControl(''),
     });
   }
 
