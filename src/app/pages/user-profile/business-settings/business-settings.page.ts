@@ -3,7 +3,9 @@ import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@ang
 
 import { ActionSheetController } from '@ionic/angular';
 
-import { Bus } from 'src/app/models/bus.model';
+import { Bus } from '../../..//models/bus.model';
+import { PlaceLocation } from '../../../models/location.model';
+
 import { BusinessProfilePageModule } from '../business-profile/business-profile.module';
 
 @Component({
@@ -99,10 +101,7 @@ export class BusinessSettingsPage implements OnInit {
         docID: new FormControl(''),
         docImage: new FormControl('')
       }),
-      busLocation: new FormGroup({
-        lat: new FormControl(''),
-        len: new FormControl('')
-      }),
+      busLocation: new FormControl(null)
 
     });
   }
@@ -127,6 +126,12 @@ export class BusinessSettingsPage implements OnInit {
   }
   get emailForm() {
     return this.businessSettingForm.get('email');
+  }
+
+  onLocationPicked(location: PlaceLocation) {
+    console.log(location);
+    this.businessSettingForm.patchValue({busLocation: location});
+
   }
 
   async presentPhotoOptions() {

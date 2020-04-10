@@ -1,0 +1,20 @@
+<div>
+  <ion-item *ngIf="isLoading">
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </ion-item>
+
+  <div *ngIf="selectedLocationImage && !isLoading">
+    <ion-item lines="none" class="ion-margin-top ion-margin-bottom">
+      <ion-icon name="navigate-outline" size="small" slot="start"></ion-icon>
+      <ion-text>
+        {{ selectedLocationAddress }}
+      </ion-text>
+    </ion-item>
+    <img class="location-image" [src]="selectedLocationImage" role="button" (click)="onPickLocation()">
+  </div>
+  
+  <ion-item *ngIf="!selectedLocationImage && !isLoading" type="button" (click)="onPickLocation()">
+    <ion-icon name="navigate-outline" size="small" slot="start"></ion-icon>
+    <ion-label>Selecciona la ubicación</ion-label>
+  </ion-item>
+</div>

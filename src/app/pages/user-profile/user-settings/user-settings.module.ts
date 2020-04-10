@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { UserSettingsPageRoutingModule } from './user-settings-routing.module';
+import { ModalsPageModule } from '../../../modals/modals.module';
 
 import { UserSettingsPage } from './user-settings.page';
 
@@ -15,7 +16,8 @@ import { UserSettingsPage } from './user-settings.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    UserSettingsPageRoutingModule
+    UserSettingsPageRoutingModule,
+    ModalsPageModule,
   ],
   declarations: [UserSettingsPage]
 })

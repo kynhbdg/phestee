@@ -1,3 +1,5 @@
+import { PlaceLocation } from './location.model';
+
 export class Bus {
 
   constructor(
@@ -38,10 +40,7 @@ export class Bus {
         docType?: number;
       }]
     }],
-    public busLocation?: {
-      lat: number,
-      len: number
-    },
+    public busLocation?: PlaceLocation,
     public busItems?: [{
       itemTitle: string,
       itemDesc: string,

@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ActionSheetController } from '@ionic/angular';
 
-import { User } from 'src/app/models/user.model';
+import { User } from '../../../models/user.model';
+import { PlaceLocation } from '../../../models/location.model';
 
 @Component({
   selector: 'app-user-settings',
@@ -43,7 +44,8 @@ export class UserSettingsPage implements OnInit {
       birthday: new FormControl(''),
       city: new FormControl(''),
       state: new FormControl( {value: 'Jalisco', disabled: true} ),
-      country: new FormControl( {value: 'México', disabled: true} )
+      country: new FormControl( {value: 'México', disabled: true} ),
+      userLocation: new FormControl(null)
     });
 
     this.pwdResetForm = new FormGroup({
@@ -83,6 +85,12 @@ get newPwdForm() {
 
 get confirmPwdForm() {
   return this.pwdResetForm.get('confirmPwd');
+}
+
+onLocationPicked(location: PlaceLocation) {
+  console.log(location);
+  this.userSettingForm.patchValue({userLocation: location});
+
 }
 
   onPwdCheck() {

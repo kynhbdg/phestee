@@ -8,13 +8,26 @@ import { ModalsPageRoutingModule } from './modals-routing.module';
 
 import { ModalsPage } from './modals.page';
 
+import { LocationPickerComponent } from './pickers/location-picker/location-picker.component';
+import { MapModalComponent } from './map-modal/map-modal.component';
+
 @NgModule({
+  declarations: [
+    ModalsPage,
+    LocationPickerComponent,
+    MapModalComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ModalsPageRoutingModule
   ],
-  declarations: [ModalsPage]
+  exports: [
+    LocationPickerComponent,
+    MapModalComponent
+  ],
+  entryComponents: [
+    MapModalComponent
+  ]
 })
 export class ModalsPageModule {}

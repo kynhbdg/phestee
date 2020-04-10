@@ -99,7 +99,9 @@
               <ion-label>Dirección</ion-label>
             </ion-item-divider>
 
-            <div formGroupName="address" class="ion-no-margin ion-no-padding">
+            <app-location-picker (locationPick)="onLocationPicked($event)"></app-location-picker>
+
+            <!-- <div formGroupName="address" class="ion-no-margin ion-no-padding">
 
               <ion-item>
                 <ion-label position="fixed"><small>Calle</small></ion-label>
@@ -136,7 +138,7 @@
                 <ion-input formControlName="country" name="country" type="text" class="ion-text-end"></ion-input>
               </ion-item>
 
-            </div>
+            </div> -->
 
             <ion-item-divider>
               <ion-label>Social</ion-label>

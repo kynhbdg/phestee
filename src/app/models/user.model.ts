@@ -1,3 +1,5 @@
+import { PlaceLocation } from './location.model';
+
 export class User {
 
   constructor(
@@ -26,7 +28,7 @@ export class User {
     public linkedinURL?: string,
     public facebookURL?: string,
     public website?: string,
-    public location?: {},
+    public userLocation?: PlaceLocation,
     public licensedProducts?: [{}],
     public filesLocation?: string,
     public _id?: string,
