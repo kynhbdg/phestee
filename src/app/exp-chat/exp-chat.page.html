@@ -47,43 +47,16 @@
             </ion-item>
 
           </ion-item-group>
-
-          <!-- <ion-item-group class="ion-margin-top">
-
-            <ion-item-divider>
-                Oferta
-            </ion-item-divider>
-
-            <ion-item lines="none" class="ion-margin-top">
-              <ion-text>
-                <h6><b>Aplicación de pintura para interiores</b></h6>
-                <h6>Precio por metro cuadrado</h6>
-              </ion-text>
-            </ion-item>
-            <ion-item lines="none">
-              <ion-label>
-                <div class="d-flex-row-between-centered">
-                  <ion-checkbox slot="start"></ion-checkbox>
-                  <ion-text><h3>$50.00</h3></ion-text>
-                  <ion-text><h3>-10% Desc</h3></ion-text>
-                  <ion-chip color="dark">
-                    <b>$45.00 </b>
-                  </ion-chip>
-                </div>
-              </ion-label>
-            </ion-item>
-          </ion-item-group> -->
           
           <ion-item-group>
             <ion-item role="button" (click)="navigateInfo('123')">
               <ion-icon name="open-outline" size="small" slot="start"></ion-icon>
-              <ion-label>Ver toda la oferta</ion-label> 
+              <ion-label>Ver oferta</ion-label> 
             </ion-item>
             <ion-item>
               <ion-icon name="calendar-outline" size="small" slot="start"></ion-icon>
-              <ion-label>Selecciona el día</ion-label>
               <!-- <ion-label class="ph-margin-right-0">Lo antes posible</ion-label> -->
-              <!-- <ion-datetime type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Hoy"></ion-datetime> -->
+              <ion-datetime type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Lo antes posible"></ion-datetime>
             </ion-item>
             <app-location-picker></app-location-picker>
             <ion-item>
@@ -93,26 +66,6 @@
           </ion-item-group>
 
         </ion-list>
-
-
-        <!-- <ion-item-group lines="full">
-            <ion-item>
-              <ion-icon name="calendar-outline" size="small" slot="start"></ion-icon>
-              <ion-label>Selecciona el día</ion-label>
-              <!-- <ion-label class="ph-margin-right-0">Lo antes posible</ion-label>
-              <!-- <ion-datetime type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Hoy"></ion-datetime>
-            </ion-item>
-            <ion-item>
-              <ion-icon name="navigate-outline" size="small" slot="start"></ion-icon>
-              <ion-label>Selecciona el lugar</ion-label>
-              <!-- <ion-label class="ph-margin-right-0">Ir al mapa</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Iniciar experiencia</ion-label>
-              <ion-toggle slot="start"  color="primary"></ion-toggle>
-            </ion-item>
-
-        </ion-item-group> -->
 
         <ion-grid class="ion-margin-top">
           <ion-row *ngFor="let message of messages">

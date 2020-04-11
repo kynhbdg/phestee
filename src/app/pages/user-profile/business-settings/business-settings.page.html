@@ -101,52 +101,52 @@
 
             <app-location-picker (locationPick)="onLocationPicked($event)"></app-location-picker>
 
-            <!-- <div formGroupName="address" class="ion-no-margin ion-no-padding">
+              <div *ngIf="isMapLoaded" formGroupName="busLocation" class="ion-no-margin ion-no-padding">
+                <div formGroupName="addressComponents" class="ion-no-margin ion-no-padding">
+                  <ion-item>
+                    <ion-label position="fixed"><small>Calle</small></ion-label>
+                    <ion-input placeholder="ej Calle 15" formControlName="streetName" name="streetName" type="text" class="ion-text-end"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>No exterior</small></ion-label>
+                    <ion-input placeholder="901" formControlName="streetNum" name="streetNum" type="text" class="ion-text-end"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>No interior</small></ion-label>
+                    <ion-input placeholder="ej. 09" formControlName="additional" name="additional" type="text" class="ion-text-end" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>CP</small></ion-label>
+                    <ion-input placeholder="45450" formControlName="zipCode" name="zipCode" type="text" class="ion-text-end" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>Colonia</small></ion-label>
+                    <ion-input placeholder="Juan Navarrete" formControlName="neighborhood" name="neighborhood" type="text" class="ion-text-end" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label><small>Ciudad</small></ion-label>
+                    <ion-input placeholder="Juan Navarrete" formControlName="city" name="city" type="text" class="ion-text-end" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>Estado</small></ion-label>
+                    <ion-input formControlName="state" name="state" type="text" class="ion-text-end"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>País</small></ion-label>
+                    <ion-input formControlName="country" name="country" type="text" class="ion-text-end"></ion-input>
+                  </ion-item>
+                </div>
 
-              <ion-item>
-                <ion-label position="fixed"><small>Calle</small></ion-label>
-                <ion-input placeholder="ej Calle 15" formControlName="streetName" name="streetName" type="text" class="ion-text-end"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>No exterior</small></ion-label>
-                <ion-input placeholder="901" formControlName="streetNum" name="streetNum" type="text" class="ion-text-end"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>No interior</small></ion-label>
-                <ion-input placeholder="B" formControlName="additional" name="additional" type="text" class="ion-text-end" ></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>CP</small></ion-label>
-                <ion-input placeholder="45450" formControlName="zipCode" name="zipCode" type="text" class="ion-text-end" ></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>Colonia</small></ion-label>
-                <ion-input placeholder="Juan Navarrete" formControlName="neighborhood" name="neighborhood" type="text" class="ion-text-end" ></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label><small>Ciudad</small></ion-label>
-                <ion-select placeholder="Selecciona una opción" formControlName="city" name="city" okText="Ok" cancelText="Cancelar">
-                  <ion-select-option *ngFor="let cityJal of citiesJal; let i of index" [value]="cityJal">{{ cityJal }}</ion-select-option>
-                </ion-select>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>Estado</small></ion-label>
-                <ion-input formControlName="state" name="state" type="text" class="ion-text-end"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>País</small></ion-label>
-                <ion-input formControlName="country" name="country" type="text" class="ion-text-end"></ion-input>
-              </ion-item>
 
-            </div> -->
+              </div>
 
             <ion-item-divider>
               <ion-label>Social</ion-label>
             </ion-item-divider>
 
             <ion-item>
-              <ion-label position="fixed"><small>Instragram</small></ion-label>
-              <ion-input formControlName="instagram" name="instagram" type="text" class="ion-text-end" minlength="10" maxlength="10" placeholder="instragram/tuPerfil"></ion-input>
+              <ion-label position="fixed"><small>Instagram</small></ion-label>
+              <ion-input formControlName="instagram" name="instagram" type="text" class="ion-text-end" minlength="10" maxlength="10" placeholder="instagram/tuPerfil"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="fixed"><small>Facebook</small></ion-label>

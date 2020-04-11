@@ -21,17 +21,6 @@ export class Bus {
     public facebook?: string,
     public linkedin?: string,
     public website?: string,
-    public address?: {
-      streetName: string,
-      streetNum: string,
-      additional: string,
-      zipCode: number,
-      city: string,
-      state: string,
-      country: string,
-      neighborhood: string,
-      lastUpdated: string,
-    },
     public certification?: [{
       isCertified?: boolean,
       documents: [{

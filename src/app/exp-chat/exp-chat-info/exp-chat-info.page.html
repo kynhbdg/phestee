@@ -44,93 +44,153 @@
 
           </ion-item-group>
 
-          <ion-item-divider>Oferta</ion-item-divider>
-
-          <ion-item-group lines="full" class="ion-margin-top">
-            <ion-item lines="none">
-              <ion-thumbnail  slot="start">
+          <ion-item-divider role="button">Oferta</ion-item-divider>
+          
+          <ion-item-group lines="full">
+            <ion-item lines="full">
+              <ion-label>
+                <ion-text>
+                  <h3 class="ion-text-center">
+                    <ion-icon color="success" name="pricetag" slot="start"></ion-icon>
+                    Promo 10% descuento
+                  </h3>
+                </ion-text>
+              </ion-label>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label class="ion-text-wrap">
+                <ion-text><h3>Aplicación de pintura para interiores</h3></ion-text>
+                <ion-text><p>$50.00</p></ion-text>
+                <p class="text-truncated-one-line">Precio por metro cuadrado de tdo todo twf wef iwefj oiwejf wejf wejf owjf owfj we</p>
+              </ion-label>
+              <ion-thumbnail  slot="end">
                 <img src="../../assets/media/painter5.jpg" alt="">
               </ion-thumbnail>
-              <ion-text>
-                <h6><b>Aplicación de pintura para interiores</b></h6>
-                <h6>Precio por metro cuadrado</h6>
-              </ion-text>
             </ion-item>
-            <ion-item>
-              <ion-label>
-                <div class="d-flex-row-between-centered">
-                  <ion-checkbox slot="start"></ion-checkbox>
-                  <ion-text><h3>$50.00</h3></ion-text>
-                  <ion-text><h3>-10% Desc</h3></ion-text>
-                  <ion-chip color="dark">
-                    <b>$45.00 </b>
-                  </ion-chip>
-                </div>
+            <ion-item lines="full">
+              <ion-label class="ion-text-wrap">
+                <ion-text><h3>Aplicación de pintura para interiores</h3></ion-text>
+                <ion-text><p>$50.00</p></ion-text>
+                <p class="text-truncated-one-line">Precio por metro cuadrado de tdo todo twf wef iwefj oiwejf wejf wejf owjf owfj we</p>
               </ion-label>
-            </ion-item>
-          </ion-item-group>
-          <ion-item-group lines="full" class="ion-margin-top">
-            <ion-item lines="none">
-              <ion-thumbnail  slot="start">
-                <img src="../../assets/media/painter1.jpg" alt="">
+              <ion-thumbnail  slot="end">
+                <img src="../../assets/media/painter9.jpg" alt="">
               </ion-thumbnail>
-              <ion-text>
-                <h6><b>Brocha 8mm</b></h6>
-                <h6>Precio unitario</h6>
-              </ion-text>
             </ion-item>
-            <ion-item>
-              <ion-label>
-                <div class="d-flex-row-between-centered">
-                  <ion-checkbox slot="start"></ion-checkbox>
-                  <ion-text><h3>$50.00</h3></ion-text>
-                  <ion-text><h3>-10% Desc</h3></ion-text>
-                  <ion-chip color="dark">
-                    <b>$45.00 </b>
-                  </ion-chip>
-                </div>
+            <ion-item lines="full">
+              <ion-label class="ion-text-wrap">
+                <ion-text><h3>Aplicación de pintura para interiores</h3></ion-text>
+                <ion-text><p>$50.00</p></ion-text>
+                <p class="text-truncated-one-line">Precio por metro cuadrado de tdo todo twf wef iwefj oiwejf wejf wejf owjf owfj we</p>
+              </ion-label>
+              <ion-thumbnail  slot="end">
+                <img src="../../assets/media/painter3.jpg" alt="">
+              </ion-thumbnail>
+            </ion-item>
+            
+          </ion-item-group>
+
+          <ion-item-divider role="button" (click)="onDisplayBusBoard()" > Tu selección </ion-item-divider>
+
+          <ion-item-group lines="full">
+
+            <ion-item lines="none">
+              <ion-label class="ion-text-wrap">
+                <ion-text>
+                  <h3 class="ion-text-center">
+                    Aún no has seleccionado items para ésta experiencia
+                  </h3>
+                </ion-text>
               </ion-label>
             </ion-item>
-            <ion-item>
-              <ion-chip color="primary" slot="end"><b>Total: $95.00</b></ion-chip>
+
+            
+
+            <!-- <ion-item lines="full">
+              <ion-icon color="primary" name="checkbox" slot="start"></ion-icon>
+              <ion-label class="ion-text-wrap">
+                <ion-text>
+                  <h3>Aplicación de pintura para interiores</h3>
+                </ion-text>
+                <ion-text><p>$50.00</p></ion-text>
+                <p class="text-truncated-one-line">Precio por metro cuadrado de tdo todo twf wef iwefj oiwejf wejf wejf owjf owfj we</p>
+              </ion-label>
+              <ion-thumbnail  slot="end">
+                <img src="../../assets/media/painter5.jpg" alt="">
+              </ion-thumbnail>
             </ion-item>
+            <ion-item lines="full">
+              <ion-icon color="primary" name="checkbox" slot="start"></ion-icon>
+              <ion-label class="ion-text-wrap">
+                <ion-text><h3>Aplicación de pintura para interiores</h3></ion-text>
+                <ion-text><p>$50.00</p></ion-text>
+                <p class="text-truncated-one-line">Precio por metro cuadrado de tdo todo twf wef iwefj oiwejf wejf wejf owjf owfj we</p>
+              </ion-label>
+              <ion-thumbnail  slot="end">
+                <img src="../../assets/media/painter9.jpg" alt="">
+              </ion-thumbnail>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-icon color="primary" name="checkbox" slot="start"></ion-icon>
+              <ion-label class="ion-text-wrap">
+                  <ion-text><h3>Aplicación de pintura para interiores</h3></ion-text>
+                  <ion-text><p>$50.00</p></ion-text>
+                  <p class="text-truncated-one-line">Precio por metro cuadrado de tdo todo twf wef iwefj oiwejf wejf wejf owjf owfj we</p>
+              </ion-label>
+              <ion-thumbnail  slot="end">
+                <img src="../../assets/media/painter3.jpg" alt="">
+              </ion-thumbnail>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label>
+                <ion-text color="medium" class="ion-text-end"><h3>Subtotal: $0.00</h3></ion-text>
+              </ion-label>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label>
+                <ion-text color="success" class="ion-text-end"><h3><b>Descuento: %10.00</b></h3></ion-text>
+              </ion-label>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label>
+                <ion-text color="dark" class="ion-text-end"><h3><b>Total: $0.00</b></h3></ion-text>
+              </ion-label>
+            </ion-item> -->
+
           </ion-item-group>
+
           
           <ion-item-group>
             
-          <ion-item-divider>
-            <ion-label>
-              Controles
-            </ion-label>
-          </ion-item-divider>
-          <ion-item-group class="ion-margin-top">
-            <ion-item>
-              <ion-icon name="calendar-outline" size="small" slot="start"></ion-icon>
-              <ion-label>Selecciona el día</ion-label>
-              <!-- <ion-label class="ph-margin-right-0">Lo antes posible</ion-label> -->
-              <!-- <ion-datetime type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Hoy"></ion-datetime> -->
-            </ion-item>
-            <ion-item>
-              <ion-icon name="navigate-outline" size="small" slot="start"></ion-icon>
-              <ion-label>Selecciona el lugar</ion-label>
-              <!-- <ion-label class="ph-margin-right-0">Ir al mapa</ion-label> -->
-            </ion-item>
-            <ion-item>
-              <ion-label>Iniciar experiencia</ion-label>
-              <ion-toggle slot="start"  color="primary"></ion-toggle>
-            </ion-item>
-  
-            <ion-item>
-              <ion-label>Aceptar oferta</ion-label>
-              <ion-toggle [disabled]="acceptOfferCtrl.value === true" [(ngModel)]="acceptOfferFlag" #acceptOfferCtrl="ngModel" (ionChange)="confirmAcceptOffer(acceptOfferCtrl)" slot="start"></ion-toggle>
-            </ion-item>
-  
-            <ion-item>
-              <ion-label>Terminar experiencia</ion-label>
-              <ion-toggle [(ngModel)]="endExpFlag" slot="start"></ion-toggle>
-            </ion-item>
+            <ion-item-divider>
+              <ion-label>
+                Controles
+              </ion-label>
+            </ion-item-divider>
+            <ion-item-group class="ion-margin-top">
+              <ion-item>
+                <ion-icon name="calendar-outline" size="small" slot="start"></ion-icon>
+                <ion-label>Selecciona el día</ion-label>
+                <!-- <ion-label class="ph-margin-right-0">Lo antes posible</ion-label> -->
+                <!-- <ion-datetime type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Hoy"></ion-datetime> -->
+              </ion-item>
+              <app-location-picker></app-location-picker>
+              <ion-item>
+                <ion-label>Iniciar experiencia</ion-label>
+                <ion-toggle slot="start"  color="primary"></ion-toggle>
+              </ion-item>
+    
+              <ion-item>
+                <ion-label>Aceptar oferta</ion-label>
+                <ion-toggle [disabled]="acceptOfferCtrl.value === true" [(ngModel)]="acceptOfferFlag" #acceptOfferCtrl="ngModel" (ionChange)="confirmAcceptOffer(acceptOfferCtrl)" slot="start"></ion-toggle>
+              </ion-item>
+    
+              <ion-item>
+                <ion-label>Terminar experiencia</ion-label>
+                <ion-toggle [(ngModel)]="endExpFlag" slot="start"></ion-toggle>
+              </ion-item>
 
-          </ion-item-group>
+            </ion-item-group>
   
 
             
@@ -185,7 +245,7 @@
           <ion-text class="ion-margin-top ion-margin-bottom ion-text-center">
             <small>
               
-              La experiencia solo se puede eliminar antes de aceptar una oferta, para eliminar una experiencia después de aceptar la oferta las dos partes deben estar de acuerdo.
+              La experiencia solamente se puede eliminar antes de aceptar una oferta, para eliminar una experiencia después de aceptar la oferta las dos partes deben estar de acuerdo.
                               
             </small>
           </ion-text>

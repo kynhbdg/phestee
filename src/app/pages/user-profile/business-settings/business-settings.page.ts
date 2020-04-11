@@ -3,10 +3,11 @@ import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@ang
 
 import { ActionSheetController } from '@ionic/angular';
 
+import { BusinessProfilePageModule } from '../business-profile/business-profile.module';
+
 import { Bus } from '../../..//models/bus.model';
 import { PlaceLocation } from '../../../models/location.model';
 
-import { BusinessProfilePageModule } from '../business-profile/business-profile.module';
 
 @Component({
   selector: 'app-business-settings',
@@ -17,12 +18,13 @@ export class BusinessSettingsPage implements OnInit {
 
   businessSettingForm: FormGroup;
   business: Bus;
+  isMapLoaded = false;
 
   busTypes = [
-    0, // 'Negocio',
-    1, // 'Freelancer',
-    2, // 'Comunidad',
-    3, // 'Oficio',
+    'Negocio', // 0
+    'Freelancer', // 1
+    'Comunidad', // 2
+    'Oficio', // 3
     // 'Servicio',
   ];
 
@@ -85,24 +87,59 @@ export class BusinessSettingsPage implements OnInit {
       facebook: new FormControl(''),
       linkedin: new FormControl(''),
       website: new FormControl(''),
-      address: new FormGroup({
-        streetName: new FormControl(''),
-        streetNum: new FormControl(''),
-        additional: new FormControl(''),
-        zipCode: new FormControl(''),
-        city: new FormControl(''),
-        state: new FormControl({ value: 'Jalisco', disabled: true }),
-        country: new FormControl({ value: 'México', disabled: true }),
-        neighborhood: new FormControl('')
-      }),
       certification: new FormGroup({
         isCertified: new FormControl(false),
         docType: new FormControl(''),
         docID: new FormControl(''),
         docImage: new FormControl('')
       }),
-      busLocation: new FormControl(null)
+      busLocation: new FormGroup({
+        lat: new FormControl(''),
+        lng: new FormControl(''),
+        address: new FormControl(''),
+        addressComponents: new FormGroup({
+          streetNum: new FormControl(''),
+          streetName: new FormControl({ value: '', disabled: true }),
+          neighborhood: new FormControl({ value: '', disabled: true }),
+          additional: new FormControl(''),
+          city: new FormControl({ value: '', disabled: true }),
+          state: new FormControl({ value: '', disabled: true }),
+          country: new FormControl({ value: '', disabled: true }),
+          zipCode: new FormControl({ value: '', disabled: true }),
+        }),
+        staticMapImageUrl: new FormControl(''),
+        lastUpdated: new FormControl('')
+      })
 
+    });
+
+    this.onFormChanges();
+
+  }
+
+  onFormChanges() {
+    this.busLocationForm.valueChanges.subscribe( hasMap => {
+      this.isMapLoaded = hasMap ? true : false;
+    });
+  }
+
+  onLocationPicked(location: PlaceLocation) {
+    this.busLocationForm.patchValue({
+      lat: location.lat,
+      lng: location.lng,
+      address: location.address,
+      addressComponents: {
+        streetNum: location.addressComponents[0].long_name,
+        streetName: location.addressComponents[1].long_name,
+        neighborhood: location.addressComponents[2].long_name,
+        additional: '',
+        city: location.addressComponents[3].long_name,
+        state: location.addressComponents[4].long_name,
+        country: location.addressComponents[5].long_name,
+        zipCode: location.addressComponents[6].long_name
+      },
+      staticMapImageUrl: location.staticMapImageUrl,
+      lastUpdated: Date.now()
     });
   }
 
@@ -127,12 +164,10 @@ export class BusinessSettingsPage implements OnInit {
   get emailForm() {
     return this.businessSettingForm.get('email');
   }
-
-  onLocationPicked(location: PlaceLocation) {
-    console.log(location);
-    this.businessSettingForm.patchValue({busLocation: location});
-
+  get busLocationForm() {
+    return this.businessSettingForm.get('busLocation');
   }
+
 
   async presentPhotoOptions() {
     const actionSheet = await this.actionSheetController.create({
@@ -169,5 +204,4 @@ export class BusinessSettingsPage implements OnInit {
   onBusUpdate(id?: any) {
     console.log(this.businessSettingForm.value);
   }
-
 }

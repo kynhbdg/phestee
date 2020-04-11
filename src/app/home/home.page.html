@@ -1,23 +1,42 @@
+<ion-header class="ion-hide-sm-down">
+  <ion-grid class="ion-no-padding grid-xl">
+    <ion-row>
+      <ion-col size-sm="12" offset-xl="1" size-xl="12" >
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button role="button" expand="block" routerLink="/signin" shape="round" color="primary" fill="clear">Regístrate</ion-button>
+            <ion-button role="button" expand="block" routerLink="/login" shape="round" color="primary" fill="solid"> <ion-icon name="log-in-outline" slot="start"></ion-icon> Entrar</ion-button>
+          </ion-buttons>
+          <ion-title class="font-brand-normal">
+              phestee
+          </ion-title>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
 <ion-content [fullscreen]="true">
 
-  <ion-slides pager="true">
+    <!-- Inicia vista menor a MD -->
 
-    <ion-slide>
+  <ion-slides class="ion-hide-sm-up" pager="true">
+
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
             <div class="phestee-icon-md"></div>
             <h1 class="font-brand-big ion-margin-top">phestee</h1>
-            <h6>Todo lo que necesitas está aquí, sin búsquedas complicadas y sin publicidad.</h6>
-            <!-- <ion-button routerLink="/login" shape="round" type="button" color="primary" class="top-button ion-margin-top"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button> -->
+            <h5>Todo lo que necesitas está aquí, sin búsquedas complicadas y sin publicidad.</h5>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-slide>
-    <ion-slide>
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-xl="4" offset-xl="4">
             <h1><ion-icon class="icon-home-page" color="primary" name="chatbubble-ellipses"></ion-icon></h1>
             <h2 class="ion-margin-top font-brand-normal">Pública lo que quieras</h2>
             <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
@@ -28,17 +47,14 @@
                 </ion-card-title>
               </ion-card-header>
             </ion-card>
-            <!-- <ion-card-content class="ion-margin-top">
-              <ion-card-title color="medium"><p>Puedes publicar lo que sea, por ejemplo: "Mi perro tiene hambre", "Quiero comida italiana", "Mi casa está sucia..."</p></ion-card-title>
-            </ion-card-content> -->
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-slide>
-    <ion-slide>
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-xl="4" offset-xl="4">
             <h1><ion-icon class="rotated-15 icon-home-page" color="primary" name="hand-left"></ion-icon></h1>
             <h2 class="ion-margin-top font-brand-normal">Checa las reacciones</h2>
             <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
@@ -79,10 +95,10 @@
         </ion-row>
       </ion-grid>
     </ion-slide>
-    <ion-slide>
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
             <h1><ion-icon class="icon-home-page" color="primary" name="flash"></ion-icon></h1>
             <h2 class="ion-margin-top font-brand-normal">Comparte experiencias</h2>
             <ion-card class="ion-no-margin ion-margin-start ion-margin-end border-left-active">
@@ -161,10 +177,10 @@
         </ion-row>
       </ion-grid>
     </ion-slide>
-    <ion-slide>
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
             <div class="phestee-icon-md"></div>
             <h1 class="font-brand-big ion-margin-top">Deja de buscar y déjate encontrar</h1>
             <!-- <ion-button routerLink="/login" shape="round" type="button" color="primary" class="top-button ion-margin-top"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button> -->
@@ -174,12 +190,540 @@
     </ion-slide>
 
   </ion-slides>
+
+  <!-- Inicia vista mayor MD -->
+
+  <ion-grid class="ion-hide-sm-down grid-xl">
+    <ion-row>
+      <ion-col class="height-lg d-flex-col-center-centered" size-sm="12" offset-xl="1" size-xl="12" >
+          <div class="phestee-icon-md"></div>
+          <h1 class="font-brand-xlg margin-top">Todo lo que necesitas está aquí.</h1>
+          <h4 class="ion-margin-top">
+            El mundo está cambiando y la forma en la que interactuamos también,
+          </h4>
+          <h4>
+            por eso creamos la app para colaborar sanamente entre negocios y comunidad.
+          </h4>
+          <h5 class="text-primary ion-margin-top">
+            <a href="https://www.instagram.com/phestee.app/" target="_blank">#manitaarriba</a>
+          </h5>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="height-md" size-sm="12" offset-xl="1" size-xl="12" >
+        <h6 class="font-brand-md ion-text-center">
+          <ion-icon size="small" color="primary" name="chatbubble-ellipses"></ion-icon>
+          Crea una publicación... o las que tú quieras
+        </h6>
+        <ion-slides class="ion-margin-top" [options]="slidesOptsForLg">
+
+          <ion-slide>
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
+              <img class="post-img-demo-lg"  src="../../assets/media/laura2.jpg" />
+              <ion-card-header class="ion-text-center ion-no-margin ion-no-padding">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
+              <img class="post-img-demo-lg"  src="../../assets/media/apartment.jpg" />
+              <ion-card-header class="ion-text-center ion-no-margin ion-no-padding">
+                <ion-card-title>
+                  <h5>Mi depa es un caos 😫</h5>
+                </ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
+              <img class="post-img-demo-lg"  src="../../assets/media/couple.jpg" />
+              <ion-card-header class="ion-text-center ion-no-margin ion-no-padding">
+                <ion-card-title>
+                  <h5>Nos casamos el próximo año 💍</h5>
+                </ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
+              <img class="post-img-demo-lg"  src="../../assets/media/laura2.jpg" />
+              <ion-card-header class="ion-text-center ion-no-margin ion-no-padding">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
+              <img class="post-img-demo-lg"  src="../../assets/media/apartment.jpg" />
+              <ion-card-header class="ion-text-center ion-no-margin ion-no-padding">
+                <ion-card-title>
+                  <h5>Mi depa es un caos 😫</h5>
+                </ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <div class="slide-width-30">
+              <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
+                <img class="post-img-demo-lg"  src="../../assets/media/couple.jpg" />
+                <ion-card-header class="ion-text-center ion-no-margin ion-no-padding">
+                  <ion-card-title>
+                    <h5>Nos casamos el próximo año 💍</h5>
+                  </ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </div>
+          </ion-slide>
+
+        </ion-slides>
+      </ion-col> 
+    </ion-row>
+    <ion-row>
+      <ion-col class="height-md" size-sm="12" offset-xl="1" size-xl="12" >
+        <h6 class="font-brand-md ion-text-center">
+          <ion-icon size="small" class="rotated-15" color="primary" name="hand-left"></ion-icon>
+          Checa las reacciones
+        </h6>
+        <ion-slides class="ion-margin-top" [options]="slidesOptsForLg">
+
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="7">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="7">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="7">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="7">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="7">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="7">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+
+
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="height-md" size-sm="12" offset-xl="1" size-xl="12" >
+        <h6 class="font-brand-md ion-text-center">
+          <ion-icon size="small" class="rotated-15" color="primary" name="flash"></ion-icon>
+          Inicia una experiencia
+        </h6>
+        <ion-slides class="ion-margin-top" [options]="slidesOptsForLg">
+
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card>
+              <ion-card-header class="ion-text-center ion-padding-top">
+                <ion-card-title>
+                  <h5 class>¡Laura cumple años el siguiente fin! 🎉</h5>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-grid class="ion-padding-bottom">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                  <ion-col size="4">
+                    <img class="post-reactions-img-lg" src="../../assets/media/flowers.jpg" alt="">
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-slide>
+
+
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
   
 </ion-content>
 
-<ion-footer class="ion-no-border">
+<!--footer menor a MD-->
+<ion-footer class="ion-no-border ion-hide-md-up" fixed>
 
-  <ion-grid fixed>
+  <ion-grid class="ion-hide-md-up" fixed>
     <ion-row class="ion-align-items-center">
       <ion-col class="home-footer" size-lg="10" offset-lg="1">
         <ion-button routerLink="/login" shape="round" type="button" color="primary"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button>

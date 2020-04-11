@@ -14,7 +14,7 @@ import { HandleErrorService } from './handle-error.service';
 export class UserService {
 
   user: User;
-  token:string;
+  token: string;
   constructor(public http: HttpClient,
               public _handleError: HandleErrorService)
   {
@@ -30,7 +30,7 @@ export class UserService {
     }
     let url = urlService + '/user/login';
     return this.http.post (url, user).pipe(map( (res: any) => {
-      console.log("Res: "+JSON.stringify(res));
+      console.log('Res: ' + JSON.stringify(res));
       this.saveStorage(res.user._id, res.token, res.user, res.bus );
       return true;
     }),
@@ -57,7 +57,7 @@ export class UserService {
   }// end createUser
 
   userLoggedIn() {
-    if(this.token !== undefined)
+    if (this.token !== undefined)
     {
       if(this.token.length > 5)
         return true;
