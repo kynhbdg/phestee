@@ -5,8 +5,8 @@ export class Bus {
   constructor(
     public busName: string,
     public busProfile: string,
-    public busType: string,
-    public rtmMode: string, // BC: added it 04/05, this is for servicio a dom, fijo, móvil a nivel de header
+    public busType: number,
+    public rtmMode: number, // BC: added it 04/05, this is for servicio a dom, fijo, móvil a nivel de header
     public busImage?: string,
     public busRating?: number,
     public active?: boolean,
