@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 
@@ -15,12 +15,12 @@ export class LoginPage implements OnInit {
 
   isLoading = false;
   loginForm: FormGroup;
-  rememberme = false;
 
   constructor(
     public router: Router,
     private loadingCtrl: LoadingController,
-    public _userService: UserService
+    public _userService: UserService,
+    public alertCtrl: AlertController
 
   ) { }
 
@@ -41,28 +41,42 @@ export class LoginPage implements OnInit {
   }
 
   onUserLogin() {
-    console.log(this.loginForm.value);
-    this.router.navigateByUrl('/pages/tabs/feed');
-    if (this.loginForm.invalid)
-    {
+
+    if (this.loginForm.invalid) {
       return;
     }
-    let user = new User(null, this.loginForm.value.email, this.loginForm.value.password);
-    this._userService.login(user,false).subscribe(
-      () => this.router.navigateByUrl('/pages/tabs/feed'),error =>{
-        alert(error);
-      });
-    this.loadingCtrl
-      .create({ keyboardClose: true, message: 'Abriendo cuenta...' })
-      .then( loadingEl => {
-        loadingEl.present();
-        setTimeout(() => {
-          this.isLoading = false;
-          loadingEl.dismiss();
-          this.router.navigateByUrl('/pages/tabs/feed');
-        }, 1500);
-      });
 
+    const user = new User(
+      this.loginForm.value.email,
+      this.loginForm.value.password
+    );
+
+    this.loadingCtrl.create({
+      keyboardClose: true,
+      message: 'Abriendo cuenta...',
+    })
+    .then((loadingEl) => {
+      loadingEl.present();
+      this._userService.login(user).subscribe(
+        (res) => {
+          console.log(res);
+          loadingEl.dismiss();
+          this.router.navigateByUrl('/pages/tabs/experiences');
+        },
+        (error) => {
+          loadingEl.dismiss();
+          this.showAlert(error);
+        });
+    });
+
+    this.loginForm.reset();
+
+  }
+
+  private showAlert(message: string) {
+    this.alertCtrl
+      .create({ header: 'Login', message, buttons: ['OK'] })
+      .then((alertEl) => alertEl.present());
   }
 
 }

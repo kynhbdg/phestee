@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { LoadingController, AlertController } from '@ionic/angular';
+
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -10,69 +13,49 @@ import { Router } from '@angular/router';
   styleUrls: ['./signin.page.scss'],
 })
 export class SigninPage implements OnInit {
-
   signinForm: FormGroup;
-  pwdMatchCheck = true;
+  pwdMatchCheck: boolean;
   conditionsTrue = true;
 
   constructor(
     public _userService: UserService,
-    public router: Router
-  ) { }
-
-  pwdMatch( pwd1: string, pwd2: string ) {
-
-    return( group: FormGroup ) => {
-
-// tslint:disable-next-line: prefer-const
-    let value1 = group.controls[pwd1].value;
-// tslint:disable-next-line: prefer-const
-    let value2 = group.controls[pwd2].value;
-    if (value1 === value2) {
-        return null;
-      }
-    return{ pwdMatch: true };
-    };
-  }
+    public router: Router,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController
+  ) {}
 
   ngOnInit() {
-
     this.signinForm = new FormGroup({
-      email: new FormControl( '', [Validators.required, Validators.email] ),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      name: new FormControl(''),
       userName: new FormControl(''),
-      password1: new FormControl( '', [ Validators.required, Validators.minLength(8) ]),
-      password2: new FormControl( null, Validators.required ),
-      tyc: new FormControl( false, Validators.requiredTrue)
-    },
-      { validators: this.pwdMatch('password1', 'password2')});
+      pwd: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      pwdConf: new FormControl(null, Validators.required),
+      tyc: new FormControl(false, Validators.requiredTrue),
+    });
 
     this.onChanges();
-
   }
 
-  get emailForm() {
+  get emailControl() {
     return this.signinForm.get('email');
   }
-  get userProfileForm() {
+  get userNameControl() {
     return this.signinForm.get('userName');
   }
-  get passwordForm() {
-    return this.signinForm.get('password1');
+  get pwdControl() {
+    return this.signinForm.get('pwd');
   }
-  get password2Form() {
-    return this.signinForm.get('password2');
+  get pwdConfControl() {
+    return this.signinForm.get('pwdConf');
   }
-  get tycForm() {
+  get tycControl() {
     return this.signinForm.get('tyc');
   }
 
-  onChanges() {
-    this.signinForm.get('password2').valueChanges.subscribe( pwd => {
-        if (this.signinForm.get('password1').value === pwd) {
-          this.pwdMatchCheck = true;
-        } else {
-          this.pwdMatchCheck = false;
-        }
+  private onChanges() {
+    this.pwdConfControl.valueChanges.subscribe((pwd) => {
+      this.pwdMatchCheck = this.pwdConfControl.value === pwd ? true : false;
     });
   }
 
@@ -83,19 +66,40 @@ export class SigninPage implements OnInit {
     } else {
       this.conditionsTrue = true;
     }
-    if ( this.signinForm.invalid) {
-      console.log("Formulario invalido.");
+    if (this.signinForm.invalid) {
       return;
     }
-    localStorage.setItem('email', this.signinForm.value.email);
     const user = new User(
-      this.signinForm.value.userName,
       this.signinForm.value.email,
-      this.signinForm.value.password1,
+      this.signinForm.value.pwd,
+      this.signinForm.value.userName,
       this.signinForm.value.tyc
-     );
-    this._userService.createUser(user).subscribe(res => this.router.navigateByUrl('/login') ,error => alert('Error: '+error));
+    );
 
+    this.loadingCtrl
+      .create({
+        keyboardClose: true,
+        message: 'Creando cuenta...',
+      })
+      .then((loadingEl) => {
+        loadingEl.present();
+        this._userService.createUser(user).subscribe(
+          (res) => {
+            loadingEl.dismiss();
+            this.router.navigateByUrl('/pages/tabs/experiences');
+          },
+          (error) => {
+            loadingEl.dismiss();
+            this.showAlert(error);
+          });
+      });
+
+    this.signinForm.reset();
   }
 
+  private showAlert(message: string) {
+    this.alertCtrl
+      .create({ header: 'Registro', message, buttons: ['OK'] })
+      .then((alertEl) => alertEl.present());
+  }
 }

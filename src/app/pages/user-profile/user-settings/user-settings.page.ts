@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ActionSheetController } from '@ionic/angular';
 
 import { User } from '../../../models/user.model';
 import { PlaceLocation } from '../../../models/location.model';
+import { UserService } from 'src/app/services/user.service';
+import { take, map, tap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-settings',
   templateUrl: './user-settings.page.html',
   styleUrls: ['./user-settings.page.scss'],
 })
-export class UserSettingsPage implements OnInit {
+export class UserSettingsPage implements OnInit, OnDestroy {
 
   userSettingForm: FormGroup;
   pwdResetForm: FormGroup;
   user: User;
   pwdUpdateMatch = false;
+  userSubs: Subscription;
 
   citiesJal = [
     'El Salto',
@@ -31,7 +35,8 @@ export class UserSettingsPage implements OnInit {
 
 
   constructor(
-    public actionSheetController: ActionSheetController
+    public actionSheetController: ActionSheetController,
+    public _userService: UserService
   ) { }
 
   ngOnInit() {
@@ -52,6 +57,11 @@ export class UserSettingsPage implements OnInit {
       oldPwd: new FormControl('', [Validators.required]),
       newPwd: new FormControl('', [Validators.required]),
       confirmPwd: new FormControl('', [Validators.required]),
+    });
+
+    this.userSubs =  this._userService.user.subscribe( userData => {
+      console.log(userData);
+      this.userSettingForm.patchValue(userData);
     });
 
     this.onPwdCheck();
@@ -143,6 +153,10 @@ onLocationPicked(location: PlaceLocation) {
 
   onPwdUpdate() {
     console.log(this.pwdResetForm.value);
+  }
+
+  ngOnDestroy() {
+    this.userSubs.unsubscribe();
   }
 
 }

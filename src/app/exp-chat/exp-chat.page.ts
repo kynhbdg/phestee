@@ -64,7 +64,7 @@ export class ExpChatPage implements OnInit {
   }
 
   onTakePhoto() {
-    this.cameraService.addNewToGallery();
+    this.cameraService.addNewPhoto();
     // this.messages.push({
     //   user: 'Pedro Perez',
     //   createdAt: new Date().getTime(),

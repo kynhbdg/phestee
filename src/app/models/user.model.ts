@@ -3,9 +3,9 @@ import { PlaceLocation } from './location.model';
 export class User {
 
   constructor(
-    public userName: string,
     public email: string,
     public password: string,
+    public userName?: string,
     public tandc?: boolean,
     public name?: string,
     public google?: boolean,

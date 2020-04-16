@@ -100,6 +100,14 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+.w-75 {
+    width: 75%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
 .d-flex-col-justifiy-center {
     display: flex;
     flex-direction: column;
@@ -177,11 +185,11 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .img-avatar-xs {
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 100%;
+    width: 30px!important;
+    height: 30px!important;
+    object-fit: cover!important;
+    object-position: center!important;
+    border-radius: 100%!important;
 }
 
 .ph-avatar-sm {
@@ -464,10 +472,17 @@ p, h1, h2, h3, h4, h5, h6 {
 
  .post-photo-carroussel {
      position: relative;
+     height: 40vh;
      .remove-photo-btn {
          position: absolute;
          top: 10px;
          right: 10px;
+     }
+     .img-carroussel {
+         height: 90%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
      }
  }
 
@@ -535,5 +550,10 @@ p, h1, h2, h3, h4, h5, h6 {
     .simple-card .img-simple-card {
         height: 45vh;
     }
+ }
+
+ .input[type='file'] {
+     opacity: 0;
+    //  display: none;
  }
  

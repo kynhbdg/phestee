@@ -12,9 +12,9 @@
 
 }
 
-.grid-xl {
-  --ion-grid-columns:14;
-}
+// .grid-xl {
+//   --ion-grid-columns:14;
+// }
 
 .home-footer {
   height: 15vh;
@@ -30,11 +30,6 @@
     padding: 0px;
     margin: 0px;
   }
-}
-
-
-.ion-card-no-margin {
-  margin-top: 1rem !important;
 }
 
 // ion-card, ion-item, ion-label{
@@ -71,7 +66,7 @@ img {
 
 }
 .post-reactions-img-lg {
-  height: 10vh;
+  height: 15vh;
   object-fit: cover;
   object-position: center;
 

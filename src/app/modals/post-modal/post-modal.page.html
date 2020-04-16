@@ -9,7 +9,7 @@
 </ion-header>
 <ion-content>
 
-  <ion-grid>
+  <ion-grid class="ion-no-padding">
     <ion-row class="ion-align-items-center">
       <ion-col>
 
@@ -19,7 +19,7 @@
 
           <ion-item lines="none" class="d-flex-row-start-centered ion-margin-top">
             <ion-label position="floating">¿Qué necesitas?</ion-label>
-            <ion-textarea (keyup)="onCharacterCount(postStringControl.value)" required formControlName="postString" id="postString" name="postString" type="text" [maxlength]="postMaxLngth" rows="4" ></ion-textarea>
+            <ion-textarea (keyup)="onCharacterCount(postStringControl.value)" required formControlName="post" id="post" name="post" type="text" [maxlength]="postMaxLngth" rows="4" ></ion-textarea>
           </ion-item>
           <ion-item lines="none">
             <ion-label>
@@ -30,31 +30,27 @@
 
           <ion-slides pager="true">
 
-            <ion-slide class="post-photo-carroussel" *ngFor="let photo of cameraService.photos; index as i">
+            <ion-slide *ngFor="let photo of cameraService.photos; index as i">
+              <div class="post-photo-carroussel">
                 <ion-icon (click)="removePhotoCarrsl(i)" class="remove-photo-btn" name="close-circle"></ion-icon>
-                <ion-img class="img-feed-post" src="{{ photo.webviewPath }}"></ion-img>
+                <ion-img class="img-carroussel" [src]="photo.webviewPath"></ion-img>
+              </div>
             </ion-slide>
   
           </ion-slides>
 
           <ion-item (click)="onTakePhoto()"color="light">
             <ion-icon name="camera-outline" slot="start"></ion-icon>
-            <ion-label>Agregar fotos</ion-label>
+            <ion-label>Agregar foto</ion-label>
           </ion-item>
-          <!-- <ion-item>
-            <ion-icon name="time-outline" slot="start"></ion-icon>
-            <ion-label>¿Cuándo?</ion-label>
-            <ion-label class="ph-margin-right-0">Lo antes posible</ion-label>
-            <ion-datetime formControlName="postWhen" id="postWhen" name="postWhen" type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Hoy"></ion-datetime>
-          </ion-item>
-          <ion-item >
-            <ion-icon name="navigate-outline" slot="start"></ion-icon>
-            <ion-label>¿Dónde?</ion-label>
-            <ion-label class="ph-margin-right-0">Ir al mapa</ion-label>
-          </ion-item> -->
+
+          <!-- Below input is intended to choose files in Desktop, but is not working -->
+          <!-- <input *ngIf="useFilePicker" type="file" #filePicker (change)="onFileChosen($event)" > -->
+
+          
           <ion-item class="ion-margin-top">
             <ion-label>Post incógnito</ion-label>
-            <ion-toggle formControlName="isIncognito" id="isIncognito" name="isIncognito"  checked="true" color="primary"></ion-toggle>
+            <ion-toggle formControlName="incognito" id="incognito" name="incognito"  checked="true" color="primary"></ion-toggle>
           </ion-item>    
           <ion-item lines="none" class="ion-margin-top ion-margin-bottom" *ngIf="isIncognitoFlag === false">
             <ion-note color="danger"> 

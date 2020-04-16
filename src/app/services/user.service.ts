@@ -1,87 +1,116 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+
+import { Plugins } from '@capacitor/core';
+
+import { from, of, BehaviorSubject } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators';
+
 import { Bus } from '../models/bus.model';
 import { User } from '../models/user.model';
-import { throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+
 import { urlService } from '../config/config';
-import { HttpHeaders } from '@angular/common/http';
+
 import { HandleErrorService } from './handle-error.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  user: User;
-  token: string;
+  user = new BehaviorSubject<User>(null);
+  bus: Bus;
+  token = new BehaviorSubject<string>(null);
+
   constructor(public http: HttpClient,
-              public _handleError: HandleErrorService)
-  {
+              public _handleError: HandleErrorService) {
      this.loadStorage();
   }
 
-  login( user: User, rememberme: boolean = false ) {
+  loadStorage() {
 
-    if (rememberme) {
-      localStorage.setItem('email', user.email);
-    } else {
-      localStorage.removeItem('email');
-    }
-    let url = urlService + '/user/login';
-    return this.http.post (url, user).pipe(map( (res: any) => {
-      console.log('Res: ' + JSON.stringify(res));
+    return from (Plugins.Storage.get({key: 'userData'})).pipe(map(storedData => {
+      if (!storedData || !storedData.value) {
+        return null;
+      }
+      const parsedData = JSON.parse(storedData.value) as {
+        id: string,
+        token: string,
+        user: User,
+        bus: Bus
+      };
+
+      if ( !parsedData.token ) {
+        return false;
+      } else {
+        this.user.next(parsedData.user);
+        this.token.next(parsedData.token);
+        return !!parsedData.token;
+      }
+
+    }));
+  }
+
+  get userLoggedIn() {
+    return this.token.asObservable().pipe(map( token => {
+        if (this.user) {
+          return !!token;
+        } else {
+          return false;
+        }
+      }));
+  }
+
+
+
+
+  login( user: User ) {
+    const url = urlService + '/user/login';
+    return this.http.post<User>(url, user).pipe(
+      map( (res: any) => {
+      this.token.next(res.token);
+      this.user.next(res.user);
       this.saveStorage(res.user._id, res.token, res.user, res.bus );
       return true;
     }),
      catchError(this._handleError.handleError));
   } // end login
 
-  saveStorage( id: string, token: string, user: User, bus: Bus ) {
-    localStorage.setItem('id', id);
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('bus', JSON.stringify(bus));
 
-    this.user = user;
-    this.token = token;
-  }// end saveStorage
-
-  createUser(user: User)
-  {
-    let url = urlService + '/user/signin';
-    return this.http.post(url, user).pipe(map( (res: any) => {
+  createUser(user: User) {
+    const url = urlService + '/user/signin';
+    return this.http.post<User>(url, user).pipe(
+      map( (res: any) => {
+      this.token.next(res.token);
+      this.user.next(res.user);
+      this.saveStorage(res.user._id, res.token, res.user, res.bus );
       return true;
     }),
     catchError(this._handleError.handleError));
   }// end createUser
 
-  userLoggedIn() {
-    if (this.token !== undefined)
-    {
-      if(this.token.length > 5)
-        return true;
-      else
-       return false;
-    }
-    else
-     return false;
-  }// end userLoggedIn
+  saveStorage( id: string, token: string, user: User, bus: Bus ) {
 
-  loadStorage() {
-    if ( localStorage.getItem('token')) {
-      this.token = localStorage.getItem('token');
-      this.user = JSON.parse(localStorage.getItem('user'));
-    }
-    else {
-      this.token = '';
-      this.user = null;
-    }
-  } // end loadStorage
+    const userData = JSON.stringify({
+      id,
+      token,
+      user,
+      bus
+    });
 
+    Plugins.Storage.set({
+      key: 'userData',
+      value: userData
+    });
 
+  }// end saveStorage
 
-
+  logout() {
+    this.token.next(null);
+    this.user.next(null);
+    Plugins.Storage.remove( {key: 'userData'} );
+  }
 
 
 }

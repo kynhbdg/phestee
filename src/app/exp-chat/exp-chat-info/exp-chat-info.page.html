@@ -16,13 +16,37 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-        <ion-list class="ion-margin-top">    
+        <ion-item-divider class="ion-margin-top">
+            Colaborador
+        </ion-item-divider>
 
-          <ion-item-group>
+        <ion-card>
 
-            <ion-item-divider>
-                Colaborador
-            </ion-item-divider>
+          <ion-card-content class="d-flex-row-start-centered">
+            <ion-avatar slot="start">
+              <img src="../../assets/media/painter8.jpg">
+            </ion-avatar>
+            <ion-label class="ion-margin-start">
+              <ion-text color="dark"><b>Jorge Rodríguez <ion-icon color="primary" name="shield-checkmark"></ion-icon></b></ion-text>
+              <ion-text color="dark"><h3>Oficio</h3></ion-text>
+              <div class="d-flex-row-start-centered">
+                <ion-text color="dark"><h3>A 5km</h3></ion-text>
+                <ion-text color="dark"><h3><ion-icon class="ion-margin-start" color="medium" name="flash" slot="start"></ion-icon> 75</h3></ion-text>
+                <ion-text color="dark"><h3><ion-icon class="ion-margin-start" color="warning" name="star" slot="start"></ion-icon> 4.98</h3></ion-text>
+              </div>
+            </ion-label>
+          </ion-card-content>
+          <ion-card-subtitle class="d-flex-row-between-centered">
+              <ion-button size="small" type="button" shape="round" fill="clear" color="danger"  ><ion-icon name="alert-circle-outline" slot="start"></ion-icon> Reportar </ion-button>
+              <ion-button size="small" type="button" shape="round" fill="clear" color="dark"  ><ion-icon name="grid-outline" slot="start"></ion-icon> Ver tablero </ion-button>
+          </ion-card-subtitle>
+
+        </ion-card>
+
+        <ion-list>    
+
+
+          <!-- <ion-item-group>
   
             <ion-item>
               <ion-thumbnail slot="start">
@@ -42,7 +66,7 @@
               </ion-chip>
             </ion-item>
 
-          </ion-item-group>
+          </ion-item-group> -->
 
           <ion-item-divider role="button">Oferta</ion-item-divider>
           
