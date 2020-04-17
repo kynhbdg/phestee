@@ -23,7 +23,7 @@ export class HandleErrorService {
             messageErrorB = finalmessage[0];
           }
           else
-            messageErrorB = errorResponse.error.messages[0];
+            messageErrorB = errorResponse.error.messages[0]+" , "+errorResponse.error.messages[1];
     }
     else
     {

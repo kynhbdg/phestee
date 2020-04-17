@@ -24,6 +24,19 @@ export class SigninPage implements OnInit {
     public alertCtrl: AlertController
   ) {}
 
+  pwdMatch( pwd1: string, pwd2: string ) {
+
+    return( group: FormGroup ) => {
+
+      let value1 = group.controls[pwd1].value;
+      let value2 = group.controls[pwd2].value;
+      if (value1 === value2) {
+          return null;
+      }
+      return{ pwdMatch: true };
+    };
+  }
+
   ngOnInit() {
     this.signinForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -32,7 +45,8 @@ export class SigninPage implements OnInit {
       pwd: new FormControl('', [Validators.required, Validators.minLength(8)]),
       pwdConf: new FormControl(null, Validators.required),
       tyc: new FormControl(false, Validators.requiredTrue),
-    });
+    },
+      { validators: this.pwdMatch('pwd', 'pwdConf')});
 
     this.onChanges();
   }
@@ -57,6 +71,8 @@ export class SigninPage implements OnInit {
     this.pwdConfControl.valueChanges.subscribe((pwd) => {
       this.pwdMatchCheck = this.pwdConfControl.value === pwd ? true : false;
     });
+
+
   }
 
   onUserSignin() {
@@ -90,7 +106,23 @@ export class SigninPage implements OnInit {
           },
           (error) => {
             loadingEl.dismiss();
-            this.showAlert(error);
+            let duplicateUserName = error.indexOf("userName_1 dup key:");
+            let duplicateEmail = error.indexOf("email_1 dup key:");
+
+            if(duplicateUserName >= 0 || duplicateEmail>= 0)
+            {
+                if(duplicateUserName >= 0)
+                  this.showAlert("El usuario ingresado ya existe. Por favor de ingresar otro usuario.");
+
+                if(duplicateEmail >= 0)
+                  this.showAlert("El correo ingresado ya existe. Por favor de ingresar otro correo.");
+            }
+            else
+              this.showAlert(error);
+
+
+
+
           });
       });
 
