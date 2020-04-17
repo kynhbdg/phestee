@@ -1,7 +1,7 @@
 <ion-header translucent>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text="" color="dark"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center">cakesinGDL  <ion-icon name="chevron-down-outline"></ion-icon>
      </ion-title>
@@ -29,25 +29,25 @@
               </ion-card-title>
           </ion-card-header>
 
-          <ion-card-header class="ion-no-padding">
+          <ion-card-header class="ion-no-padding ion-padding-top">
 
-            <ion-grid class="ph-border-bottom">
+            <ion-grid class="ph-border-bottom ion-margin-top ion-no-padding">
               <ion-row class="ion-margin-top ion-margin-bottom">
                 <ion-col size="4">
                   <ion-card-title color="dark" class="ion-text-center">
-                    <h6>35,1K</h6>
+                    <h6><b>35,1K</b></h6>
                     <h6><ion-icon color="dark" name="flash-outline" slot="start"></ion-icon></h6>
                   </ion-card-title>
                 </ion-col>
                 <ion-col size="4">
                   <ion-card-title color="dark" class="ion-text-center">
-                    <h6>$63,5K</h6>
+                    <h6><b>$63,5K</b></h6>
                     <h6><small>Ingresos</small></h6>
                   </ion-card-title>
                 </ion-col>
                 <ion-col size="4">
                   <ion-card-title color="dark" class="ion-text-center">
-                    <h6>4.98</h6>
+                    <h6><b>4.98</b></h6>
                     <h6><ion-icon color="warning" name="star" slot="start"></ion-icon></h6>
                   </ion-card-title>
                 </ion-col>
@@ -102,14 +102,11 @@
               </ion-row>
             </ion-grid>
           </ion-card-content> -->
-
-          <ion-card-content class="ion-no-padding ion ion-padding-end ion-padding-start ion-padding-bottom ion-margin-bottom ion-margin-top ph-border-bottom">
-
-            <ion-button (click)="onEditBusiness('123')" expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top">
-              <ion-icon name="create-outline" slot="start"></ion-icon>Editar
+           <ion-button class="ion-margin-top" (click)="onEditBusiness('123')" expand="full" fill="clear" type="button" color="primary">
+              <ion-icon name="create-outline" slot="start"></ion-icon> <b>Editar negocio</b>
             </ion-button>
 
-          </ion-card-content>
+
 
           <!-- <ion-card-content class="ion-no-padding ion-padding-top ion ion-padding-end ion-padding-start ion-margin-bottom">
 
@@ -184,7 +181,7 @@
 
           </div>
 
-          <ion-button (click)='onAddBusItem()' expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon>Agregar item</ion-button>
+          <ion-button (click)='onAddBusItem()' expand="block" fill="clear" type="button" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon><b>Agregar item</b></ion-button>
 
           <!-- <ion-item-group>
             <ion-card class="ion-no-padding ion-padding-bottom">
