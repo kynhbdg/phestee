@@ -16,6 +16,7 @@ export class SigninPage implements OnInit {
   signinForm: FormGroup;
   pwdMatchCheck: boolean;
   conditionsTrue = true;
+  pwdMatchFlag: boolean;
 
   constructor(
     public _userService: UserService,
@@ -43,7 +44,7 @@ export class SigninPage implements OnInit {
       name: new FormControl(''),
       userName: new FormControl(''),
       pwd: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      pwdConf: new FormControl(null, Validators.required),
+      pwdConf: new FormControl('', Validators.required),
       tyc: new FormControl(false, Validators.requiredTrue),
     },
       { validators: this.pwdMatch('pwd', 'pwdConf')});
@@ -67,12 +68,19 @@ export class SigninPage implements OnInit {
     return this.signinForm.get('tyc');
   }
 
+  checkPwd()
+  {
+    if(this.signinForm.value.pwd == this.signinForm.value.pwdConf)
+      this.pwdMatchFlag = true;
+    else
+      this.pwdMatchFlag = false;
+  }
+
   private onChanges() {
     this.pwdConfControl.valueChanges.subscribe((pwd) => {
-      this.pwdMatchCheck = this.pwdConfControl.value === pwd ? true : false;
+      this.pwdMatchCheck = this.pwdControl.value === pwd ? true : false;
+
     });
-
-
   }
 
   onUserSignin() {
