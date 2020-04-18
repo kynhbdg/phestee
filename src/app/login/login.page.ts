@@ -65,7 +65,17 @@ export class LoginPage implements OnInit {
         },
         (error) => {
           loadingEl.dismiss();
-          this.showAlert(error);
+          let userNotFound = error.indexOf("User not found");
+          let incorrectPwd = error.indexOf("Incorrect password");
+          if(userNotFound >= 0 || incorrectPwd >=0)
+          {
+              if(userNotFound >= 0)
+                this.showAlert("El usuario no se ha encontrado.");
+              if(incorrectPwd >= 0)
+                this.showAlert("La contraseña es incorrecta.");
+          }
+          else
+            this.showAlert(error);
         });
     });
 

@@ -33,27 +33,27 @@
             </ion-item>
             <ion-item [ngClass]="{'border-left-active': pwdControl.dirty && pwdControl.valid, 'border-left-danger': !pwdControl.valid && pwdControl.touched}">
               <ion-label position="floating">Crea una contraseña</ion-label>
-              <ion-input formControlName="pwd" id="pwd" name="pwd" required type="password"></ion-input>
+              <ion-input formControlName="pwd" id="pwd" name="pwd" required type="password" (focusout)="checkPwd()"></ion-input>
             </ion-item>
             <ion-item *ngIf="!pwdControl.valid && pwdControl.touched" class="ion-no-border">
               <ion-note color="danger">Mínimo 8 caracteres </ion-note>
             </ion-item>
             <ion-item [ngClass]="{'border-left-active': pwdConfControl.dirty && pwdConfControl.valid, 'border-left-danger': !pwdConfControl.valid && pwdConfControl.touched}">
               <ion-label position="floating">Repite la contraseña</ion-label>
-              <ion-input formControlName="pwdConf" id="pwdConf" name="pwdConf" required type="password"></ion-input>
+              <ion-input formControlName="pwdConf" id="pwdConf" name="pwdConf" required type="password" (focusout)="checkPwd()"></ion-input>
             </ion-item>
-            <ion-item *ngIf="!pwdConfControl.valid && pwdConfControl.touched" class="ion-no-border">
+           <ion-item *ngIf="!pwdMatchFlag && pwdConfControl.touched" class="ion-no-border">
               <ion-note color="danger">Las contraseñas no coinciden </ion-note>
             </ion-item>
             <ion-item lines="none" class="bg-transparent no-border ion-margin-top">
-              <ion-label>Acepto los términos y condiciones</ion-label>
+              <ion-label>Acepto los términos y condiciones </ion-label>
               <ion-checkbox formControlName="tyc" id="tyc" name="tyc" required color="primary" slot="start"></ion-checkbox>
             </ion-item>
             <ion-item *ngIf="!tycControl.valid && tycControl.touched" class="ion-no-border">
               <ion-note color="danger">Debes aceptar los TyC </ion-note>
             </ion-item>
           </ion-list>
-          <ion-button [disabled]="signinForm.invalid"  expand="block" shape="round" type="submit" color="primary" class="ph-margin-top-3"><ion-icon name="arrow-forward-outline" slot="end"></ion-icon><b>Regístrate</b></ion-button>
+        <ion-button [disabled]="signinForm.invalid"  expand="block" shape="round" type="submit" color="primary" class="ph-margin-top-3"><ion-icon name="arrow-forward-outline" slot="end"></ion-icon><b>Regístrate</b></ion-button>
           <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-facebook" slot="start"></ion-icon><b>Regístrate con facebook</b></ion-button>
           <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-google" slot="start"></ion-icon><b>Regístrate con google</b></ion-button>
           <ion-button expand="block" routerLink="/login" type="button" color="primary" fill="clear" class="ion-margin-top">Ya tengo una cuenta</ion-button>
@@ -63,4 +63,3 @@
   </ion-grid>
 
 </ion-content>
-
