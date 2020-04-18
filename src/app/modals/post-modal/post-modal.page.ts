@@ -1,13 +1,16 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController, Platform } from '@ionic/angular';
 import { Plugins, Capacitor } from '@capacitor/core';
+import { Subscription } from 'rxjs';
 
-
+import { UserService } from 'src/app/services/user.service';
 import { CameraService } from '../../services/camera.service';
 
 import { Post } from '../../models/post.model';
+import { User } from 'src/app/models/user.model';
+import { PostService } from 'src/app/services/post.service';
 
 
 @Component({
@@ -15,11 +18,15 @@ import { Post } from '../../models/post.model';
   templateUrl: './post-modal.page.html',
   styleUrls: ['./post-modal.page.scss'],
 })
-export class PostModalPage implements OnInit {
+export class PostModalPage implements OnInit, OnDestroy {
 
   @ViewChild('filePicker', { static: false }) filePickerRef: ElementRef<HTMLInputElement>;
 
   postForm: FormGroup;
+  user: User;
+  token: string;
+  userSubs: Subscription;
+  tokenSubs: Subscription;
   photos: [] = [];
   isIncognitoFlag: true;
   postMaxLngth = 140;
@@ -34,13 +41,18 @@ export class PostModalPage implements OnInit {
     private modalController: ModalController,
     private formBuilder: FormBuilder,
     public cameraService: CameraService,
+    public _userService: UserService,
+    public _postService: PostService,
     public router: Router,
     private platform: Platform
-  ) {
+  ) {  }
+
+  ngOnInit() {
+
     this.postForm = this.formBuilder.group({
       userId: new FormControl(''),
       userImage: new FormControl(''),
-      userProfile: new FormControl(''),
+      userName: new FormControl(''),
       incognito: new FormControl(true),
       scopeLimited: new FormControl(),
       post: new FormControl( '', [Validators.required, Validators.maxLength(this.postMaxLngth)] ),
@@ -49,15 +61,22 @@ export class PostModalPage implements OnInit {
       isActive: new FormControl(''),
       status: new FormControl(''),
     });
-   }
 
-  ngOnInit() {
+    this.userSubs =  this._userService.user.subscribe( userData => {
+      this.user = userData;
+      this.postForm.get('userId').setValue(userData._id);
+      this.postForm.get('userImage').setValue(userData.userImage);
+      this.postForm.get('userName').setValue(userData.userName);
+    });
+
+    this.tokenSubs = this._userService.tokenId.subscribe( tokenId => {
+      this.token = tokenId;
+    });
 
     if ( (this.platform.is('mobile') && !this.platform.is('hybrid')) || this.platform.is('desktop') ) {
       this.useFilePicker = true;
     }
 
-    console.log('filepicker: ', this.useFilePicker);
 
     this.onFormChanges();
 
@@ -86,6 +105,9 @@ export class PostModalPage implements OnInit {
   }
 
   onCloseModal() {
+    this.cameraService.picFiles = [];
+    this.cameraService.picURL = [];
+    this.userSubs.unsubscribe();
     this.modalController.dismiss();
   }
 
@@ -131,20 +153,30 @@ export class PostModalPage implements OnInit {
 
   onCreatePost() {
 
-    for ( const photo of this.cameraService.picFiles ) {
-      (this.postImageControl as FormArray).push(this.addImageControl(photo));
-    }
+    // const ArrayFiles: Array<File>;
 
+    const formData =  this.postForm.value;
+
+    for ( const photo of this.cameraService.picFiles ) {
+      formData.postImages.push(photo);
+    }
+    console.log(formData);
     console.log(this.cameraService.picFiles);
 
-    console.log(this.postForm.value);
-
-    // add call to backend for saving Post
+    this._postService.createPost(formData, this.user._id, this.token ).subscribe( postData => {
+      console.log(postData);
+    }, error => console.log('Error: ' + error));
 
     this.router.navigate(['/', 'pages', 'tabs', 'experiences']);
+    this.cameraService.picFiles = [];
     this.cameraService.picURL = [];
     this.postForm.reset();
     this.modalController.dismiss();
+  }
+
+  ngOnDestroy() {
+    this.userSubs.unsubscribe();
+    this.tokenSubs.unsubscribe();
   }
 
 }

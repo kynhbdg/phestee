@@ -3,7 +3,7 @@ export class Post {
     public post: string,
     public userId?: string,
     public userImage?: string,
-    public userProfile?: string,
+    public userName?: string,
     public incognito?: string,
     public scopeLimited?: string,
     public postImages?: [{

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Platform } from '@ionic/angular';
 
+import { NgxImageCompressService } from 'ngx-image-compress';
+
 import {
   Plugins,
   CameraResultType,
@@ -18,7 +20,8 @@ interface Photo {
 
 function base64toBlob(base64Data, contentType) {
   contentType = contentType || '';
-  const sliceSize = 1024; // 512?
+  const sliceSize = 1024;
+  const fileName = 'pic' + Date.now().toString();
   const byteCharacters = atob(base64Data);
   const bytesLength = byteCharacters.length;
   const slicesCount = Math.ceil(bytesLength / sliceSize);
@@ -34,7 +37,8 @@ function base64toBlob(base64Data, contentType) {
     }
     byteArrays[sliceIndex] = new Uint8Array(bytes);
   }
-  return new Blob(byteArrays, { type: contentType });
+  const blob =  new Blob(byteArrays, { type: contentType });
+  return  new File([blob], fileName);
 }
 
 
@@ -45,17 +49,18 @@ export class CameraService {
 
 
 
-  public picURL: Photo[] = [];
-  public picFiles: any[] = [];
-  selectedImage: string;
-  tempPostImg: any;
-  imgProcessed: File;
+  picURL: Photo[] = [];
+  picFiles: any[] = [];
+  imgAfterCompress: string;
+  // selectedImage: string;
+  // imgProcessed: File;
 
   // cameraFile: SafeResourceUrl;
 
   constructor(
     private domSanitizer: DomSanitizer,
-    private platform: Platform) {}
+    private platform: Platform,
+    private imageCompress: NgxImageCompressService) {}
 
 
     removePhotoCarroussel(i: number) {
@@ -67,7 +72,7 @@ export class CameraService {
         return;
       }
       Plugins.Camera.getPhoto({
-        quality: 70,
+        quality: 100,
         source: CameraSource.Prompt,
         allowEditing: true,
         correctOrientation: true,
@@ -86,61 +91,54 @@ export class CameraService {
       this.picURL.unshift({
         webviewPath: imgString,
       });
-      this.generateFiles(imgString);
+      this.compressFile(imgString);
     }
 
+    compressFile(imgUrl: string) {
+      const ratio = 80;
+      const quality = 80;
 
-  generateFiles(image: string) {
-
-    const width = 500;
-
-    try {
-      const imgFile =  base64toBlob(image.replace('data:image/jpeg;base64,', ''), 'image/jpeg');
-      this.resizeImages(imgFile, width, (fileFinal: any, tempImgFunction: any) => {
-        this.imgProcessed = fileFinal;
-        this.tempPostImg = tempImgFunction;
-        console.log(this.imgProcessed);
-        this.picFiles.unshift(this.imgProcessed);
+      this.imageCompress.compressFile(imgUrl, ratio, quality).then(
+        result => {
+          this.imgAfterCompress = result;
+          const curatedUrl = result.replace('data:image/jpeg;base64,', '');
+          try {
+            const imgFile =  base64toBlob(curatedUrl, 'image/jpeg');
+            this.picFiles.unshift(imgFile);
+          } catch (error) {
+            console.log(error);
+          }
       });
-      // console.log(imgFile);
-    } catch (error) {
-      console.log(error);
+
     }
 
-  }
+  //   resizeImages(file: any, width: number, callback: any) {
+  //   let tempImgFunction;
+  //   const fileName = file.name;
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL (file);
+  //   reader.onload = event => {
+  //     const img = new Image();
+  //     img.src = (event.target as any).result;
+  //     img.onload = () => {
+  //       const elem = document.createElement('canvas');
+  //       const scaleFactor = width / img.width;
+  //       elem.width = width;
+  //       elem.height = img.height * scaleFactor;
+  //       const ctx = elem.getContext('2d');
+  //       ctx.drawImage(img, 0, 0, width, img.height * scaleFactor);
+  //       ctx.canvas.toBlob((blob) => {
+  //         const fileFinal = new File([blob], fileName, {
+  //           type: 'image/jpeg',
+  //           lastModified: Date.now()
+  //         });
+  //         tempImgFunction = reader.result;
+  //         callback(fileFinal, tempImgFunction);
+  //       }, 'image/jpeg', 1);
+  //     },
+  //     reader.onerror = error => alert('Error en cambiar imagen: ' + error);
+  //   };
 
-
-  resizeImages(file: any, width: number, callback: any) {
-        let tempImgFunction;
-        const fileName = file.name;
-        const reader = new FileReader();
-        reader.readAsDataURL (file);
-        reader.onload = event => {
-          const img = new Image();
-          img.src = (event.target as any).result;
-          img.onload = () => {
-            const elem = document.createElement('canvas');
-            const scaleFactor = width / img.width;
-            elem.width = width;
-            elem.height = img.height * scaleFactor;
-            const ctx = elem.getContext('2d');
-            ctx.drawImage(img, 0, 0, width, img.height * scaleFactor);
-            ctx.canvas.toBlob((blob) => {
-              const fileFinal = new File([blob], fileName, {
-                type: 'image/jpeg',
-                lastModified: Date.now()
-              });
-              tempImgFunction = reader.result;
-              callback(fileFinal, tempImgFunction);
-            }, 'image/jpeg', 1);
-          },
-          reader.onerror = error => alert('Error en cambiar imagen: ' + error);
-        };
-
-  } // end resizeImages
+  // }
 
 }
-
-
-
-

@@ -62,7 +62,15 @@ export class UserService {
       }));
   }
 
-
+  get tokenId() {
+    return this.token.asObservable().pipe(map( tokenId => {
+      if(this.user) {
+        return tokenId;
+      } else {
+        return null;
+      }
+    }));
+  }
 
 
   login( user: User ) {

@@ -109,7 +109,7 @@ export class SigninPage implements OnInit {
             let duplicateUserName = error.indexOf("userName_1 dup key:");
             let duplicateEmail = error.indexOf("email_1 dup key:");
 
-            if(duplicateUserName >= 0 || duplicateEmail>= 0)
+            if(duplicateUserName >= 0 || duplicateEmail >= 0)
             {
                 if(duplicateUserName >= 0)
                   this.showAlert("El usuario ingresado ya existe. Por favor de ingresar otro usuario.");
