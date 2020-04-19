@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 
 import { Plugins } from '@capacitor/core';
 
-import { from, of, BehaviorSubject } from 'rxjs';
+import { from, of, BehaviorSubject, Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
 import { Bus } from '../models/bus.model';
@@ -12,6 +12,7 @@ import { User } from '../models/user.model';
 import { urlService } from '../config/config';
 
 import { HandleErrorService } from './handle-error.service';
+import { GeneralService } from './general.service';
 
 
 @Injectable({
@@ -23,8 +24,11 @@ export class UserService {
   bus: Bus;
   token = new BehaviorSubject<string>(null);
 
-  constructor(public http: HttpClient,
-              public _handleError: HandleErrorService) {
+  constructor(
+        public http: HttpClient,
+        public _handleError: HandleErrorService,
+        public generalService: GeneralService,
+              ) {
      this.loadStorage();
   }
 
@@ -97,6 +101,13 @@ export class UserService {
     }),
     catchError(this._handleError.handleError));
   }// end createUser
+
+  loadImgProfile(postType: string, body: any, id: string, token: string, imgProcessed: File): Observable<any> {
+    return this.generalService.reqWithImgs(postType, body, id, token, [], imgProcessed ).pipe(map((res: any) => {
+      return res;
+    }),
+    catchError(this._handleError.handleError));
+  }
 
   saveStorage( id: string, token: string, user: User, bus: Bus ) {
 

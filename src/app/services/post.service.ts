@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { urlService } from '../config/config';
 
@@ -24,12 +24,23 @@ export class PostService {
   ) { }
 
 
-  createPost( post: Post, id: string, token: string) {
-    const url = urlService + '/api/post/' + id;
+  createPost( postType: string, body: any, userId: string, token: string, picArray?: Array<File>): Observable<any> {
+
+
+    if ( picArray && picArray.length > 0) {
+      return this.generalService.reqWithImgs(postType, body, userId, token, picArray ).pipe(map((res: any) => {
+        return res;
+      }),
+      catchError(this._handleError.handleError));
+    }
+
+    const url = urlService + '/api/post/' + userId;
     const headers = this.generalService.getHeaders(token);
-    return this.http.post(url, post, headers).pipe(map( (res: any) => {
-      return res.post;
-    }), catchError(this._handleError.handleError));
+
+    return this.http.post<Post>(url, body, headers).pipe(map((res: any) => {
+      return res;
+    }),
+    catchError(this._handleError.handleError));
 
   }
 

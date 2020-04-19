@@ -24,15 +24,13 @@ export class PostModalPage implements OnInit, OnDestroy {
 
   postForm: FormGroup;
   user: User;
-  token: string;
+  userPost: Post;
   userSubs: Subscription;
   tokenSubs: Subscription;
-  photos: [] = [];
   isIncognitoFlag: true;
+  token: string;
   postMaxLngth = 140;
   characterleft = this.postMaxLngth;
-  userPost: Post;
-  rowsInput = 1;
   useFilePicker = false;
 
 
@@ -54,7 +52,7 @@ export class PostModalPage implements OnInit, OnDestroy {
       userImage: new FormControl(''),
       userName: new FormControl(''),
       incognito: new FormControl(true),
-      scopeLimited: new FormControl(),
+      scopeLimited: new FormControl(''),
       post: new FormControl( '', [Validators.required, Validators.maxLength(this.postMaxLngth)] ),
       postImages: this.formBuilder.array([]),
       postedDate: new FormControl(''),
@@ -106,7 +104,7 @@ export class PostModalPage implements OnInit, OnDestroy {
 
   onCloseModal() {
     this.cameraService.picFiles = [];
-    this.cameraService.picURL = [];
+    this.cameraService.picUrl = [];
     this.userSubs.unsubscribe();
     this.modalController.dismiss();
   }
@@ -141,35 +139,31 @@ export class PostModalPage implements OnInit, OnDestroy {
 
   }
 
-  private addImageControl(img: any) {
-    return this.formBuilder.control({
-      img: new FormControl(img)
-    });
-  }
+  // private addImageControl(img: any) {
+  //   return this.formBuilder.control({
+  //     img: new FormControl(img)
+  //   });
+  // }
 
   removePhotoCarrsl(i: number) {
     this.cameraService.removePhotoCarroussel(i);
   }
 
   onCreatePost() {
-
-    // const ArrayFiles: Array<File>;
-
-    const formData =  this.postForm.value;
+    const postBody: any =  this.postForm.value;
+    const picArray: Array<File> = [];
 
     for ( const photo of this.cameraService.picFiles ) {
-      formData.postImages.push(photo);
+        picArray.push(photo);
     }
-    console.log(formData);
-    console.log(this.cameraService.picFiles);
 
-    this._postService.createPost(formData, this.user._id, this.token ).subscribe( postData => {
-      console.log(postData);
+    this._postService.createPost('postUser', postBody, this.user._id, this.token, picArray ).subscribe( res => {
+      console.log(res);
     }, error => console.log('Error: ' + error));
 
     this.router.navigate(['/', 'pages', 'tabs', 'experiences']);
     this.cameraService.picFiles = [];
-    this.cameraService.picURL = [];
+    this.cameraService.picUrl = [];
     this.postForm.reset();
     this.modalController.dismiss();
   }

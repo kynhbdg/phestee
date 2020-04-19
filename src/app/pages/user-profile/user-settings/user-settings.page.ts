@@ -1,13 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActionSheetController, AlertController } from '@ionic/angular';
 
-import { ActionSheetController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { take, map, tap, switchMap } from 'rxjs/operators';
 
 import { User } from '../../../models/user.model';
 import { PlaceLocation } from '../../../models/location.model';
+
 import { UserService } from 'src/app/services/user.service';
-import { take, map, tap } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { CameraService } from 'src/app/services/camera.service';
 
 @Component({
   selector: 'app-user-settings',
@@ -21,6 +23,9 @@ export class UserSettingsPage implements OnInit, OnDestroy {
   user: User;
   pwdUpdateMatch = false;
   userSubs: Subscription;
+  tokenSubs: Subscription;
+  token: string;
+  loadImgSubs: Subscription;
 
   citiesJal = [
     'El Salto',
@@ -36,7 +41,9 @@ export class UserSettingsPage implements OnInit, OnDestroy {
 
   constructor(
     public actionSheetController: ActionSheetController,
-    public _userService: UserService
+    public _userService: UserService,
+    public cameraService: CameraService,
+    public alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -60,9 +67,15 @@ export class UserSettingsPage implements OnInit, OnDestroy {
     });
 
     this.userSubs =  this._userService.user.subscribe( userData => {
-      console.log(userData);
+      this.user = userData;
       this.userSettingForm.patchValue(userData);
     });
+
+    this.tokenSubs = this._userService.token.subscribe( tokenId => {
+      this.token = tokenId;
+    });
+
+
 
     this.onPwdCheck();
 
@@ -115,6 +128,18 @@ onLocationPicked(location: PlaceLocation) {
 
   }
 
+  onTakePhoto() {
+    this.cameraService.addNewPhoto();
+
+    this.loadImgSubs = this.cameraService.singleimgFile.subscribe( imgReady => {
+      console.log(imgReady);
+      this.onUserUpdate(imgReady);
+    });
+
+  }
+
+
+
   async presentPhotoOptions() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Actualizar foto de perfil',
@@ -147,8 +172,13 @@ onLocationPicked(location: PlaceLocation) {
 
   }
 
-  onUserUpdate() {
-    console.log(this.userSettingForm.value);
+  onUserUpdate(img?: File) {
+    const lastUpdated = new Date(Date.now());
+    if (img) {
+      this._userService.loadImgProfile('userProfile', lastUpdated, this.user._id, this.token, img ).subscribe( res => {
+        console.log(res);
+      }, error => console.log('Error: ' + error));
+    }
   }
 
   onPwdUpdate() {
@@ -157,6 +187,8 @@ onLocationPicked(location: PlaceLocation) {
 
   ngOnDestroy() {
     this.userSubs.unsubscribe();
+    this.tokenSubs.unsubscribe();
+    this.loadImgSubs.unsubscribe();
   }
 
 }

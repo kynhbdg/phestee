@@ -6,10 +6,7 @@ export class Post {
     public userName?: string,
     public incognito?: string,
     public scopeLimited?: string,
-    public postImages?: [{
-      filepath: string,
-      webviewPath: string,
-    }],
+    public postImages?: [{}],
     public postedDate?: string,
     public isActive?: string,
     public status?: string,

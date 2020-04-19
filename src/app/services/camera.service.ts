@@ -13,6 +13,8 @@ import {
   CameraSource
 } from '@capacitor/core';
 
+import { of, BehaviorSubject } from 'rxjs';
+
 interface Photo {
   webviewPath: string;
   base64?: string;
@@ -47,15 +49,10 @@ function base64toBlob(base64Data, contentType) {
 })
 export class CameraService {
 
-
-
-  picURL: Photo[] = [];
+  picUrl: Photo[] = [];
   picFiles: any[] = [];
   imgAfterCompress: string;
-  // selectedImage: string;
-  // imgProcessed: File;
-
-  // cameraFile: SafeResourceUrl;
+  singleimgFile = new BehaviorSubject(null);
 
   constructor(
     private domSanitizer: DomSanitizer,
@@ -64,7 +61,8 @@ export class CameraService {
 
 
     removePhotoCarroussel(i: number) {
-      this.picURL.splice(i, 1);
+      this.picUrl.splice(i, 1);
+      this.picFiles.splice(i, 1);
     }
 
     addNewPhoto() {
@@ -88,57 +86,29 @@ export class CameraService {
     }
 
     addPhotoArray(imgString?: string) {
-      this.picURL.unshift({
+      this.picUrl.unshift({
         webviewPath: imgString,
       });
       this.compressFile(imgString);
     }
 
-    compressFile(imgUrl: string) {
+    compressFile(img: string) {
       const ratio = 80;
       const quality = 80;
 
-      this.imageCompress.compressFile(imgUrl, ratio, quality).then(
+      this.imageCompress.compressFile(img, ratio, quality).then(
         result => {
           this.imgAfterCompress = result;
           const curatedUrl = result.replace('data:image/jpeg;base64,', '');
           try {
             const imgFile =  base64toBlob(curatedUrl, 'image/jpeg');
             this.picFiles.unshift(imgFile);
+            this.singleimgFile.next(imgFile);
           } catch (error) {
             console.log(error);
           }
       });
 
     }
-
-  //   resizeImages(file: any, width: number, callback: any) {
-  //   let tempImgFunction;
-  //   const fileName = file.name;
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL (file);
-  //   reader.onload = event => {
-  //     const img = new Image();
-  //     img.src = (event.target as any).result;
-  //     img.onload = () => {
-  //       const elem = document.createElement('canvas');
-  //       const scaleFactor = width / img.width;
-  //       elem.width = width;
-  //       elem.height = img.height * scaleFactor;
-  //       const ctx = elem.getContext('2d');
-  //       ctx.drawImage(img, 0, 0, width, img.height * scaleFactor);
-  //       ctx.canvas.toBlob((blob) => {
-  //         const fileFinal = new File([blob], fileName, {
-  //           type: 'image/jpeg',
-  //           lastModified: Date.now()
-  //         });
-  //         tempImgFunction = reader.result;
-  //         callback(fileFinal, tempImgFunction);
-  //       }, 'image/jpeg', 1);
-  //     },
-  //     reader.onerror = error => alert('Error en cambiar imagen: ' + error);
-  //   };
-
-  // }
 
 }

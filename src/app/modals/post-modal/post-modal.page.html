@@ -30,7 +30,7 @@
 
           <ion-slides pager="true">
 
-            <ion-slide *ngFor="let photo of cameraService.picURL; index as i">
+            <ion-slide *ngFor="let photo of cameraService.picUrl; index as i">
               <div class="post-photo-carroussel">
                 <ion-icon (click)="removePhotoCarrsl(i)" class="remove-photo-btn" name="close-circle"></ion-icon>
                 <ion-img class="img-carroussel" [src]="photo.webviewPath"></ion-img>
