@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { PostModalPage } from '../modals/post-modal/post-modal.page';
 import { Router, NavigationEnd, RouterEvent, ActivationEnd } from '@angular/router';
 import { map, filter } from 'rxjs/operators';
+import { SocketService } from '../services/socket.service';
 
 @Component({
   selector: 'app-pages',
@@ -17,7 +18,8 @@ export class PagesPage implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    private router: Router
+    private router: Router,
+    chatService: SocketService
    ) { }
 
   ngOnInit() {
