@@ -1,17 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button color="dark"></ion-back-button>
+      <ion-back-button text="" color="dark"></ion-back-button>
       <!-- <ion-button routerLink="/pages/tabs/experiences/123" color="primary">
         <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
       </ion-button> -->
     </ion-buttons>
     <ion-title>
-      <div class="d-flex-row-start-centered">
-        <img class="img-avatar-xs" src="../../assets/media/woman2.jpg" alt="">
-        <ion-label class="ion-margin-start">Tengo dos amigos que cumplen años, uno el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-          también unas estripers, escorts o como se les conozca... urge por favor!</ion-label>
-      </div>
+      Quiero pintar mi depa
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="navigateInfo('123')" color="primary">
@@ -26,66 +22,50 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-        <ion-item-group class="ion-margin-top">
+        <ion-card>
 
-            <ion-item lines="none">
-              <ion-thumbnail class="ion-margin-top" slot="start">
-                <img src="../../assets/media/hairdresser.jpg">
-              </ion-thumbnail>
-              <ion-label>
-                <b>Corte de cabello Mujer</b>
-                <div class="d-flex-row-start-centered">
-                  <ion-text color="dark"><h3>A 5km</h3></ion-text>
-                  <ion-text color="dark"><h3><ion-icon class="ion-margin-start" color="medium" name="flash-outline" slot="start"></ion-icon> 35</h3></ion-text>
-                </div>
-              </ion-label>
-              <!-- <ion-chip color="dark">
-                <b>$90.00</b>
-              </ion-chip> -->
+          <ion-card-content class="d-flex-row-start-centered">
+            <ion-avatar slot="start">
+              <img src="../../assets/media/painter8.jpg">
+            </ion-avatar>
+            <ion-label class="ion-margin-start">
+              <ion-text color="dark"><b>Jorge Rodríguez <ion-icon color="primary" name="shield-checkmark"></ion-icon></b></ion-text>
+              <ion-text color="dark"><h3>Oficio</h3></ion-text>
+              <div class="d-flex-row-start-centered">
+                <ion-text color="dark"><h3>A 5km</h3></ion-text>
+                <ion-text color="dark"><h3><ion-icon class="ion-margin-start" color="medium" name="flash" slot="start"></ion-icon> 75</h3></ion-text>
+                <ion-text color="dark"><h3><ion-icon class="ion-margin-start" color="warning" name="star" slot="start"></ion-icon> 4.98</h3></ion-text>
+              </div>
+            </ion-label>
+          </ion-card-content>
+
+        </ion-card>
+
+        <ion-list>
+
+          <ion-item-group>
+            <ion-item role="button" (click)="navigateInfo('123')">
+              <ion-icon name="open-outline" size="small" slot="start"></ion-icon>
+              <ion-label>Ver oferta</ion-label> 
             </ion-item>
-            <ion-item>
-              <ion-text class="ion-no-padding ion-padding-top ion-padding-bottom">
-                Ven, te esperamos con todo preparado y te damos tmbn un masaje de cabello pa que te vayas bien relajado
-              </ion-text>
-            </ion-item>
-            <ion-item lines="none">
-              <ion-label class="ion-text-right">
-                Subtotal: <b>$90.00 </b>
-              </ion-label>
-            </ion-item>
-            <ion-item lines="none">
-              <ion-label class="ion-text-right">
-                Descuento: <b>%10.00 </b>
-              </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label class="ion-text-right" color="success">
-                Total: <b>$82.00 </b>
-              </ion-label>
-            </ion-item>
-            
             <ion-item>
               <ion-icon name="calendar-outline" size="small" slot="start"></ion-icon>
-              <ion-label>Jueves, 13 Marzo 2020 14:23</ion-label>
               <!-- <ion-label class="ph-margin-right-0">Lo antes posible</ion-label> -->
-              <!-- <ion-datetime type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Hoy"></ion-datetime> -->
+              <ion-datetime type="datetime-local" displayFormat="MMM DD, YYYY HH:mm" class="ion-no-padding" placeholder="Lo antes posible"></ion-datetime>
             </ion-item>
+            <app-location-picker></app-location-picker>
             <ion-item>
-              <ion-icon name="navigate-outline" size="small" slot="start"></ion-icon>
-              <ion-label>Arquimides 172 int 201</ion-label>
-              <!-- <ion-label class="ph-margin-right-0">Ir al mapa</ion-label> -->
+              <ion-label>Iniciar experiencia</ion-label>
+              <ion-toggle slot="start" color="primary"></ion-toggle>
             </ion-item>
-            <ion-item>
-              <ion-label>Exp iniciada 13 marzo 14:55</ion-label>
-              <ion-toggle slot="start" disabled="true" checked color="primary"></ion-toggle>
-            </ion-item>
+          </ion-item-group>
 
-        </ion-item-group>
+        </ion-list>
 
         <ion-grid class="ion-margin-top">
           <ion-row *ngFor="let message of messages">
             <ion-col size="9" *ngIf="currentUser !== message.user" class="d-flex-row-start-start">
-              <img class="img-avatar-xs" src="../../assets/media/laura.jpg">
+              <img class="img-avatar-xs" src="../../assets/media/painter8.jpg">
               <div class="msg-chat other-msg-chat w-100 ion-margin-start">
                 <p><b>{{ message.user }}</b></p>
                 <p>{{ message.msg }}</p>
@@ -98,7 +78,7 @@
             <ion-col offset="3" size="9" *ngIf="currentUser === message.user" class="ion-text-end" class="msg-chat my-msg-chat">
               <p><b>{{ message.user }}</b></p>
               <p>{{ message.msg }}</p>
-              <div class="msg-chat-time my-msg-time ">
+              <div class="msg-chat-time my-msg-time">
                   {{ message.createdAt | date: 'short' }}
                   <ion-icon slot="end" color="primary" name="mail-open-outline"></ion-icon>
               </div>
@@ -122,7 +102,7 @@
           <ion-grid>
             <ion-row>
               <ion-col size="10">
-                <textarea autosize maxRows="3" [(ngModel)]="newMsg" class="msg-chat-input w-100"></textarea>
+                <textarea placeholder="Escribe un mensaje" autosize maxRows="3" [(ngModel)]="newMsg" class="msg-chat-input w-100"></textarea>
               </ion-col>
               <ion-col size="2">
                 <ion-button (click)="onTakePhoto()" expand="block" fill="clear" color="primary" *ngIf="newMsg === '' " class="msg-chat-btn">

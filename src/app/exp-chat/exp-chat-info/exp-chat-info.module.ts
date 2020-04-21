@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ExpChatInfoPageRoutingModule } from './exp-chat-info-routing.module';
 
 import { ExpChatInfoPage } from './exp-chat-info.page';
+import { ModalsPageModule } from '../../modals/modals.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ExpChatInfoPageRoutingModule
+    ExpChatInfoPageRoutingModule,
+    ModalsPageModule
   ],
   declarations: [ExpChatInfoPage]
 })

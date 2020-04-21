@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { BusinessSettingsPageRoutingModule } from './business-settings-routing.module';
+import { ModalsPageModule } from '../../../modals/modals.module';
 
 import { BusinessSettingsPage } from './business-settings.page';
 
@@ -14,7 +15,8 @@ import { BusinessSettingsPage } from './business-settings.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    BusinessSettingsPageRoutingModule
+    BusinessSettingsPageRoutingModule,
+    ModalsPageModule
   ],
   declarations: [BusinessSettingsPage]
 })

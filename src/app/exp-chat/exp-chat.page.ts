@@ -17,23 +17,23 @@ export class ExpChatPage implements OnInit {
 
   messages = [
     {
-      user: 'Estética México',
-      createdAt: 1554090856000,
-      msg: 'hey whats up',
+      user: 'Jorge Rodriguez',
+      createdAt: 1586362305034,
+      msg: '¡Hola! Tengo 15 años de experiencia en la aplicación de pintura exterior e interior. Estoy a tus órdenes ¡Saludos!',
       photoMsg: {}
     },
-    {
-      user: 'Pedro Perez',
-      createdAt: 1554090856000,
-      msg: 'not much, whats up',
-      photoMsg: {}
-    },
-    {
-      user: 'Estética México',
-      createdAt: 1554090856000,
-      msg: 'all good',
-      photoMsg: {}
-    }
+    // {
+    //   user: 'Pedro Perez',
+    //   createdAt: 1554090856000,
+    //   msg: 'not much, whats up',
+    //   photoMsg: {}
+    // },
+    // {
+    //   user: 'Estética México',
+    //   createdAt: 1554090856000,
+    //   msg: 'all good',
+    //   photoMsg: {}
+    // }
   ]
 
   constructor(
@@ -64,7 +64,7 @@ export class ExpChatPage implements OnInit {
   }
 
   onTakePhoto() {
-    this.cameraService.addNewToGallery();
+    this.cameraService.addNewPhoto();
     // this.messages.push({
     //   user: 'Pedro Perez',
     //   createdAt: new Date().getTime(),

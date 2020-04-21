@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text="" color="dark"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center">Editar usuario</ion-title>
   </ion-toolbar>
@@ -16,7 +16,7 @@
           <ion-card class="simple-card">
             <ion-card-header class="d-flex-col-center-centered"> 
                 <img class="ph-avatar-xlg" src="./../assets/media/woman.jpg">
-                <ion-button (click)="presentPhotoOptions()" type="button" class="ion-margin-top" color="primary" size="small" fill="clear">
+                <ion-button (click)="onTakePhoto()" type="button" class="ion-margin-top" color="primary" size="small" fill="clear">
                   Cambiar foto de perfil
                 </ion-button>
             </ion-card-header>
@@ -62,6 +62,12 @@
                 <ion-label><small>Cumpleaños</small></ion-label>
                 <ion-datetime formControlName="birthday" name="birthday" placeholder="Fecha de nacimiento"></ion-datetime>
               </ion-item>
+
+              <!-- <ion-item-divider>
+                <ion-label>Dirección</ion-label>
+              </ion-item-divider> -->
+
+              <!-- <app-location-picker (locationPick)="onLocationPicked($event)"></app-location-picker> -->
               <ion-item>
                 <ion-label><small>Ciudad</small></ion-label>
                 <ion-select formControlName="city" name="city" okText="Ok" cancelText="Cancelar">

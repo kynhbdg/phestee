@@ -1,21 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActionSheetController, AlertController } from '@ionic/angular';
 
-import { ActionSheetController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { take, map, tap, switchMap } from 'rxjs/operators';
 
-import { User } from 'src/app/models/user.model';
+import { User } from '../../../models/user.model';
+import { PlaceLocation } from '../../../models/location.model';
+
+import { UserService } from 'src/app/services/user.service';
+import { CameraService } from 'src/app/services/camera.service';
 
 @Component({
   selector: 'app-user-settings',
   templateUrl: './user-settings.page.html',
   styleUrls: ['./user-settings.page.scss'],
 })
-export class UserSettingsPage implements OnInit {
+export class UserSettingsPage implements OnInit, OnDestroy {
 
   userSettingForm: FormGroup;
   pwdResetForm: FormGroup;
   user: User;
   pwdUpdateMatch = false;
+  userSubs: Subscription;
+  tokenSubs: Subscription;
+  token: string;
+  loadImgSubs: Subscription;
 
   citiesJal = [
     'El Salto',
@@ -30,7 +40,10 @@ export class UserSettingsPage implements OnInit {
 
 
   constructor(
-    public actionSheetController: ActionSheetController
+    public actionSheetController: ActionSheetController,
+    public _userService: UserService,
+    public cameraService: CameraService,
+    public alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -43,7 +56,8 @@ export class UserSettingsPage implements OnInit {
       birthday: new FormControl(''),
       city: new FormControl(''),
       state: new FormControl( {value: 'Jalisco', disabled: true} ),
-      country: new FormControl( {value: 'México', disabled: true} )
+      country: new FormControl( {value: 'México', disabled: true} ),
+      userLocation: new FormControl(null)
     });
 
     this.pwdResetForm = new FormGroup({
@@ -51,6 +65,17 @@ export class UserSettingsPage implements OnInit {
       newPwd: new FormControl('', [Validators.required]),
       confirmPwd: new FormControl('', [Validators.required]),
     });
+
+    this.userSubs =  this._userService.user.subscribe( userData => {
+      this.user = userData;
+      this.userSettingForm.patchValue(userData);
+    });
+
+    this.tokenSubs = this._userService.token.subscribe( tokenId => {
+      this.token = tokenId;
+    });
+
+
 
     this.onPwdCheck();
 
@@ -85,6 +110,12 @@ get confirmPwdForm() {
   return this.pwdResetForm.get('confirmPwd');
 }
 
+onLocationPicked(location: PlaceLocation) {
+  console.log(location);
+  this.userSettingForm.patchValue({userLocation: location});
+
+}
+
   onPwdCheck() {
     this.oldPwdForm.valueChanges.subscribe( oldPwdCheck => {
       // validate oldPwd wth backend, if correct ? maybe we don't need it
@@ -96,6 +127,18 @@ get confirmPwdForm() {
     });
 
   }
+
+  onTakePhoto() {
+    this.cameraService.addNewPhoto();
+
+    this.loadImgSubs = this.cameraService.singleimgFile.subscribe( imgReady => {
+      console.log(imgReady);
+      this.onUserUpdate(imgReady);
+    });
+
+  }
+
+
 
   async presentPhotoOptions() {
     const actionSheet = await this.actionSheetController.create({
@@ -129,12 +172,23 @@ get confirmPwdForm() {
 
   }
 
-  onUserUpdate() {
-    console.log(this.userSettingForm.value);
+  onUserUpdate(img?: File) {
+    const lastUpdated = new Date(Date.now());
+    if (img) {
+      this._userService.loadImgProfile('userProfile', lastUpdated, this.user._id, this.token, img ).subscribe( res => {
+        console.log(res);
+      }, error => console.log('Error: ' + error));
+    }
   }
 
   onPwdUpdate() {
     console.log(this.pwdResetForm.value);
+  }
+
+  ngOnDestroy() {
+    this.userSubs.unsubscribe();
+    this.tokenSubs.unsubscribe();
+    this.loadImgSubs.unsubscribe();
   }
 
 }

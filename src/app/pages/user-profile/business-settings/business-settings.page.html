@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text="" color="dark"></ion-back-button>
     </ion-buttons>
     <ion-title>Crear Tablero</ion-title>
     <ion-buttons slot="end">
@@ -55,7 +55,7 @@
             <ion-item>
               <ion-label><small>Tipo</small></ion-label>
               <ion-select placeholder="Selecciona una opción" formControlName="busType" name="busType" type="text">
-                <ion-select-option *ngFor="let tipo of busTypes; let i of index" [value]="tipo">{{ tipo }}</ion-select-option>
+                <ion-select-option *ngFor="let tipo of busTypesArray; let i of index" [value]="tipo">{{ tipo }}</ion-select-option>
               </ion-select>
             </ion-item>
             <ion-item *ngIf="busTypeForm.invalid && busTypeForm.touched">
@@ -64,7 +64,7 @@
             <ion-item>
               <ion-label><small>Modalidad</small></ion-label>
               <ion-select placeholder="Selecciona una opción" formControlName="rtmMode" name="rtmMode" type="text">
-                <ion-select-option *ngFor="let rtm of rtmModes; let i of index" [value]="rtm">{{ rtm }}</ion-select-option>
+                <ion-select-option *ngFor="let rtm of rtmModesArray; let i of index" [value]="rtm">{{ rtm }}</ion-select-option>
               </ion-select>
             </ion-item>
             <ion-item *ngIf="rtmModeForm.invalid && rtmModeForm.touched">
@@ -99,56 +99,58 @@
               <ion-label>Dirección</ion-label>
             </ion-item-divider>
 
-            <div formGroupName="address" class="ion-no-margin ion-no-padding">
+            <app-location-picker (locationPick)="onLocationPicked($event)"></app-location-picker>
 
-              <ion-item>
-                <ion-label position="fixed"><small>Calle</small></ion-label>
-                <ion-input placeholder="ej Calle 15" formControlName="streetName" name="streetName" type="text" class="ion-text-end"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>No exterior</small></ion-label>
-                <ion-input placeholder="901" formControlName="streetNum" name="streetNum" type="text" class="ion-text-end"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>No interior</small></ion-label>
-                <ion-input placeholder="B" formControlName="additional" name="additional" type="text" class="ion-text-end" ></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>CP</small></ion-label>
-                <ion-input placeholder="45450" formControlName="zipCode" name="zipCode" type="text" class="ion-text-end" ></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>Colonia</small></ion-label>
-                <ion-input placeholder="Juan Navarrete" formControlName="neighborhood" name="neighborhood" type="text" class="ion-text-end" ></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label><small>Ciudad</small></ion-label>
-                <ion-select placeholder="Selecciona una opción" formControlName="city" name="city" okText="Ok" cancelText="Cancelar">
-                  <ion-select-option *ngFor="let cityJal of citiesJal; let i of index" [value]="cityJal">{{ cityJal }}</ion-select-option>
-                </ion-select>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>Estado</small></ion-label>
-                <ion-input formControlName="state" name="state" type="text" class="ion-text-end"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>País</small></ion-label>
-                <ion-input formControlName="country" name="country" type="text" class="ion-text-end"></ion-input>
-              </ion-item>
+              <div *ngIf="isMapLoaded" formGroupName="busLocation" class="ion-no-margin ion-no-padding">
+                <div formGroupName="addressComponents" class="ion-no-margin ion-no-padding">
+                  <ion-item>
+                    <ion-label position="fixed"><small>Calle</small></ion-label>
+                    <ion-input placeholder="ej Calle 15" formControlName="streetName" name="streetName" type="text" class="ion-text-end"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>No exterior</small></ion-label>
+                    <ion-input placeholder="901" formControlName="streetNum" name="streetNum" type="text" class="ion-text-end"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>No interior</small></ion-label>
+                    <ion-input placeholder="ej. 09" formControlName="additional" name="additional" type="text" class="ion-text-end" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>CP</small></ion-label>
+                    <ion-input placeholder="45450" formControlName="zipCode" name="zipCode" type="text" class="ion-text-end" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>Colonia</small></ion-label>
+                    <ion-input placeholder="Juan Navarrete" formControlName="neighborhood" name="neighborhood" type="text" class="ion-text-end" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label><small>Ciudad</small></ion-label>
+                    <ion-input placeholder="Juan Navarrete" formControlName="city" name="city" type="text" class="ion-text-end" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>Estado</small></ion-label>
+                    <ion-input formControlName="state" name="state" type="text" class="ion-text-end"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>País</small></ion-label>
+                    <ion-input formControlName="country" name="country" type="text" class="ion-text-end"></ion-input>
+                  </ion-item>
+                </div>
 
-            </div>
+
+              </div>
 
             <ion-item-divider>
               <ion-label>Social</ion-label>
             </ion-item-divider>
 
             <ion-item>
-              <ion-label position="fixed"><small>Instragram</small></ion-label>
-              <ion-input formControlName="instagram" name="instagram" type="text" class="ion-text-end" minlength="10" maxlength="10" placeholder="instragram/tuPerfil"></ion-input>
+              <ion-label position="fixed"><small>Instagram</small></ion-label>
+              <ion-input formControlName="instagram" name="instagram" type="text" class="ion-text-end" placeholder="instagram/tuPerfil"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="fixed"><small>Facebook</small></ion-label>
-              <ion-input formControlName="facebook" name="facebook" type="text" class="ion-text-end" minlength="10" maxlength="10" placeholder="facebook/tuPerfil"></ion-input>
+              <ion-input formControlName="facebook" name="facebook" type="text" class="ion-text-end" placeholder="facebook/tuPerfil"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="fixed"><small>LinkedIn</small></ion-label>
@@ -164,12 +166,42 @@
               <ion-label>Certificación</ion-label>
             </ion-item-divider>
             
-            <ion-item-divider lines="none">
+            <div *ngIf="showCertifcationForm"  formGroupName="certification" class="ion-no-margin ion-no-padding">
+              <div formArrayName="documents" *ngFor="let certDocs of busCertDocsForm['controls']; let i = index" class="ion-no-margin ion-no-padding">
+                <div [formGroupName]="i">
+                  <ion-item>
+                    <ion-label><small>Documento</small></ion-label>
+                    <ion-select placeholder="Selecciona una opción" formControlName="docType" name="docType" type="text">
+                      <ion-select-option *ngFor="let cerType of certificationTypesArray; let i of index" [value]="cerType">{{ cerType }}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="fixed"><small>ID</small></ion-label>
+                    <ion-input placeholder="13123465497778" formControlName="docID" name="docID" type="email" class="ion-text-end"></ion-input>
+                  </ion-item>
+                </div>
+                <ion-item role="button" (click)="presentPhotoOptions()" >
+                  <ion-icon name="camera-outline" size="small" slot="start"></ion-icon>
+                  <ion-label>Agregar imagen de documento</ion-label> 
+                </ion-item>
+
+                <!-- Placehoder to show loaded image -->
+                 
+              </div>
+            </div>
+
+            <div class="d-flex-row-center-centered ion-margin-top ion-margin-bottom">
+              <ion-button (click)="onAddCertDoc()" type="button" class="ion-margin-top" expand="block" shape="round" fill="outline" color="dark">
+                Agregar documento
+              </ion-button>
+            </div>
+            
+            <ion-item-divider lines="none" class="ion-padding-top">
               <ion-text>
                 <small>
                   
                   Todos queremos estar seguros en Phestee, y para lograr éste objetivo promovemos que 
-                  los tableros cuenten con el badge de seguridad 
+                  todos los tableros cuenten con la insignia de seguridad 
                   <span> <ion-icon color="primary" name="shield-checkmark"></ion-icon> </span>
                   , por lo que te recomendamos agregar una foto del documento oficial de acuerdo al tipo de tablero:
                                   
@@ -205,26 +237,6 @@
               </ion-text>
             </ion-item-divider>
             
-            <div formGroupName="certification" class="ion-no-margin ion-no-padding">
-              
-              <ion-item>
-                <ion-label><small>Documento</small></ion-label>
-                <ion-select placeholder="Selecciona una opción" formControlName="docType" name="docType" type="text">
-                  <ion-select-option *ngFor="let cerType of certificationTypes; let i of index" [value]="cerType">{{ cerType }}</ion-select-option>
-                </ion-select>
-              </ion-item>
-              <ion-item>
-                <ion-label position="fixed"><small>ID</small></ion-label>
-                <ion-input placeholder="13123465497778" formControlName="docID" name="docID" type="email" class="ion-text-end"></ion-input>
-              </ion-item>
-              
-              <div class="d-flex-row-center-centered ion-margin-top ion-margin-bottom">
-                <ion-button type="button" class="ion-margin-top" expand="block" shape="round" fill="outline" color="medium">
-                  Agregar foto del documento
-                </ion-button>
-              </div>
-              
-            </div>
 
             <ion-item-divider></ion-item-divider>
             

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Platform } from '@ionic/angular';
 
+import { NgxImageCompressService } from 'ngx-image-compress';
+
 import {
   Plugins,
   CameraResultType,
@@ -11,56 +13,102 @@ import {
   CameraSource
 } from '@capacitor/core';
 
+import { of, BehaviorSubject } from 'rxjs';
+
+interface Photo {
+  webviewPath: string;
+  base64?: string;
+}
+
+function base64toBlob(base64Data, contentType) {
+  contentType = contentType || '';
+  const sliceSize = 1024;
+  const fileName = 'pic' + Date.now().toString();
+  const byteCharacters = atob(base64Data);
+  const bytesLength = byteCharacters.length;
+  const slicesCount = Math.ceil(bytesLength / sliceSize);
+  const byteArrays = new Array(slicesCount);
+
+  for (let sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+    const begin = sliceIndex * sliceSize;
+    const end = Math.min(begin + sliceSize, bytesLength);
+
+    const bytes = new Array(end - begin);
+    for (let offset = begin, i = 0; offset < end; ++i, ++offset) {
+      bytes[i] = byteCharacters[offset].charCodeAt(0);
+    }
+    byteArrays[sliceIndex] = new Uint8Array(bytes);
+  }
+  const blob =  new Blob(byteArrays, { type: contentType });
+  return  new File([blob], fileName);
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CameraService {
 
-
-
-  public photos: Photo[] = [];
-  private platform: Platform;
-
-  // cameraFile: SafeResourceUrl;
+  picUrl: Photo[] = [];
+  picFiles: any[] = [];
+  imgAfterCompress: string;
+  singleimgFile = new BehaviorSubject(null);
 
   constructor(
     private domSanitizer: DomSanitizer,
-    platform: Platform ) {
-      this.platform = platform; // we only need this if we want to allow pictures from the device
-     }
+    private platform: Platform,
+    private imageCompress: NgxImageCompressService) {}
 
 
-  public async addNewToGallery() {
+    removePhotoCarroussel(i: number) {
+      this.picUrl.splice(i, 1);
+      this.picFiles.splice(i, 1);
+    }
 
-    const { Camera, Filesystem, Storage } = Plugins;
+    addNewPhoto() {
+      if ( !Capacitor.isPluginAvailable('Camera') ) {
+        return;
+      }
+      Plugins.Camera.getPhoto({
+        quality: 100,
+        source: CameraSource.Prompt,
+        allowEditing: true,
+        correctOrientation: true,
+        resultType: CameraResultType.DataUrl
+      })
+      .then( image => {
+        this.addPhotoArray(image.dataUrl);
+      })
+      .catch( error => {
+        console.log(error);
+        return false;
+      });
+    }
 
-    // Take a photo
-    const capturedPhoto = await Camera.getPhoto({
-      quality: 100,
-      allowEditing: true,
-      source: CameraSource.Camera,
-      resultType: CameraResultType.Uri,
-    });
+    addPhotoArray(imgString?: string) {
+      this.picUrl.unshift({
+        webviewPath: imgString,
+      });
+      this.compressFile(imgString);
+    }
 
-    this.photos.unshift({
-      filepath: 'soon...',
-      webviewPath: capturedPhoto.webPath,
-    });
+    compressFile(img: string) {
+      const ratio = 80;
+      const quality = 80;
 
+      this.imageCompress.compressFile(img, ratio, quality).then(
+        result => {
+          this.imgAfterCompress = result;
+          const curatedUrl = result.replace('data:image/jpeg;base64,', '');
+          try {
+            const imgFile =  base64toBlob(curatedUrl, 'image/jpeg');
+            this.picFiles.unshift(imgFile);
+            this.singleimgFile.next(imgFile);
+          } catch (error) {
+            console.log(error);
+          }
+      });
 
-  }
-
-  removePhotoCarroussel(i: number) {
-    this.photos.splice(i, 1);
-  }
+    }
 
 }
-
-interface Photo {
-  filepath: string;
-  webviewPath: string;
-  base64?: string;
-}
-
-

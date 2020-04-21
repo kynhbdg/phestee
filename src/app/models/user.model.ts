@@ -1,9 +1,11 @@
+import { PlaceLocation } from './location.model';
+
 export class User {
 
   constructor(
-    public userName: string,
     public email: string,
     public password: string,
+    public userName?: string,
     public tandc?: boolean,
     public name?: string,
     public google?: boolean,
@@ -26,7 +28,7 @@ export class User {
     public linkedinURL?: string,
     public facebookURL?: string,
     public website?: string,
-    public location?: {},
+    public userLocation?: PlaceLocation,
     public licensedProducts?: [{}],
     public filesLocation?: string,
     public _id?: string,

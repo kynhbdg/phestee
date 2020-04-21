@@ -36,12 +36,12 @@
               <ion-note color="danger"><small>Parece que la contraseña no es válida</small></ion-note>
             </ion-item>
           </ion-list>
-          <ion-button [disabled]="loginForm.invalid" expand="block" shape="round" type="submit" color="primary" class="ph-margin-top-3"><ion-icon name="arrow-forward-outline" slot="end"></ion-icon>Entrar</ion-button>
+          <ion-button [disabled]="loginForm.invalid" expand="block" shape="round" type="submit" color="primary" class="ph-margin-top-3"><ion-icon name="arrow-forward-outline" slot="end"></ion-icon><b>Entrar</b></ion-button>
 
-          <ion-button expand="block" size="small" routerLink="/signin" type="button" color="primary" class="ion-margin-top" fill="clear" class="ion-margin-top">Olvidé mi contraseña</ion-button>
-          <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-facebook" slot="start"></ion-icon>Entrar con facebook</ion-button>
-          <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-google" slot="start"></ion-icon>Entrar con google</ion-button>
-          <ion-button expand="block" size="small" routerLink="/signin" type="button" color="primary" fill="clear" class="ion-margin-top">Crea una cuenta aquí</ion-button>
+          <ion-button expand="block" type="button" color="primary" class="ion-margin-top" fill="clear" class="ion-margin-top">Olvidé mi contraseña</ion-button>
+          <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-facebook" slot="start"></ion-icon><b>Entrar con facebook</b></ion-button>
+          <ion-button expand="block" shape="round" type="button" color="dark" class="ion-margin-top"><ion-icon name="logo-google" slot="start"></ion-icon><b>Entrar con google</b></ion-button>
+          <ion-button expand="block" routerLink="/signin" type="button" color="primary" fill="clear" class="ion-margin-top">Crea una cuenta aquí</ion-button>
 
         </form>
 

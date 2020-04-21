@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginguardGuard } from './services/loginguard.guard';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
@@ -13,18 +14,20 @@ const routes: Routes = [
   },
   {
     path: 'pages',
+    canActivate: [LoginguardGuard],
     loadChildren: () => import('./pages/pages.module').then( m => m.PagesPageModule)
   },
   {
     path: 'info',
     loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule)
   },
-  {
-    path: 'modals',
-    loadChildren: () => import('./modals/modals.module').then( m => m.ModalsPageModule)
-  },
+  // {
+  //   path: 'modals',
+  //   loadChildren: () => import('./modals/modals.module').then( m => m.ModalsPageModule)
+  // },
   {
     path: 'exp-chat/:expId',
+    canActivate: [LoginguardGuard],
     loadChildren: () => import('./exp-chat/exp-chat.module').then( m => m.ExpChatPageModule)
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' }

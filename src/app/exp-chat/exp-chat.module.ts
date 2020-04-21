@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ExpChatPageRoutingModule } from './exp-chat-routing.module';
+import { ModalsPageModule } from '../modals/modals.module';
 
 import { ExpChatPage } from './exp-chat.page';
 
@@ -13,7 +14,8 @@ import { ExpChatPage } from './exp-chat.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ExpChatPageRoutingModule
+    ExpChatPageRoutingModule,
+    ModalsPageModule,
   ],
   declarations: [ExpChatPage]
 })

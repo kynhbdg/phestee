@@ -4,8 +4,14 @@
       <ion-button routerLink="/pages/tabs/experiences" color="primary">
         <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
       </ion-button>
-    </ion-buttons>
-    <ion-title>¿Dónde consigo cubrebocas y gel antibacterial?</ion-title>
+    </ion-buttons>      
+    
+    <ion-title>
+      <div class="d-flex-row-center-centered">
+        <img class="img-avatar-xs" src="../../assets/media/laura.jpg" alt="">
+        <ion-label class="ion-margin-start">Inés Cervantes</ion-label>
+      </div>
+    </ion-title>
 
     <!-- <ion-buttons slot="end">
       <ion-button (click)="navigateInfo('123')" color="primary">
@@ -23,185 +29,65 @@
 
         <ion-card  class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
           <ion-item lines="full">
-            <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-            <ion-chip slot="end" color="success"><b>$1,756.30</b></ion-chip>
+            <ion-card-subtitle>Hace 6 minutos</ion-card-subtitle>
+            <ion-chip slot="end" color="primary"><b> $356.30</b></ion-chip>
           </ion-item>
-          <ion-item lines="none" class="ion-margin-top ion-margin-bottom">
+          <ion-item lines="none" class="ion-margin-top">
             <ion-thumbnail slot="start">
-              <img src="../../assets/media/oldwoman.jpg">
+              <img src="../../assets/media/hero/apartment.jpg">
             </ion-thumbnail>
             <ion-text>
-              <b>¿Dónde consigo cubrebocas y gel antibacterial?</b>
+              <b>Quiero pintar mi depa</b>
             </ion-text>
           </ion-item>
-          <ion-label class="ion-no-padding ion-padding-start ion-padding-bottom d-flex-row-start-centered">
-            <ion-chip color="medium"><b><ion-icon name="flash" slot="start"></ion-icon> 3</b></ion-chip>
-            <ion-chip color="medium" class="ion-margin-start"><b><ion-icon name="hand-left" slot="start" class="rotated-15" ></ion-icon> 5</b></ion-chip>
-            <ion-chip color="medium" class="ion-margin-start"><b><ion-icon name="people" slot="start"></ion-icon> 4</b></ion-chip>
-          </ion-label>
+          <ion-item lines="none">
+            <ion-label>
+              <div class="d-flex-row-between-centered">
+                <ion-button shape="round" color="light"><ion-icon name="flash-outline" slot="start"></ion-icon>  3</ion-button>
+                <ion-button shape="round" color="light"><ion-icon name="hand-left-outline" slot="start" class="rotated-15"></ion-icon>  5</ion-button>
+                <ion-button shape="round" color="light"><ion-icon name="people-outline" slot="start"></ion-icon>  0</ion-button>
+                <ion-button shape="round" color="light"><ion-icon name="person-add-outline"></ion-icon></ion-button>
+              </div>
+            </ion-label>
+          </ion-item>
+          
         </ion-card>
 
         <!-- <div class="ion-margin-top ion-padding">
-          <h3><b> Ofrecimientos</b> <small class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left" color="dark" slot="start"></ion-icon> (2)</small></h3>
-        </div>
-
-        <ion-slides [options]="sliderConfigOffer">
-
-          <ion-slide> 
-            <ion-card (click)="onOpenExperience('123')" >
-
-              <ion-card-header class="d-flex-row-start-centered">
-                <ion-avatar>
-                  <img class="ph-avatar-md" src="../../assets/media/cakeAvatar.jpg" alt="">
-                </ion-avatar>
-                <div class="ion-margin-start">
-                  <ion-label class="d-flex-row-between-centered" color="dark">
-                    <h5><b>Pasteles México</b></h5>
-                    <ion-text class="ion-margin-start"><h6><ion-icon color="warning" name="star" slot="start"></ion-icon> 4.98</h6></ion-text>
-                  </ion-label>
-                  <ion-label class="d-flex-row-start-centered">
-                    <ion-text color="dark">
-                      <h6>A 5km</h6>
-                    </ion-text>
-                    <ion-text color="dark" class="ion-margin-start">
-                      <h6><ion-icon color="dark" name="flash-outline" slot="start"></ion-icon> 3.5K</h6>
-                    </ion-text>
-                  </ion-label>
-                </div>
-              </ion-card-header>
-              <ion-card-header class="ion-no-padding ion-padding-bottom">
-                <img class="img-slider-thumbnail" src="../../assets/media/cake2.jpg">
-              </ion-card-header>
-              <ion-card-header class="ion-no-padding">
-                <ion-text color="dark"><h5><b>Pastel con moras</b></h5></ion-text>
-              </ion-card-header>
-              <ion-card-header class="ion-no-padding ion-padding-top">
-                <ion-text color="dark"><h6>$390.00</h6></ion-text>
-              </ion-card-header>
-              <ion-card-content class="ion-margin-top">
-                <ion-button fill="outline" shape="round" color="dark"><ion-icon slot="start" name="flash"></ion-icon> Iniciar experiencia</ion-button>
-              </ion-card-content>
- 
-            </ion-card>
-          </ion-slide>
-
-          <ion-slide> 
-            <ion-card>
-
-              <ion-card-header class="d-flex-row-start-centered">
-                <ion-avatar>
-                  <img class="ph-avatar-md" src="../../assets/media/spaAvatar.jpg" alt="">
-                </ion-avatar>
-                <div class="ion-margin-start">
-                  <ion-label class="d-flex-row-between-centered" color="dark">
-                    <h5><b>Spa Minerva</b></h5>
-                    <ion-text class="ion-margin-start"><h6><ion-icon color="warning" name="star" slot="start"></ion-icon> 4.99</h6></ion-text>
-                  </ion-label>
-                  <ion-label class="d-flex-row-start-centered">
-                    <ion-text color="dark">
-                      <h6>A 2km</h6>
-                    </ion-text>
-                    <ion-text color="dark" class="ion-margin-start">
-                      <h6><ion-icon color="dark" name="flash-outline" slot="start"></ion-icon> 55</h6>
-                    </ion-text>
-                  </ion-label>
-                </div>
-              </ion-card-header>
-              <ion-card-header class="ion-no-padding ion-padding-bottom">
-                <img class="img-slider-thumbnail" src="../../assets/media/spa.jpg">
-              </ion-card-header>
-              <ion-card-header class="ion-no-padding">
-                <ion-text color="dark"><h5><b>Circuito Spa</b></h5></ion-text>
-              </ion-card-header>
-              <ion-card-header class="ion-no-padding ion-padding-top">
-                <ion-text color="dark"><h6>$990.00 <b class="text-success"> + 10% Desc</b> </h6></ion-text>
-              </ion-card-header>
-              <ion-card-content class="ion-margin-top">
-                <ion-button fill="outline" shape="round" color="dark"><ion-icon slot="start" name="flash"></ion-icon> Iniciar experiencia</ion-button>
-              </ion-card-content>
- 
-            </ion-card>
-          </ion-slide>
-
-          <ion-slide> 
-            <ion-card>
-
-              <ion-card-header class="d-flex-row-start-centered">
-                <ion-avatar>
-                  <img class="ph-avatar-md" src="../../assets/media/spaAvatar.jpg" alt="">
-                </ion-avatar>
-                <div class="ion-margin-start">
-                  <ion-label class="d-flex-row-between-centered" color="dark">
-                    <h5><b>Florería Minerva</b></h5>
-                    <ion-text class="ion-margin-start"><h6><ion-icon color="warning" name="star" slot="start"></ion-icon> 4.99</h6></ion-text>
-                  </ion-label>
-                  <ion-label class="d-flex-row-start-centered">
-                    <ion-text color="dark">
-                      <h6>A 4km</h6>
-                    </ion-text>
-                    <ion-text color="dark" class="ion-margin-start">
-                      <h6><ion-icon color="dark" name="flash-outline" slot="start"></ion-icon> 905</h6>
-                    </ion-text>
-                  </ion-label>
-                </div>
-              </ion-card-header>
-              <ion-card-header class="ion-no-padding ion-padding-bottom">
-                <img class="img-slider-thumbnail" src="../../assets/media/flowers.jpg">
-              </ion-card-header>
-              <ion-card-header class="ion-no-padding">
-                <ion-text color="dark"><h5><b>Arreglo floral</b></h5></ion-text>
-              </ion-card-header>
-              <ion-card-header class="ion-no-padding ion-padding-top">
-                <ion-text color="dark"><h6>$895.00  <b class="text-success"> + 15% Desc</b></h6></ion-text>
-              </ion-card-header>
-              <ion-card-content class="ion-margin-top">
-                <ion-button fill="outline" shape="round" color="dark"><ion-icon slot="start" name="flash"></ion-icon> Iniciar experiencia</ion-button>
-              </ion-card-content>
- 
-            </ion-card>
-          </ion-slide>
-
-
-
-        </ion-slides> -->
-
-        <div class="ion-margin-top ion-padding">
-          <h6><b>8 Reacciones</b></h6>
-        </div>
+          <h6>8 Reacciones</h6>
+        </div> -->
         <ion-grid class="ion-no-padding">
             <ion-row class="ion-no-padding">
-              <ion-col size="4">
-                <img (click)="onOpenExperience('123')" class="img-exp-grid-20" src="../../assets/media/guyAvatar.jpg" alt="">
-
+              <ion-col class="padding-grid-3col" size="4">
+                <img (click)="onOpenExperience('123')" class="img-exp-grid-20" src="../../assets/media/painter8.jpg" alt="">
               </ion-col>
-              <ion-col size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/flowers.jpg" alt="">
-
+              <ion-col class="padding-grid-3col" size="4">
+                <img class="img-exp-grid-20" src="../../assets/media/painter2.jpg" alt="">
               </ion-col>
-              <ion-col size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/laura2.jpg" alt="">
+              <ion-col class="padding-grid-3col" size="4">
+                <img class="img-exp-grid-20" src="../../assets/media/painter5.jpg" alt="">
               </ion-col>
-              <ion-col size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/dog.jpg" alt="">
+              <ion-col class="padding-grid-3col" size="4">
+                <img class="img-exp-grid-20" src="../../assets/media/painter12.jpg" alt="">
               </ion-col>
-              <ion-col size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/cake2.jpg" alt="">
+              <ion-col class="padding-grid-3col"size="4">
+                <img class="img-exp-grid-20" src="../../assets/media/painter7.jpg" alt="">
               </ion-col>
-              <ion-col size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/couple.jpg" alt="">
+              <ion-col class="padding-grid-3col" size="4">
+                <img class="img-exp-grid-20" src="../../assets/media/painter11.jpg" alt="">
               </ion-col>
-              <ion-col size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/hairdresser.jpg" alt="">
+              <ion-col class="padding-grid-3col" size="4">
+                <img class="img-exp-grid-20" src="../../assets/media/painter10.jpg" alt="">
               </ion-col>
-              <ion-col size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/oldwoman.jpg" alt="">
+              <ion-col class="padding-grid-3col" size="4">
+                <img class="img-exp-grid-20" src="../../assets/media/painter6.jpg" alt="">
               </ion-col>
 
             </ion-row>
 
         </ion-grid>
 
-        <div class="ion-margin-top ion-padding">
+        <!-- <div class="ion-margin-top ion-padding">
           <h3><b> Miembros</b> <small class="ion-margin-start"> <ion-icon name="people" color="dark" slot="start"></ion-icon> (2)</small></h3>
         </div>
 
@@ -232,7 +118,7 @@
           </ion-item>
           <ion-button expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon>Agregar miembro</ion-button>
 
-        </ion-list>
+        </ion-list> -->
         
 
       </ion-col>

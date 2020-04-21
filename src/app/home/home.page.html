@@ -1,23 +1,35 @@
+<ion-header class="ion-hide-sm-down">
+  <ion-toolbar>
+    <ion-title class="font-brand-normal">
+      phestee
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button role="button" routerLink="/login" color="primary"><ion-icon slot="icon-only" name="person-circle"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
 
-  <ion-slides pager="true">
+    <!-- Inicia vista menor a MD -->
 
-    <ion-slide>
+  <ion-slides class="ion-hide-sm-up" pager="true">
+
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
             <div class="phestee-icon-md"></div>
-            <h1 class="font-brand-big ion-margin-top">phestee</h1>
-            <h6>Todo lo que necesitas está aquí, sin búsquedas complicadas y sin publicidad.</h6>
-            <!-- <ion-button routerLink="/login" shape="round" type="button" color="primary" class="top-button ion-margin-top"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button> -->
+            <h1 class="font-brand-big ion-margin-top ion-margin-bottom">phestee</h1>
+            <h5 class="ion-padding-start ion-padding-end">Todo lo que necesitas está aquí, sin búsquedas complicadas.</h5>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-slide>
-    <ion-slide>
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-xl="4" offset-xl="4">
             <h1><ion-icon class="icon-home-page" color="primary" name="chatbubble-ellipses"></ion-icon></h1>
             <h2 class="ion-margin-top font-brand-normal">Pública lo que quieras</h2>
             <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
@@ -28,23 +40,23 @@
                 </ion-card-title>
               </ion-card-header>
             </ion-card>
-            <!-- <ion-card-content class="ion-margin-top">
-              <ion-card-title color="medium"><p>Puedes publicar lo que sea, por ejemplo: "Mi perro tiene hambre", "Quiero comida italiana", "Mi casa está sucia..."</p></ion-card-title>
-            </ion-card-content> -->
+            <ion-card-content class="ion-margin-top">
+              <ion-card-title color="medium"><p>Puedes publicar lo que sea, por ejemplo: "Tengo antojo de comida italiana", "La casa está sucia..."</p></ion-card-title>
+            </ion-card-content>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-slide>
-    <ion-slide>
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-xl="4" offset-xl="4">
             <h1><ion-icon class="rotated-15 icon-home-page" color="primary" name="hand-left"></ion-icon></h1>
             <h2 class="ion-margin-top font-brand-normal">Checa las reacciones</h2>
             <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
-              <img class="post-reactions-img"  src="../../assets/media/friendship.jpg" />
-              <ion-card-header class="ion-text-start ion-no-margin ion-no-padding ph-border-bottom">
-                <ion-card-title>
+              <ion-card-header class="home-experience-card flex-start-demo">
+                <img class="post-exp-img" src="../../assets/media/friendship.jpg">
+                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
                   <h5>¡Laura cumple años el siguiente fin! 🎉</h5>
                 </ion-card-title>
               </ion-card-header>
@@ -56,36 +68,32 @@
                 </ion-card-title>
               </ion-card-header>
               <ion-card-header class="home-reactions-card flex-start-demo border-left-active">
-                <img src="../../assets/media/cake.jpg">
+                <img src="../../assets/media/cake2.jpg">
                 <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
                   <h5><small><b>Pastelería Tapatía</b></small></h5>
                   <h5><small>Nosotros te mandamos el pastel y las velas. 🎂 </small></h5>
                 </ion-card-title>
               </ion-card-header>
-              <ion-card-header class="home-reactions-card flex-start-demo border-left-active ion-hide-md-down">
-                <img src="../../assets/media/party.jpg">
-                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h5><small><b>Kattering</b></small></h5>
-                  <h5><small>¡Hola! Te organizamos tu fiesta temática 🎊. ¡Checa nuestro tablero! </small></h5>
-                </ion-card-title>
-              </ion-card-header>
-              <!-- <ion-card-header class="ion-padding-top ion-padding-bottom">
+              <ion-card-header class="ion-padding-top ion-padding-bottom">
                 <ion-label class="ion-text-center">
                   <ion-icon name="ellipsis-horizontal"></ion-icon>
                 </ion-label>
-              </ion-card-header> -->
+              </ion-card-header>
             </ion-card>
+            <ion-card-content class="ion-margin-top">
+              <ion-card-title color="medium"><p>Los usuarios que pueden ayudarte levantarán la mano (sin ver tu perfil). ¡Tu decides con quién iniciar una experiencia! </p></ion-card-title>
+            </ion-card-content>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-slide>
-    <ion-slide>
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
             <h1><ion-icon class="icon-home-page" color="primary" name="flash"></ion-icon></h1>
             <h2 class="ion-margin-top font-brand-normal">Comparte experiencias</h2>
-            <ion-card class="ion-no-margin ion-margin-start ion-margin-end border-left-active">
+            <ion-card class="ion-no-margin ion-margin-top border-left-active">
               <ion-card-header class="home-experience-card flex-start-demo">
                 <!-- <div class="bg-exp-photo"></div> -->
                 <img class="post-exp-img" src="../../assets/media/friendship.jpg">
@@ -108,7 +116,7 @@
                 </ion-card-title>
               </ion-card-content>
             </ion-card>
-            <ion-card class="ion-no-margin ion-margin-start ion-margin-end ion-card-no-margin border-left-done">
+            <ion-card class="ion-no-margin ion-margin-top border-left-done">
               <ion-card-header class="home-experience-card flex-start-demo">
                 <!-- <div class="bg-exp-photo"></div> -->
                 <img class="post-exp-img" src="../../assets/media/dog1.jpg">
@@ -131,58 +139,345 @@
                 </ion-card-title>
               </ion-card-content>
             </ion-card>
-            <ion-card class="ion-no-margin ion-margin-start ion-margin-end ion-card-no-margin border-left-done ion-hide-md-down">
-              <ion-card-header class="home-experience-card flex-start-demo">
-                <!-- <div class="bg-exp-photo"></div> -->
-                <img class="post-exp-img" src="../../assets/media/stress.jpg">
-                <ion-card-title class="ion-text-start ion-no-margin ion-no-padding ion-padding-start">
-                  <h5>Me urge un masaje... ha sido una semana muy difícil</h5>
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="home-experience-card flex-between-demo">
-                <ion-card-title>
-                  <h2><b>1</b></h2>
-                  <h3>Miembros</h3>
-                </ion-card-title>
-                <ion-card-title>
-                  <h2><b>1</b></h2>
-                  <h3>Colaborador</h3>
-                </ion-card-title>
-                <ion-card-title>
-                  <h2><b>$390</b></h2>
-                  <h3>Total</h3>
-                </ion-card-title>
-              </ion-card-content>
-            </ion-card>
-            <!-- <ion-card-content class="ion-margin-top">
-              <ion-card-title color="medium"><p>Agrega miembros para que participen de tu experiencia. Los colaboradores son los que levantan la mano para ayudarte. </p></ion-card-title>
-            </ion-card-content> -->
+            <ion-card-content class="ion-margin-top">
+              <ion-card-title color="medium"><p>Lleva el control de todos tus gastos en un lugar, y agrega amigos a tus experiencias. </p></ion-card-title>
+            </ion-card-content>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-slide>
-    <ion-slide>
+    <ion-slide class="height-sm">
       <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
+        <ion-row>
+          <ion-col class="d-flex-col-center-centered" size-md="8" offset-md="2" size-lg="4" offset-lg="4" size-xl="2" offset-xl="5">
             <div class="phestee-icon-md"></div>
-            <h1 class="font-brand-big ion-margin-top">Deja de buscar y déjate encontrar</h1>
-            <!-- <ion-button routerLink="/login" shape="round" type="button" color="primary" class="top-button ion-margin-top"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button> -->
+            <h5 class="ion-margin-top ion-padding-start ion-padding-end">El mundo está cambiando y la forma en que interactuamos también...</h5>
+            <h5>¡Únete!</h5>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-slide>
 
   </ion-slides>
+
+  <!-- Inicia vista mayor MD -->
+
+  <ion-grid class="ion-hide-sm-down">
+    <ion-row class="height-lg d-flex-col-center-centered ion-no-padding ion-no-margin">
+        <ion-col class="d-flex-col-center-centered ion-text-center" size-sm="12"  size-md="auto">
+          <div class="phestee-icon-md"></div>
+          <h1 class="font-brand-xlg ion-margin-top">Todo lo que necesitas está aquí.</h1>
+          <h5 class="ion-margin-top ion-margin-start ion-margin-end ion-padding-start ion-padding-end ion-padding-bottom">
+            El mundo está cambiando y la forma en que interactuamos también,
+            por eso creamos la app para colaborar de forma sana y segura.
+          </h5>
+        </ion-col>          
+        <ion-col class="margin-top ion-padding-top" size="auto" >
+          <ion-button class="ion-margin-top ion-margin-bottom" routerLink="/login" shape="round" type="button" color="primary"><b>Crea tu primera experiencia ahora</b></ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-margin-top ion-margin-bottom" size-sm="12" offset-md="1" size-md="10">
+        <h6 class="font-brand-md ion-text-center text-primary ion-margin-top">
+          <ion-icon size="small" color="primary" name="chatbubble-ellipses-outline"></ion-icon>
+          Haz una publicación
+        </h6>
+
+        <ion-grid class="ion-no-padding ion-margin-top">
+          <ion-row>
+            <ion-col size-md="12" offset-lg="1" size-lg="5">
+              <ion-card class="ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
+                <img class="post-img-demo-lg"  src="../../assets/media/hero/wedding.jpg" />
+                <ion-card-header class="ion-no-margin ion-no-padding">
+                  <ion-card-title>
+                    <h5><b>Nos casamos el próximo año 💍</b></h5>
+                  </ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+            <ion-col class="ion-hide-lg-down" size-md="12" size-lg="5">
+              <ion-card class="ion-hide-lg-down ion-no-margin ion-margin-top ion-margin-start ion-margin-end">
+                <img class="post-img-demo-lg"  src="../../assets/media/hero/apartment.jpg" />
+                <ion-card-header class="ion-no-margin ion-no-padding">
+                  <ion-card-title>
+                    <h5><b>Necesito pintar mi depa... 😫</b></h5>
+                  </ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="ion-margin-top ion-margin-bottom ion-padding-top ion-padding-bottom ion-text-center">
+          <ion-label color="medium">Puedes publicar lo que sea, por ejemplo: "Tengo antojo de comida italiana", "La casa está sucia..."</ion-label>
+        </div>
+      </ion-col> 
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-margin-top ion-margin-bottom" size-sm="12" offset-md="1" size-md="10">
+        <h6 class="font-brand-md ion-text-center text-primary ion-margin-top">
+          <ion-icon size="small" class="rotated-15" color="primary" name="hand-left-outline"></ion-icon>
+          Checa las reacciones
+        </h6>
+        <ion-grid class="ion-no-padding ion-margin-top">
+          <ion-row>
+            <ion-col size-md="12" offset-lg="1" size-lg="5">
+              <ion-card>
+                <ion-card-header class="ion-padding-top">
+                  <ion-card-title>
+                    <h5><b>Nos casamos el próximo año 💍</b></h5>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-grid class="ion-padding-bottom">
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col class="padding-grid-2col" size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/wedding1.jpg" alt="">
+                    </ion-col>
+                    <ion-col class="padding-grid-2col" size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/wedding2.jpg" alt="">
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col class="padding-grid-2col" size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/wedding5.jpg" alt="">
+                    </ion-col>
+                    <ion-col class="padding-grid-2col" size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/wedding6.jpg" alt="">
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card>
+            </ion-col>
+            <!-- <ion-col class="ion-hide-lg-down" size-md="12" size-lg="4">
+              <ion-card>
+                <ion-card-header class="ion-padding-top">
+                  <ion-card-title class="ion-margin-start">
+                    <h5><b>¡Mi novio cumple años el viernes!</b></h5>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-grid class="ion-padding-bottom">
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col  class="padding-grid-2col" size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/party.jpg" alt="">
+                    </ion-col>
+                    <ion-col class="padding-grid-2col"  size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/bar.jpg" alt="">
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col class="padding-grid-2col"  size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/cooking.jpg" alt="">
+                    </ion-col>
+                    <ion-col class="padding-grid-2col"  size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/balloons.jpg" alt="">
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card>
+            </ion-col> -->
+            <ion-col class="ion-hide-lg-down" size-md="12" size-lg="5">
+              <ion-card>
+                <ion-card-header class="ion-padding-top">
+                  <ion-card-title>
+                    <h5><b>Necesito pintar mi depa... 😫</b></h5>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-grid class="ion-padding-bottom">
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col class="padding-grid-2col" size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/painter8.jpg" alt="">
+                    </ion-col>
+                    <ion-col  class="padding-grid-2col"size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/tools.jpg" alt="">
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col class="padding-grid-2col" size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/painter2.jpg" alt="">
+                    </ion-col>
+                    <ion-col class="padding-grid-2col" size="6">
+                      <img class="post-reactions-img-lg" src="../../assets/media/hero/painter5.jpg" alt="">
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="ion-margin-top ion-margin-bottom ion-padding-top ion-padding-bottom ion-text-center">
+          <ion-label color="medium">Los usuarios que pueden ayudarte levantarán la mano (sin ver tu perfil). ¡Tu decides con quién iniciar una experiencia!</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-margin-top ion-margin-bottom" size-sm="12" offset-md="1" size-md="10">
+        <h6 class="font-brand-md ion-text-center text-primary ion-margin-top">
+          <ion-icon size="small" color="primary" name="flash-outline"></ion-icon>
+          Inicia una experiencia
+        </h6>
+        <ion-grid class="ion-margin-top">
+          <ion-row>
+            <ion-col size-md="12" offset-lg="1" size-lg="5">
+              <ion-card>
+                <ion-card-content class="d-flex-row-start-centered w-100">
+                  <img class="ph-avatar-lg" src="../../assets/media/hero/wedding1.jpg">
+                  <ion-label class="ion-margin-start ion-text-start">
+                    <ion-text color="dark"><b>Eventos Guadalajara <ion-icon color="primary" name="shield-checkmark"></ion-icon></b></ion-text>
+                    <ion-text color="dark"><h3>Negocio</h3></ion-text>
+                    <div class="d-flex-row-start-centered">
+                      <ion-text color="dark"><h3>A 8km</h3></ion-text>
+                      <ion-text color="dark"><h3><ion-icon class="ion-margin-start" color="medium" name="flash" slot="start"></ion-icon> 105</h3></ion-text>
+                      <ion-text color="dark"><h3><ion-icon class="ion-margin-start" color="warning" name="star" slot="start"></ion-icon> 4.99</h3></ion-text>
+                    </div>
+                  </ion-label>
+                </ion-card-content>
+                <ion-item-group>
+                  <ion-item>
+                    <ion-icon name="open-outline" size="small" slot="start"></ion-icon>
+                    <ion-label>Ver oferta</ion-label> 
+                  </ion-item>
+                  <ion-item>
+                    <ion-icon name="calendar-outline" size="small" slot="start"></ion-icon>
+                    <ion-label class="ph-margin-right-0">Lo antes posible</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-icon name="navigate-outline" size="small" slot="start"></ion-icon>
+                    <ion-label class="ph-margin-right-0">Selecciona la ubicación</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Iniciar experiencia</ion-label>
+                    <ion-toggle disabled slot="start" color="primary"></ion-toggle>
+                  </ion-item>
+                </ion-item-group>                
+              </ion-card>
+              <ion-grid class="ion-margin-top">
+                <ion-row >
+                  <ion-col size="11" class="d-flex-row-start-start">
+                    <img class="img-avatar-xs" src="../../assets/media/hero/wedding1.jpg">
+                    <div class="msg-chat other-msg-chat w-100 ion-margin-start ion-text-start">
+                      <ion-text>
+                        <p><b><small>Eventos Guadalajara</small></b></p>
+                        <p><small>¡Muchas felicidades por su compromiso! Organizamos tu boda para cualquier número de invitados ¡Los esperamos en nuestro tablero!</small></p>
+                      </ion-text>
+                      <div class="msg-chat-time other-msg-time ">
+                          Hace 4 minutos
+                      </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+            <ion-col class="ion-hide-lg-down" size-md="12" size-lg="5">
+              <ion-card>
+                <ion-card-content class="d-flex-row-start-centered">
+                  <img class="ph-avatar-lg" src="../../assets/media/hero/painter8.jpg">
+                  <ion-label class="ion-margin-start ion-text-start">
+                    <ion-text color="dark"><b>Jorge Rodriguez <ion-icon color="primary" name="shield-checkmark"></ion-icon></b></ion-text>
+                    <ion-text color="dark"><h3>Oficio</h3></ion-text>
+                    <div class="d-flex-row-start-centered">
+                      <ion-text color="dark"><h3>A 4km</h3></ion-text>
+                      <ion-text color="dark"><h3><ion-icon class="ion-margin-start" color="medium" name="flash" slot="start"></ion-icon> 56</h3></ion-text>
+                      <ion-text color="dark"><h3><ion-icon class="ion-margin-start" color="warning" name="star" slot="start"></ion-icon> 4.99</h3></ion-text>
+                    </div>
+                  </ion-label>
+                </ion-card-content>
+                <ion-item-group>
+                  <ion-item>
+                    <ion-icon name="open-outline" size="small" slot="start"></ion-icon>
+                    <ion-label>Ver oferta</ion-label> 
+                  </ion-item>
+                  <ion-item>
+                    <ion-icon name="calendar-outline" size="small" slot="start"></ion-icon>
+                    <ion-label class="ph-margin-right-0">Lo antes posible</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-icon name="navigate-outline" size="small" slot="start"></ion-icon>
+                    <ion-label class="ph-margin-right-0">Selecciona la ubicación</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Iniciar experiencia</ion-label>
+                    <ion-toggle disabled slot="start" color="primary"></ion-toggle>
+                  </ion-item>
+                </ion-item-group>
+      
+              </ion-card>
+              <ion-grid class="ion-margin-top">
+                <ion-row >
+                  <ion-col size="11" class="d-flex-row-start-start">
+                    <img class="img-avatar-xs" src="../../assets/media/hero/painter8.jpg">
+                    <div class="msg-chat other-msg-chat w-100 ion-margin-start ion-text-start">
+                      <ion-text>
+                        <p><b><small>Jorge Rodriguez</small></b></p>
+                        <p><small>¡Hola! Tengo 15 años de experiencia en la aplicación de pintura exterior e interior. Estoy a tus órdenes...</small></p>
+                      </ion-text>
+                      <div class="msg-chat-time other-msg-time ">
+                          Hace 3 minutos
+                      </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="ion-margin-top ion-margin-bottom ion-padding-top ion-padding-bottom ion-text-center">
+          <ion-label color="medium">Interactúa con tu phesteer para definir el lugar, la hora y la logística. ¡También puedes agregar amigos a todas tus experiencias!</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="d-flex-row-center-centered" >
+      <ion-col class="ion-margin-top d-flex-col-center-centered ion-margin-bottom ion-padding" size-sm="12" size-md="auto" size-lg="auto">
+        <h6 class="font-brand-md text-primary ion-text-center ion-margin-top ion-margin-bottom ion-padding">
+          En serio, puedes publicar lo que necesites...
+        </h6>
+        <ion-button routerLink="/login" shape="round" type="button" color="primary"><b>¡Únete ahora!</b></ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-top ion-margin-top ph-border-top">
+      <ion-col class="ion-text-center ion-padding-top" size="12">
+        <div class="phestee-icon-hdr"></div>
+      </ion-col>
+      <ion-col class="ion-text-center" size="12">
+        <ion-text color="medium">
+          Info
+        </ion-text>
+        <ion-text color="medium" class="ion-margin-start">
+          FAQ's
+        </ion-text>
+        <ion-text color="medium" class="ion-margin-start">
+          Términos y condiciones
+        </ion-text>
+        <ion-text color="medium" class="ion-margin-start">
+          Inversionistas
+        </ion-text>
+      </ion-col>
+      <ion-col class="ion-text-center ion-padding-top" size="12">
+        <ion-icon class="ion-margin-end" name="logo-facebook" color="medium"></ion-icon>
+        <ion-icon name="logo-instagram" color="medium"></ion-icon>
+      </ion-col>
+      <ion-col class="ion-text-center ion-padding-bottom ion-margin-bottom" size="12">
+        <ion-text class="ion-margin-top" color="medium">
+          Phestee nació en la ciudad de Guadalajara, Jalisco. México
+        </ion-text>
+        <ion-text color="medium">
+          <h6>&copy; 2020 Phestee. Todos los derechos reservados.</h6>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
   
 </ion-content>
 
-<ion-footer class="ion-no-border">
+<!--footer menor a MD-->
+<ion-footer class="ion-no-border ion-hide-md-up" fixed>
 
-  <ion-grid fixed>
+  <ion-grid class="ion-hide-md-up" fixed>
     <ion-row class="ion-align-items-center">
       <ion-col class="home-footer" size-lg="10" offset-lg="1">
-        <ion-button routerLink="/login" shape="round" type="button" color="primary"><ion-icon name="log-in" slot="start"></ion-icon> Entrar</ion-button>
+        <ion-button routerLink="/login" shape="round" type="button" color="primary"><ion-icon name="log-in" slot="start"></ion-icon><b>Entrar</b></ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

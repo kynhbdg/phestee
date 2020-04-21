@@ -1,31 +1,35 @@
 
-ion-col{
-  height: 82vh;
+.height-sm{
+  height: 85vh;
+}
+
+.height-md{
+  height:60vh;
+}
+
+.height-lg{
+  height: 75vh;
+
+}
+
+// .grid-xl {
+//   --ion-grid-columns:14;
+// }
+
+.home-footer {
+  height: 15vh;
+  background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // padding-top: 10vh;
-  h5, h4, h6 {
-    padding: 0 .75rem;
-    margin: 1rem 0px;
-  }
 }
 
-.home-footer {
-  height: 18vh;
-  background: transparent;
-}
-
-ion-card {
+.card-margin-top {
   margin-top: 1.75rem;
   h5, h6, h4 {
     padding: 0px;
     margin: 0px;
   }
-}
-
-.ion-card-no-margin {
-  margin-top: 1rem !important;
 }
 
 // ion-card, ion-item, ion-label{
@@ -42,16 +46,29 @@ img {
   object-fit: cover;
   object-position: top;
 }
+
 .post-img-demo {
   height: 25vh;
   object-fit: cover;
   object-position: top;
 } 
 
+.post-img-demo-lg {
+  height: 30vh;
+  object-fit: cover;
+  object-position: center;
+} 
+
 .post-reactions-img {
   height: 20vh;
   object-fit: cover;
   object-position: top;
+
+}
+.post-reactions-img-lg {
+  height: 15vh;
+  object-fit: cover;
+  object-position: center;
 
 }
 
@@ -91,7 +108,7 @@ ion-button {
   margin-right: 1.5rem;
 }
 
-.top-button {
+.margin-top {
   margin-top: 2rem;
 }
 

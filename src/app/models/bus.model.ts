@@ -1,10 +1,12 @@
+import { PlaceLocation } from './location.model';
+
 export class Bus {
 
   constructor(
     public busName: string,
     public busProfile: string,
-    public busType: string,
-    public rtmMode: string, // BC: added it 04/05, this is for servicio a dom, fijo, móvil a nivel de header
+    public busType: number,
+    public rtmMode: number, // BC: added it 04/05, this is for servicio a dom, fijo, móvil a nivel de header
     public busImage?: string,
     public busRating?: number,
     public active?: boolean,
@@ -19,17 +21,6 @@ export class Bus {
     public facebook?: string,
     public linkedin?: string,
     public website?: string,
-    public address?: {
-      streetName: string,
-      streetNum: string,
-      additional: string,
-      zipCode: number,
-      city: string,
-      state: string,
-      country: string,
-      neighborhood: string,
-      lastUpdated: string,
-    },
     public certification?: [{
       isCertified?: boolean,
       documents: [{
@@ -38,10 +29,7 @@ export class Bus {
         docType?: number;
       }]
     }],
-    public busLocation?: {
-      lat: number,
-      len: number
-    },
+    public busLocation?: PlaceLocation,
     public busItems?: [{
       itemTitle: string,
       itemDesc: string,

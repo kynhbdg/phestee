@@ -8,6 +8,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class ExpChatInfoPage implements OnInit {
 
+  displayBusBoard = false;
+
   startExpFlag = false;
   acceptOfferFlag = false;
   endExpFlag = false;
@@ -32,6 +34,10 @@ export class ExpChatInfoPage implements OnInit {
       await alert.present();
     }
     return;
+  }
+
+  onDisplayBusBoard() {
+    this.displayBusBoard = !this.displayBusBoard;
   }
 
 }
