@@ -49,9 +49,10 @@ export class FeedPage implements OnInit, OnDestroy {
   }
 
   getAllPosts() {
-    this.postService.getPosts(this.token).subscribe( posts => {
+    this.postService.getPosts(this.token, this.user._id).subscribe( posts => {
       this.posts = posts;
       this.posts.reverse();
+      console.log(this.posts);
 
     }, error => console.log('Error: ' + error));
 

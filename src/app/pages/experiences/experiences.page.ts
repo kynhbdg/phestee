@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 
 import { ExpPage } from './exp/exp.page';
 
+import { urlService } from '../../config/config';
+
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -18,12 +20,13 @@ import { User } from 'src/app/models/user.model';
 export class ExperiencesPage implements OnInit, OnDestroy {
 
   showActiveFlg = true;
-  displayBlockStyle = true;
   token: string;
   user: User;
   incPostSubs: Subscription;
   userSubs: Subscription;
   tokenSubs: Subscription;
+  userPosts: any = [];
+  urlBind = urlService;
 
   constructor(
     public router: Router,
@@ -42,23 +45,34 @@ export class ExperiencesPage implements OnInit, OnDestroy {
       this.token = tokenId;
     });
 
-    this.incPostSubs = this.postService.getIncPost.subscribe( lastPost => {
-      console.log(lastPost);
+    // we need a service to source post by User ID, it is not avail in backend  right now, I'm using getPosts but fitering by _id
+    this.postService.getPostsByUserID(this.token, this.user._id).subscribe( data => {
+      this.userPosts = data;
+      this.userPosts.reverse();
+      this.addIncrementalPost();
+      console.log(this.userPosts);
     });
 
-    this.postService.getPostsByUserID(this.token, this.user._id).subscribe( data => {
-      console.log(data);
-    })
-
   }
+
+  addIncrementalPost() {
+    this.incPostSubs = this.postService.getIncPost.subscribe( (incrementalPost: any) => {
+      if (!incrementalPost || incrementalPost.post.length === 0) {
+        return;
+      }
+      const newPost = incrementalPost.post[0];
+      this.userPosts.unshift(newPost);
+    });
+  }
+
 
   experienceStatusToggle(event: any) {
     this.showActiveFlg = event.detail.value === 'done' ? false : true ;
-    this.displayBlockStyle = this.showActiveFlg === true || false ? true : true;
+    // this.displayBlockStyle = this.showActiveFlg === true || false ? true : true;
   }
 
   displayExpStyle(event: any) {
-    this.displayBlockStyle = event.detail.value === 'list' ? false : true;
+    // this.displayBlockStyle = event.detail.value === 'list' ? false : true;
   }
 
   onOpenPost(id: string) {

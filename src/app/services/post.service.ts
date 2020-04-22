@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, catchError, tap, take } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 
 import { urlService } from '../config/config';
@@ -36,24 +36,19 @@ export class PostService {
     return this.incPost;
   }
 
-  getPosts(token: string): Observable<any> {
+  getPosts(token: string, userId: string): Observable<any> {
     const headers = this.generalService.getHeaders(token);
-    return this.http.get<any>(this.urlPost, headers ).pipe(map( posts => {
-      this.allPosts.next(posts);
-      return posts.post;
-    }),
-    catchError(this._handleError.handleError));
-
+    return this.http.get<any>(this.urlPost, headers ).pipe(
+      map( res => res.post.filter((postUser: any) => postUser.userId !== userId)),
+      catchError(this._handleError.handleError));
   }
 
+  // below call needs to be enhanced once the backend has post/user/userId, once avai simply add the userId into the http.get
   getPostsByUserID(token: string, userId: string): Observable<any> {
     const headers = this.generalService.getHeaders(token);
-    return this.http.get<any>(this.urlPost + userId, headers).pipe(map( posts => {
-      console.log(posts);
-      this.postsByUserId.next(posts);
-      return posts;
-    }),
-    catchError(this._handleError.handleError));
+    return this.http.get<any>(this.urlPost, headers).pipe(
+      map( res => res.post.filter((postUser: any) => postUser.userId === userId)),
+      catchError(this._handleError.handleError));
   }
 
 

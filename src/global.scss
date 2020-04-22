@@ -401,6 +401,19 @@ p, h1, h2, h3, h4, h5, h6 {
     object-fit: cover;
     object-position: center;
 }
+
+.post-wo-image-holder {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+    background: #000000;
+    color: #FFFFFF;
+}
+
 .img-exp-grid-10 {
     height: 10vh;
     width: 100%;
