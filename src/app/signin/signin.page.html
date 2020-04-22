@@ -14,7 +14,9 @@
   <ion-grid>
     <ion-row class="ion-align-items-start">
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
-        <h3 class="ion-text-center ph-margin-top-3"><b>Regístrate</b></h3>
+        <ion-text>
+          <h3 class="ion-text-center ph-margin-top-3"><b>Regístrate</b></h3>
+        </ion-text>
         <form [formGroup]="signinForm" (ngSubmit)="onUserSignin()" class="ion-margin-top">
           <ion-list>
             <ion-item [ngClass]="{'border-left-active': emailControl.dirty && emailControl.valid, 'border-left-danger': !emailControl.valid && emailControl.touched}">

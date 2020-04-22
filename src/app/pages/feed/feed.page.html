@@ -5,109 +5,126 @@
 </ion-header>
 
 <ion-content fullscreen>
+  <ion-refresher slot="fixed" (ionRefresh)="manualFeedRefresh($event)" pullFactor="0.5" pullMin="100" pullMax="300">
+    <ion-refresher-content
+      pullingIcon="lines"
+      refreshingSpinner="lines">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-grid class="ion-no-padding">
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-              <img class="img-feed-post" src="../../assets/media/hero/apartment.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 5 minutos | A 2km</ion-card-subtitle>
-                <ion-card-title>Quiero pintar mi depa</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered">
-                <ion-button (click)="makeOffer('123')" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  6</ion-button>
-                <ion-button shape="round" color="dark" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  3</ion-button>
-              </ion-card-content>
-            </ion-card>
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-              <img class="img-feed-post" src="../../assets/media/sonBirthday.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 10 minutos | A 2km</ion-card-subtitle>
-                <ion-card-title>El rey de la casa cumple años el sábado</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered">
-                <ion-button (click)="makeOffer('123')" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  15</ion-button>
-                <ion-button shape="round" color="dark" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  3</ion-button>
-              </ion-card-content>
-            </ion-card>
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-              <img class="img-feed-post" src="../../assets/media/haircutneed.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 10 minutos | A 2km</ion-card-subtitle>
-                <ion-card-title>¡Quiero mi corte de cabello así!</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered">
-                <ion-button (click)="makeOffer('123')" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  3</ion-button>
-                <ion-button shape="round" color="dark" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  0</ion-button>
-              </ion-card-content>
-            </ion-card>
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-              <img class="img-feed-post" src="../../assets/media/piano.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 8 minutos | A 3km</ion-card-subtitle>
-                <ion-card-title>Mi piano está desafinado...</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered">
-                <ion-button (click)="makeOffer('123')" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  4</ion-button>
-                <ion-button shape="round" color="dark" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  0</ion-button>
-              </ion-card-content>
-            </ion-card>
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-              <img class="img-feed-post" src="../../assets/media/dogo.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 4 horas | A 8km</ion-card-subtitle>
-                <ion-card-title>¿Alguien que cuide a mi perrito lolo por una semana? </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered">
-                <ion-button shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  3</ion-button>
-                <ion-button shape="round" color="dark" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  1</ion-button>
-              </ion-card-content>
-            </ion-card>
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-              <img class="img-feed-post" src="../../assets/media/laura.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 5 minutos | A menos de 3km</ion-card-subtitle>
-                <ion-card-title>Estamos de visita en la ciudad ¡Sorpréndenos Guadalajara!</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered">
-                <ion-button shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  25</ion-button>
-                <ion-button shape="round" color="dark" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  4</ion-button>
-              </ion-card-content>
-            </ion-card>
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-              <img class="img-feed-post" src="../../assets/media/laura2.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 14 minutos | A 1km</ion-card-subtitle>
-                <ion-card-title>Maria cumple años mañana</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered">
-                <ion-button shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  15</ion-button>
-                <ion-button shape="round" color="dark" fill="clear" disabled><ion-icon name="people-outline" slot="start"></ion-icon>  0</ion-button>
-              </ion-card-content>
-            </ion-card>
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-              <img class="img-feed-post" src="../../assets/media/media/hero/wedding.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 4 horas | A 11km</ion-card-subtitle>
-                <ion-card-title>¡Nos casamos el próximo año! 💍</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered">
-                <ion-button shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  23</ion-button>
-                <ion-button shape="round" color="dark" fill="clear" disabled><ion-icon name="people" slot="start"></ion-icon>  8</ion-button>
-              </ion-card-content>
-            </ion-card>
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-              <img class="img-feed-post" src="../../assets/media/woman2.jpg"/>
-              <ion-card-header>
-                <ion-card-subtitle>Hace 2 días | A menos de 1km</ion-card-subtitle>
-                <ion-card-title>Me corrieron de mi trabajo, necesito un abogado </ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="d-flex-row-between-centered">
-                <ion-button shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  15</ion-button>
-                <ion-button shape="round" color="dark" fill="clear" disabled><ion-icon name="people" slot="start"></ion-icon>  3</ion-button>
-              </ion-card-content>
-            </ion-card>
+
+        <ion-list class="bg-transparent">
+
+          <ion-card *ngFor="let post of posts" class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
+
+            <img *ngIf="post.postImages.length === 1" class="img-feed-post" [src]="urlBind + post.postImages[0]"/>
+
+            <ion-slides *ngIf="post.postImages.length > 1" pager="true">
+              <ion-slide *ngFor="let img of post.postImages">
+                <div class="post-photo-carroussel">
+                  <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon>-->
+                  <ion-img class="img-carroussel" [src]="urlBind + img"></ion-img>
+                </div>
+              </ion-slide>
+            </ion-slides>
+
+            <ion-card-header>
+              <ion-card-subtitle>Hace 5 minutos | A 2km</ion-card-subtitle>
+              <ion-card-title>{{ post.post }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="d-flex-row-between-centered">
+              <ion-button (click)="makeOffer('123')" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> {{ post.hands.length }}</ion-button>
+              <ion-button shape="round" color="dark" fill="clear" ><ion-icon name="people-outline" slot="start"></ion-icon> {{ post.providers.length }}</ion-button>
+            </ion-card-content>
+          </ion-card>
+
+<!--           
+          <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
+            <ion-slides pager="true">
+  
+              <ion-slide>
+                <div class="post-photo-carroussel">
+                  <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon> 
+                  <ion-img class="img-carroussel" src="../../assets/media/cake2.jpg"></ion-img>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="post-photo-carroussel">
+                  <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon> 
+                  <ion-img class="img-carroussel" src="../../assets/media/laura.jpg"></ion-img>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="post-photo-carroussel">
+                  <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon> 
+                  <ion-img class="img-carroussel" src="../../assets/media/party.jpg"></ion-img>
+                </div>
+              </ion-slide>
+    
+            </ion-slides>
+            <ion-card-header class="ion-no-padding ion-padding-end ion-padding-bottom ion-padding-start">
+              <ion-card-subtitle>Hace 10 minutos | A 2km</ion-card-subtitle>
+              <ion-card-title>Necesito varias cosas, ir al cine, ir a comer, lavar la ropa, comprar un sueter negro, también mi familia tiene una fiesta la siguiente semana y tengo que llevar los refrecos y la carne y también las chelas...</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="d-flex-row-between-centered">
+              <ion-button (click)="makeOffer('123')" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  15</ion-button>
+              <ion-button shape="round" color="dark" fill="clear" ><ion-icon name="people-outline" slot="start"></ion-icon>  3</ion-button>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
+            <img class="img-feed-post" src="../../assets/media/dogo.jpg"/>
+            <ion-card-header>
+              <ion-card-subtitle>Hace 5 minutos | A 2km</ion-card-subtitle>
+              <ion-card-title>Alguien puede cuidar a mi perro el siguiente fin de semana?</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="d-flex-row-between-centered">
+              <ion-button (click)="makeOffer('123')" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  6</ion-button>
+              <ion-button shape="round" color="dark" fill="clear" ><ion-icon name="people-outline" slot="start"></ion-icon>  3</ion-button>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
+            <ion-slides pager="true">
+  
+              <ion-slide>
+                <div class="post-photo-carroussel">
+                  <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon>
+                  <ion-img class="img-carroussel" src="../../assets/media/friendship.jpg"></ion-img>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="post-photo-carroussel">
+                  <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon> 
+                  <ion-img class="img-carroussel" src="../../assets/media/guyAvatar.jpg"></ion-img>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="post-photo-carroussel">
+                  <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon> 
+                  <ion-img class="img-carroussel" src="../../assets/media/oldwoman.jpg"></ion-img>
+                </div>
+              </ion-slide>
+    
+            </ion-slides>
+            <ion-card-header class="ion-no-padding ion-padding-end ion-padding-bottom ion-padding-start">
+              <ion-card-subtitle>Hace 10 minutos | A 2km</ion-card-subtitle>
+              <ion-card-title>Necesito varias cosas, ir al cine, ir a comer, lavar la ropa, comprar un sueter negro, también mi familia tiene una fiesta la siguiente semana y tengo que llevar los refrecos y la carne y también las chelas...</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="d-flex-row-between-centered">
+              <ion-button (click)="makeOffer('123')" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon>  15</ion-button>
+              <ion-button shape="round" color="dark" fill="clear" ><ion-icon name="people-outline" slot="start"></ion-icon>  3</ion-button>
+            </ion-card-content>
+          </ion-card> -->
+        </ion-list>
+
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="dots">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
 
       </ion-col>
     </ion-row>

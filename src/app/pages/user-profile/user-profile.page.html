@@ -48,91 +48,40 @@
             </ion-card-content>
 
           </ion-card>
+          
+        <ion-button (click)="onAddNewBusiness()" expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon>Agregar tablero</ion-button>
 
         <ion-item-divider>
           <b>Ingreso de tableros</b>
-          <ion-chip slot="end" color="primary"><b>$7,299.32</b></ion-chip>
+          <ion-chip slot="end" color="primary"><b>$0.00</b></ion-chip>
         </ion-item-divider>
 
-        <ion-card (click)="openBoard('123')" class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
+
+        <ion-card *ngFor="let bus of ownedBus" (click)="openBoard('123')" class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
 
           <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom ion-margin-top ph-border-bottom">
             <ion-avatar>
-              <img src="./../assets/media/cake.jpg">
+              <img [src]="urlBind + busImage">
             </ion-avatar>
             <ion-text class="ion-margin-start" color="dark">
-              <h2><b>pastelesGDL</b></h2>
-              <h3>Negocio</h3>
+              <h2><b>{{ bus.busProfile}}</b></h2>
+              <h3>{{ bus.busType }}</h3>
             </ion-text>
             <ion-card-title class="ion-text-center ph-margin-right-0">
-              <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,95</h2>
+              <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> {{ bus.busRating }}</h2>
             </ion-card-title>
           </ion-card-content>
 
           <ion-card-content class="d-flex-row-between-centered w-100">
             <ion-card-title class="ion-text-center">
-              <h3>25 Interacciones</h3>
+              <h3>0 Interacciones</h3>
             </ion-card-title>
             <ion-card-title class="ion-text-center">
-              <h3>Ingreso $4,6K</h3>
+              <h3>Ingreso $0.00</h3>
             </ion-card-title>
           </ion-card-content>
 
         </ion-card>
-
-        <ion-card class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
-
-          <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom ion-margin-top ph-border-bottom">
-            <ion-avatar>
-              <img src="./../assets/media/woman.jpg">
-            </ion-avatar>
-            <ion-text class="ion-margin-start" color="dark">
-              <h2><b>lauraGarcia</b></h2>
-              <h3>Comunidad</h3>
-            </ion-text>
-            <ion-card-title class="ion-text-center ph-margin-right-0">
-              <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,75</h2>
-            </ion-card-title>
-          </ion-card-content>
-
-          <ion-card-content class="d-flex-row-between-centered w-100">
-            <ion-card-title class="ion-text-center">
-              <h3>22 Interacciones</h3>
-            </ion-card-title>
-            <ion-card-title class="ion-text-center">
-              <h3>Ingreso $2,6K</h3>
-            </ion-card-title>
-          </ion-card-content>
-
-        </ion-card>
-
-        <!-- <ion-card class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
-
-          <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom ion-margin-top">
-            <ion-avatar>
-              <img src="./../assets/media/laura2.jpg">
-            </ion-avatar>
-            <ion-text class="ion-margin-start" color="dark">
-              <h2><b>legalCos</b></h2>
-              <h3>Profesional</h3>
-            </ion-text>
-            <ion-card-title class="ion-text-center ph-margin-right-0">
-              <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> 4,87</h2>
-            </ion-card-title>
-          </ion-card-content>
-
-          <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom">
-            <ion-card-title class="ion-text-center">
-              <h3>15 Interacciones</h3>
-            </ion-card-title>
-            <ion-card-title class="ion-text-center">
-              <h3>Ingreso  $3,1K</h3>
-            </ion-card-title>
-          </ion-card-content>
-
-        </ion-card> -->
-
-        <ion-button (click)="onAddNewBusiness()" expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon>Agregar tablero</ion-button>
 
       </ion-col>
     </ion-row>

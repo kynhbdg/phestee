@@ -75,6 +75,15 @@ export class UserService {
       }
     }));
   }
+  get userId() {
+    return this.user.asObservable().pipe(map( user => {
+      if (this.user) {
+        return user._id;
+      } else {
+        return null;
+      }
+    }));
+  }
 
 
   login( user: User ) {
@@ -109,6 +118,29 @@ export class UserService {
     catchError(this._handleError.handleError));
   }
 
+  updateBus( postType: string, body: any, userId: string, token: string, imgProcessed?: File): Observable<any> {
+
+
+    // pending for bus Image change
+    // if ( imgProcessed) {
+    //   return this.generalService.reqWithImgs(postType, body, userId, token, [], imgProcessed ).pipe(map((res: any) => {
+    //     return res;
+    //   }),
+    //   catchError(this._handleError.handleError));
+    // }
+
+    const url = urlService + '/api/user/bus/' + userId;
+    const headers = this.generalService.getHeaders(token);
+
+    return this.http.post<Bus>(url, body, headers).pipe(map((res: any) => {
+      this.saveStorage(res.user._id, res.token, res.user, res.bus);
+      console.log(this.user);
+      return res;
+    }),
+    catchError(this._handleError.handleError));
+
+  }
+
   saveStorage( id: string, token: string, user: User, bus: Bus ) {
 
     const userData = JSON.stringify({
@@ -122,6 +154,8 @@ export class UserService {
       key: 'userData',
       value: userData
     });
+
+    this.loadStorage();
 
   }// end saveStorage
 

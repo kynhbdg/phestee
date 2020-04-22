@@ -14,17 +14,40 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-        <ion-card>
-          <img class="img-feed-exp" src="../../assets/media/stress.jpg"/>
-          <ion-card-header>
+
+        <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
+          <ion-slides pager="true">
+
+            <ion-slide>
+              <div class="post-photo-carroussel">
+                <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon> -->
+                <ion-img class="img-carroussel" src="../../assets/media/friendship.jpg"></ion-img>
+              </div>
+            </ion-slide>
+            <ion-slide>
+              <div class="post-photo-carroussel">
+                <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon> -->
+                <ion-img class="img-carroussel" src="../../assets/media/guyAvatar.jpg"></ion-img>
+              </div>
+            </ion-slide>
+            <ion-slide>
+              <div class="post-photo-carroussel">
+                <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon> -->
+                <ion-img class="img-carroussel" src="../../assets/media/oldwoman.jpg"></ion-img>
+              </div>
+            </ion-slide>
+  
+          </ion-slides>
+          <ion-card-header class="ion-no-padding ion-padding-end ion-padding-bottom ion-padding-start">
             <ion-card-subtitle>Hace 10 minutos | A 2km</ion-card-subtitle>
-            <ion-card-title>Necesito un corte de cabello</ion-card-title>
+            <ion-card-title>Necesito varias cosas, ir al cine, ir a comer, lavar la ropa, comprar un sueter negro, también mi familia tiene una fiesta la siguiente semana y tengo que llevar los refrecos y la carne y también las chelas...</ion-card-title>
           </ion-card-header>
           <ion-card-content class="d-flex-row-between-centered">
-            <ion-button shape="round" color="light"><ion-icon class="rotated-15" color="primary" name="hand-left" slot="start"></ion-icon>  15</ion-button>
-            <ion-button shape="round" color="medium" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  0</ion-button>
+            <ion-button shape="round" color="light"><ion-icon class="rotated-15" name="hand-left" color="primary" slot="start"></ion-icon>  15</ion-button>
+            <ion-button shape="round" color="dark" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  3</ion-button>
           </ion-card-content>
         </ion-card>
+
 
         <div class="ion-padding ion-text-center">
           <h6>Ésta publicación coincide con tu tablero <span><b>@esteticaMX</b></span>. Selecciona los items para realizar una oferta.</h6>

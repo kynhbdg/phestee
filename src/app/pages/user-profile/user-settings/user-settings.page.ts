@@ -138,40 +138,6 @@ onLocationPicked(location: PlaceLocation) {
 
   }
 
-
-
-  async presentPhotoOptions() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Actualizar foto de perfil',
-      buttons: [{
-        text: 'Tomar foto',
-        icon: 'camera-outline',
-        handler: () => {
-          console.log('abrir camara');
-          }
-        },
-        {
-          text: 'Abrir galeria',
-          icon: 'images-outline',
-          handler: () => {
-            console.log('abrir galeria');
-          }
-        },
-        {
-          text: 'Cancelar',
-          role: 'destructive',
-          icon: 'close-circle-outline',
-          handler: () => {
-            console.log('abrir galeria');
-          }
-        }
-      ]
-    });
-
-    await actionSheet.present();
-
-  }
-
   onUserUpdate(img?: File) {
     const lastUpdated = new Date(Date.now());
     if (img) {

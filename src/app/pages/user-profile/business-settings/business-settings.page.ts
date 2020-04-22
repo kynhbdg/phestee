@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
-
 import { ActionSheetController, AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
-import { BusinessProfilePageModule } from '../business-profile/business-profile.module';
+import { Subscription } from 'rxjs';
 
 import { Bus } from '../../..//models/bus.model';
+import { User } from 'src/app/models/user.model';
+
 import { PlaceLocation } from '../../../models/location.model';
+
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -14,13 +18,17 @@ import { PlaceLocation } from '../../../models/location.model';
   templateUrl: './business-settings.page.html',
   styleUrls: ['./business-settings.page.scss'],
 })
-export class BusinessSettingsPage implements OnInit {
+export class BusinessSettingsPage implements OnInit, OnDestroy {
 
   businessSettingForm: FormGroup;
-  business: Bus;
-  busToSend = {};
+  busBody: Bus;
+  user: User;
+  token: string;
   isMapLoaded = false;
   showCertifcationForm = false;
+  addressDisabled = false;
+  userSubs: Subscription;
+  tokenSubs: Subscription;
 
 
 
@@ -48,16 +56,6 @@ export class BusinessSettingsPage implements OnInit {
     'Comprobante de domicilio' // 5
   ];
 
-  // citiesJal = [
-  //   'El Salto',
-  //   'Guadalajara',
-  //   'Tlajomulco',
-  //   'Tlaquepaque',
-  //   'Tonalá',
-  //   'Zapopan',
-  //   'Otra'
-  // ];
-
   // this is for the items
   // txnTypes = [
   //   'Venta',
@@ -69,7 +67,9 @@ export class BusinessSettingsPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public actionSheetController: ActionSheetController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    public _userService: UserService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -80,8 +80,8 @@ export class BusinessSettingsPage implements OnInit {
       busType: new FormControl(this.busTypesArray[0], [ Validators.required ]),
       rtmMode: new FormControl(this.rtmModesArray[0], [ Validators.required ]),
       busImage: new FormControl(''),
-      busRating: new FormControl(''),
-      active: new FormControl(''),
+      busRating: new FormControl(5),
+      active: new FormControl(true),
       licencetype: new FormControl(''),
       landaline: new FormControl('', [ Validators.minLength(10), Validators.maxLength(10) ]),
       cellphone: new FormControl('',  [ Validators.minLength(10), Validators.maxLength(10) ]),
@@ -103,18 +103,26 @@ export class BusinessSettingsPage implements OnInit {
         address: new FormControl(''),
         addressComponents: new FormGroup({
           streetNum: new FormControl(''),
-          streetName: new FormControl({ value: '', disabled: true }),
-          neighborhood: new FormControl({ value: '', disabled: true }),
+          streetName: new FormControl({value: '', disabled: this.addressDisabled }),
+          neighborhood: new FormControl({value: '', disabled: this.addressDisabled }),
           additional: new FormControl(''),
-          city: new FormControl({ value: '', disabled: true }),
-          state: new FormControl({ value: '', disabled: true }),
-          country: new FormControl({ value: '', disabled: true }),
-          zipCode: new FormControl({ value: '', disabled: true }),
+          city: new FormControl({value: '', disabled: this.addressDisabled }),
+          state: new FormControl({value: '', disabled: this.addressDisabled }),
+          country: new FormControl({value: '', disabled: this.addressDisabled }),
+          zipCode: new FormControl({value: '', disabled: this.addressDisabled }),
         }),
         staticMapImageUrl: new FormControl(''),
         lastUpdated: new FormControl('')
       })
 
+    });
+
+    this.userSubs =  this._userService.user.subscribe( userData => {
+      this.user = userData;
+    });
+
+    this.tokenSubs = this._userService.token.subscribe( tokenId => {
+      this.token = tokenId;
     });
 
     this.onFormChanges();
@@ -128,6 +136,7 @@ export class BusinessSettingsPage implements OnInit {
   }
 
   onLocationPicked(location: PlaceLocation) {
+
     this.busLocationForm.patchValue({
       lat: location.lat,
       lng: location.lng,
@@ -143,8 +152,10 @@ export class BusinessSettingsPage implements OnInit {
         zipCode: location.addressComponents[6].long_name
       },
       staticMapImageUrl: location.staticMapImageUrl,
-      lastUpdated: Date.now()
+      lastUpdated: new Date(Date.now())
     });
+    console.log('form', this.busLocationForm.get('addressComponents').value);
+    this.addressDisabled = !!this.busLocationForm.get('addressComponents').value;
   }
 
   get busNameForm() {
@@ -207,37 +218,6 @@ export class BusinessSettingsPage implements OnInit {
     }).then( alertEl => alertEl.present());
   }
 
-  async presentPhotoOptions() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Actualizar foto de perfil',
-      buttons: [{
-        text: 'Tomar foto',
-        icon: 'camera-outline',
-        handler: () => {
-          console.log('abrir camara');
-          }
-        },
-        {
-          text: 'Abrir galeria',
-          icon: 'images-outline',
-          handler: () => {
-            console.log('abrir galeria');
-          }
-        },
-        {
-          text: 'Cancelar',
-          role: 'destructive',
-          icon: 'close-circle-outline',
-          handler: () => {
-            console.log('abrir galeria');
-          }
-        }
-      ]
-    });
-
-    await actionSheet.present();
-
-  }
 
   onBusUpdate(id?: any) {
 
@@ -246,24 +226,42 @@ export class BusinessSettingsPage implements OnInit {
     }
     const curatedBus = this.businessSettingForm.value;
 
+    if ( curatedBus.busProfile ) {
+      curatedBus.busProfile = curatedBus.busProfile.trim().replace(/ /g, '');
+      this.busBody =  { ...curatedBus };
+    }
+
     if ( curatedBus.busType ) {
       curatedBus.busType = this.busTypesArray.indexOf(curatedBus.busType);
-      this.busToSend =  { ...curatedBus };
+      this.busBody =  { ...curatedBus };
     }
 
     if ( curatedBus.rtmMode ) {
       curatedBus.rtmMode = this.rtmModesArray.indexOf(curatedBus.rtmMode);
-      this.busToSend =  { ...curatedBus };
+      this.busBody =  { ...curatedBus };
     }
 
     for ( const obj of curatedBus.certification.documents ) {
       if ( obj.docType ) {
         obj.docType = this.certificationTypesArray.indexOf(obj.docType);
-        this.busToSend = { ...curatedBus };
+        this.busBody = { ...curatedBus };
       }
     }
 
-    console.log(this.busToSend);
+    console.log(this.busLocationForm);
+
+    this._userService.updateBus('busUpdate', this.busBody, this.user._id, this.token).subscribe( res => {
+      console.log(res);
+    }, error => console.log('Error: ' + error));
+
+    this.router.navigate(['/', 'pages', 'tabs', 'user']);
+    this.businessSettingForm.reset();
 
   }
+
+  ngOnDestroy() {
+    this.userSubs.unsubscribe();
+    this.tokenSubs.unsubscribe();
+  }
+
 }

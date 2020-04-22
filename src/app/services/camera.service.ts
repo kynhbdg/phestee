@@ -70,7 +70,7 @@ export class CameraService {
         return;
       }
       Plugins.Camera.getPhoto({
-        quality: 100,
+        quality: 90,
         source: CameraSource.Prompt,
         allowEditing: true,
         correctOrientation: true,
@@ -93,8 +93,8 @@ export class CameraService {
     }
 
     compressFile(img: string) {
-      const ratio = 80;
-      const quality = 80;
+      const ratio = 70;
+      const quality = 70;
 
       this.imageCompress.compressFile(img, ratio, quality).then(
         result => {

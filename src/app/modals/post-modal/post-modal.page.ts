@@ -139,12 +139,6 @@ export class PostModalPage implements OnInit, OnDestroy {
 
   }
 
-  // private addImageControl(img: any) {
-  //   return this.formBuilder.control({
-  //     img: new FormControl(img)
-  //   });
-  // }
-
   removePhotoCarrsl(i: number) {
     this.cameraService.removePhotoCarroussel(i);
   }
@@ -159,9 +153,9 @@ export class PostModalPage implements OnInit, OnDestroy {
 
     this._postService.createPost('postUser', postBody, this.user._id, this.token, picArray ).subscribe( res => {
       console.log(res);
+      this.router.navigate(['/', 'pages', 'tabs', 'experiences']);
     }, error => console.log('Error: ' + error));
 
-    this.router.navigate(['/', 'pages', 'tabs', 'experiences']);
     this.cameraService.picFiles = [];
     this.cameraService.picUrl = [];
     this.postForm.reset();
