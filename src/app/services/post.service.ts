@@ -19,9 +19,8 @@ import { UserService } from './user.service';
 export class PostService {
 
   urlPost = urlService + '/api/post/';
+  urlPostByUserID = urlService + '/api/user/post/';
   incPost = new Subject<void>();
-  allPosts = new BehaviorSubject<any>('');
-  postsByUserId = new BehaviorSubject<any>('');
 
   // posts = new BehaviorSubject<any>(null); We may need to use this for autorefresh in Feed...
 
@@ -46,11 +45,17 @@ export class PostService {
   // below call needs to be enhanced once the backend has post/user/userId, once avai simply add the userId into the http.get
   getPostsByUserID(token: string, userId: string): Observable<any> {
     const headers = this.generalService.getHeaders(token);
-    return this.http.get<any>(this.urlPost, headers).pipe(
+    return this.http.get<any>(this.urlPostByUserID + userId, headers).pipe(
       map( res => res.post.filter((postUser: any) => postUser.userId === userId)),
       catchError(this._handleError.handleError));
   }
 
+  getPostbyPostId( token: string, postId: string): Observable<any> {
+    const headers = this.generalService.getHeaders(token);
+    return this.http.get<Post>(this.urlPost + postId, headers).pipe(
+      map( res => res),
+      catchError(this._handleError.handleError));
+  }
 
   createPost( postType: string, body: any, userId: string, token: string, picArray?: Array<File>): Observable<any> {
 

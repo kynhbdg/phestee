@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { PostModalPage } from '../../modals/post-modal/post-modal.page';
 import { Subscription } from 'rxjs';
 
 import { ExpPage } from './exp/exp.page';
@@ -50,7 +51,6 @@ export class ExperiencesPage implements OnInit, OnDestroy {
       this.userPosts = data;
       this.userPosts.reverse();
       this.addIncrementalPost();
-      console.log(this.userPosts);
     });
 
   }
@@ -65,6 +65,13 @@ export class ExperiencesPage implements OnInit, OnDestroy {
     });
   }
 
+  openModalPost() {
+    this.modalController.create({
+      component: PostModalPage
+    }).then( (modalElement ) => {
+      modalElement.present();
+    });
+  }
 
   experienceStatusToggle(event: any) {
     this.showActiveFlg = event.detail.value === 'done' ? false : true ;

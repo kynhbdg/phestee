@@ -30,16 +30,16 @@
               <img src="./../assets/media/woman.jpg">
             </ion-avatar>
             <ion-card-title class="ion-text-center">
-              <h2><b>25</b></h2>
+              <h2><b>0</b></h2>
               <h3>Experiencias</h3>
             </ion-card-title>
             <ion-card-title class="ion-text-center">
-              <h2><b>$5,3K</b></h2>
+              <h2><b>$0.00</b></h2>
               <h3>Gasto aprox.</h3>
             </ion-card-title>
             <ion-card-title class="ion-text-center">
               <h2><ion-icon color="warning" name="star" slot="start"></ion-icon></h2>
-              <h3>4,95</h3>
+              <h3>5</h3>
             </ion-card-title>
           </ion-card-content>
         </ion-card>
@@ -47,17 +47,29 @@
         <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="showActiveFlg">
 
 
-          <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="userPosts">
+          <ion-item-group class="ion-no-padding ion-no-margin">
             
             <ion-grid class="ion-no-padding ion-margin-top">
-              <ion-row class="ion-no-padding">
-                <ion-col *ngFor="let post of userPosts" class="padding-grid-2col" (click)="onOpenPost('123')" size="6">
+
+              <ion-row *ngIf="userPosts.length > 0" class="ion-no-padding">
+                <ion-col *ngFor="let post of userPosts" class="padding-grid-2col" (click)="onOpenPost(post._id)" size="6">
                   <ion-img *ngIf="post.postImages.length > 0" class="img-exp-grid-20" [src]="urlBind + post.postImages[0]"></ion-img>
                   <div *ngIf="post.postImages.length === 0" class="post-wo-image-holder">
                     <ion-text class="ion-text-center"> <h6>{{ post.post }}</h6></ion-text>
                   </div>
                 </ion-col>
               </ion-row>
+
+              <ion-row *ngIf="userPosts.length === 0 ">
+                <ion-col class="d-flex-col-center-centered" >
+                  <ion-text class="ion-padding ion-margin-bottom ion-text-center" color="medium">Parece que no tienes ninguna experiencia activa. Puedes empezar aquí abajo 👇</ion-text>
+                  <ion-button (click)="openModalPost()" shape="round"><b>Crea una publicación</b></ion-button>
+                  <ion-button routerLink="/pages/tabs/feed" shape="round" fill="clear">Checa lo que se está publicando</ion-button>
+
+                </ion-col>
+
+              </ion-row>
+
             </ion-grid>
 
           </ion-item-group>
@@ -66,16 +78,7 @@
 
         <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="!showActiveFlg">
 
-          <ion-segment (ionChange)="displayExpStyle($event)" value="blocks">
-            <ion-segment-button value="blocks">
-              <ion-icon name="grid-outline"></ion-icon>
-            </ion-segment-button>
-            <ion-segment-button value="list">
-              <ion-icon name="menu-outline"></ion-icon>
-            </ion-segment-button>
-          </ion-segment>
-
-          <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="displayBlockStyle">
+          <ion-item-group class="ion-no-padding ion-no-margin">
             
             <ion-grid class="ion-no-padding ion-margin-top">
               <ion-row>
@@ -94,101 +97,11 @@
                 <ion-col (click)="onOpenPost('123')" size="6">
                   <ion-img src="../../assets/media/woman2.jpg"></ion-img>
                 </ion-col>
-                <!-- <ion-col (click)="onOpenPost('123')" size="6">
-                  <ion-img src="../../assets/media/laura.jpg"></ion-img>
-                </ion-col> -->
               </ion-row>
             </ion-grid>
 
           </ion-item-group>
 
-          <ion-item-group class="ion-no-padding ion-no-margin" *ngIf="!displayBlockStyle">
-
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
-              <!-- <img class="img-simple-card" src="../../assets/media/woman2.jpg"> -->
-              <ion-card-header>
-                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                <ion-card-title>
-                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-                    también unas estripers, escorts, o como sea... urge por favor!</h5>
-                </ion-card-title>
-                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
-                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
-                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
-                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
-                </ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>        
-            
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
-              <img class="img-simple-card" src="../../assets/media/woman2.jpg">
-              <ion-card-header>
-                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                <ion-card-title>
-                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-                    también unas estripers, escorts, o como sea... urge por favor!</h5>
-                </ion-card-title>
-                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
-                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
-                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
-                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
-                </ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>          
-
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
-              <img class="img-simple-card" src="../../assets/media/friendship.jpg">
-              <ion-card-header>
-                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                <ion-card-title>
-                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-                    también unas estripers, escorts, o como sea... urge por favor!</h5>
-                </ion-card-title>
-                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
-                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
-                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
-                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
-                </ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>
-
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
-              <img class="img-simple-card" src="../../assets/media/woman2.jpg">
-              <ion-card-header>
-                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                <ion-card-title>
-                  <h5 class="text-truncated-one-line">Tengo dos amigos que cumplen años, un es el viernes y el otro es el pròximo sabado. Quiero organizar uan fiesta en una bodega, con globos y DJ, 
-                    también unas estripers, escorts, o como sea... urge por favor!</h5>
-                </ion-card-title>
-                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon><b> 3</b></h6>
-                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon><b> 35</b></h6>
-                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon><b> 45</b></h6>
-                  <h6 class="ph-margin-right-0"><b>$5,6k</b></h6>
-                </ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>
-
-            <ion-card class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0" (click)="onOpenPost('123')">
-              <img class="img-simple-card" src="../../assets/media/dog1.jpg">
-              <ion-card-header>
-                <ion-card-subtitle>Hace 2 horas</ion-card-subtitle>
-                <ion-card-title>
-                  <h5 class="text-truncated-one-line">Me voy de viaje y mi perro se va a quedar solo, quièn lo cuida?</h5>
-                </ion-card-title>
-                <ion-card-subtitle class="ion-margin-top d-flex-row-start-centered">
-                  <h6><ion-icon name="flash-outline" slot="start"></ion-icon> 0</h6>
-                  <h6 class="ion-margin-start"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> 0</h6>
-                  <h6 class="ion-margin-start"><ion-icon name="people-outline" slot="start"></ion-icon> 0</h6>
-                  <h6 class="ph-margin-right-0"><b>$0.00</b></h6>
-                </ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>  
-
-          </ion-item-group>
 
         </ion-item-group>
 

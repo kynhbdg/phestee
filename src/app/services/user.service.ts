@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 
 import { Plugins } from '@capacitor/core';
 
-import { from, of, BehaviorSubject, Observable } from 'rxjs';
+import { from, of, BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
 import { Bus } from '../models/bus.model';
@@ -20,9 +20,11 @@ import { GeneralService } from './general.service';
 })
 export class UserService {
 
-  user = new BehaviorSubject<User>(null);
   bus: Bus;
+  user = new BehaviorSubject<User>(null);
   token = new BehaviorSubject<string>(null);
+  incBus = new Subject<void>();
+  userBusUrl = urlService + '/api/user/bus/';
 
   constructor(
         public http: HttpClient,
@@ -56,6 +58,24 @@ export class UserService {
     }));
   }
 
+  saveStorage( id: string, token: string, user: User, bus: Bus ) {
+
+    const userData = JSON.stringify({
+      id,
+      token,
+      user,
+      bus
+    });
+
+    Plugins.Storage.set({
+      key: 'userData',
+      value: userData
+    });
+
+    this.loadStorage();
+
+  }// end saveStorage
+
   get userLoggedIn() {
     return this.token.asObservable().pipe(map( token => {
         if (this.user) {
@@ -85,7 +105,6 @@ export class UserService {
     }));
   }
 
-
   login( user: User ) {
     const url = urlService + '/user/login';
     return this.http.post<User>(url, user).pipe(
@@ -111,6 +130,7 @@ export class UserService {
     catchError(this._handleError.handleError));
   }// end createUser
 
+
   loadImgProfile(postType: string, body: any, id: string, token: string, imgProcessed: File): Observable<any> {
     return this.generalService.reqWithImgs(postType, body, id, token, [], imgProcessed ).pipe(map((res: any) => {
       return res;
@@ -129,35 +149,19 @@ export class UserService {
     //   catchError(this._handleError.handleError));
     // }
 
-    const url = urlService + '/api/user/bus/' + userId;
+    const url = this.userBusUrl + userId;
     const headers = this.generalService.getHeaders(token);
 
     return this.http.post<Bus>(url, body, headers).pipe(map((res: any) => {
       this.saveStorage(res.user._id, res.token, res.user, res.bus);
-      console.log(this.user);
       return res;
+    }),
+    tap( bus => {
+      this.incBus.next(bus.user.ownedBus);
     }),
     catchError(this._handleError.handleError));
 
   }
-
-  saveStorage( id: string, token: string, user: User, bus: Bus ) {
-
-    const userData = JSON.stringify({
-      id,
-      token,
-      user,
-      bus
-    });
-
-    Plugins.Storage.set({
-      key: 'userData',
-      value: userData
-    });
-
-    this.loadStorage();
-
-  }// end saveStorage
 
   logout() {
     this.token.next(null);

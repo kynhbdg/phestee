@@ -38,22 +38,25 @@ export class FeedPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSubs =  this._userService.user.subscribe( userData => {
       this.user = userData;
-    });
+    }, error => console.log('Error: ' + error));
 
     this.tokenSubs = this._userService.token.subscribe( tokenId => {
       this.token = tokenId;
-    });
+    }, error => console.log('Error: ' + error));
 
     this.getAllPosts();
 
+  }
+
+  manualFeedRefresh(event: any) {
+    this.getAllPosts();
+    event.target.complete();
   }
 
   getAllPosts() {
     this.postService.getPosts(this.token, this.user._id).subscribe( posts => {
       this.posts = posts;
       this.posts.reverse();
-      console.log(this.posts);
-
     }, error => console.log('Error: ' + error));
 
   }
@@ -63,18 +66,11 @@ export class FeedPage implements OnInit, OnDestroy {
     this.router.navigate(['/', 'pages', 'tabs', 'feed', 'raise-hand', id]);
   }
 
-  manualFeedRefresh(event: any) {
-    console.log('Begin async operation');
-    this.getAllPosts();
-    event.target.complete();
-    console.log('Finish async operation');
-  }
 
   loadData(event: any) {
 
     // aqui va la lógica para llamar llamar más posts desde el back o desde una var aqui
     setTimeout(() => {
-      console.log('Done');
       event.target.complete();
 
     }, 1000);

@@ -48,27 +48,31 @@
             </ion-card-content>
 
           </ion-card>
+
+        
+        <div class="d-flex-row-center-centered ion-margin-bottom">
+          <ion-button (click)="onAddNewBusiness()" shape="round" type="button" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon><b>Agregar tablero</b></ion-button>
+        </div>
           
-        <ion-button (click)="onAddNewBusiness()" expand="block" shape="round" type="button" fill="clear" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon>Agregar tablero</ion-button>
 
         <ion-item-divider>
-          <b>Ingreso de tableros</b>
+          <b>Ingreso de tableros <span class="ion-margin-start">{{userBusns.length}}</span> </b>
           <ion-chip slot="end" color="primary"><b>$0.00</b></ion-chip>
         </ion-item-divider>
 
 
-        <ion-card *ngFor="let bus of ownedBus" (click)="openBoard('123')" class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
+        <ion-card *ngFor="let bus of userBusns" (click)="openBoard(bus._id)" class="d-flex-col-start-centered ion-no-margin ion-margin-bottom border-radius-0">
 
           <ion-card-content class="d-flex-row-between-centered w-100 ion-no-padding ion-padding-start ion-padding-end ion-padding-bottom ion-margin-top ph-border-bottom">
             <ion-avatar>
-              <img [src]="urlBind + busImage">
+              <img src="./../assets/media/woman.jpg">
             </ion-avatar>
             <ion-text class="ion-margin-start" color="dark">
-              <h2><b>{{ bus.busProfile}}</b></h2>
-              <h3>{{ bus.busType }}</h3>
+              <h2><b> {{bus.busProfile}} </b></h2>
+              <h3> {{bus.busType}} </h3>
             </ion-text>
             <ion-card-title class="ion-text-center ph-margin-right-0">
-              <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> {{ bus.busRating }}</h2>
+              <h2><ion-icon color="warning" name="star" slot="start"></ion-icon> {{bus.busRating}} </h2>
             </ion-card-title>
           </ion-card-content>
 

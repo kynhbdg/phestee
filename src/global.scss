@@ -410,8 +410,9 @@ p, h1, h2, h3, h4, h5, h6 {
     align-items: center;
     padding: 1rem;
     margin: 0;
-    background: #000000;
-    color: #FFFFFF;
+    background: #FFFFFF;
+    color: #000000;
+    border: .5px solid var(--ion-color-medium);
 }
 
 .img-exp-grid-10 {
@@ -524,7 +525,7 @@ p, h1, h2, h3, h4, h5, h6 {
  }
 
  .padding-grid-2col {
-     padding:0px 4px 4px 4px;
+     padding:0px 2px 2px 2px;
  }
 
  .msg-chat-time {

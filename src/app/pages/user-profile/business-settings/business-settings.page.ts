@@ -119,11 +119,11 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
 
     this.userSubs =  this._userService.user.subscribe( userData => {
       this.user = userData;
-    });
+    }, error => console.log('Error: ' + error));
 
     this.tokenSubs = this._userService.token.subscribe( tokenId => {
       this.token = tokenId;
-    });
+    }, error => console.log('Error: ' + error));
 
     this.onFormChanges();
 
@@ -132,7 +132,7 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
   onFormChanges() {
     this.busLocationForm.valueChanges.subscribe( hasMap => {
       this.isMapLoaded = hasMap ? true : false;
-    });
+    }, error => console.log('Error: ' + error));
   }
 
   onLocationPicked(location: PlaceLocation) {
@@ -154,7 +154,6 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
       staticMapImageUrl: location.staticMapImageUrl,
       lastUpdated: new Date(Date.now())
     });
-    console.log('form', this.busLocationForm.get('addressComponents').value);
     this.addressDisabled = !!this.busLocationForm.get('addressComponents').value;
   }
 
@@ -247,8 +246,6 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
         this.busBody = { ...curatedBus };
       }
     }
-
-    console.log(this.busLocationForm);
 
     this._userService.updateBus('busUpdate', this.busBody, this.user._id, this.token).subscribe( res => {
       console.log(res);

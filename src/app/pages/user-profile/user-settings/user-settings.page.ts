@@ -69,11 +69,11 @@ export class UserSettingsPage implements OnInit, OnDestroy {
     this.userSubs =  this._userService.user.subscribe( userData => {
       this.user = userData;
       this.userSettingForm.patchValue(userData);
-    });
+    }, error => console.log('Error: ' + error));
 
     this.tokenSubs = this._userService.token.subscribe( tokenId => {
       this.token = tokenId;
-    });
+    }, error => console.log('Error: ' + error));
 
 
 
