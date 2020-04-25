@@ -15,20 +15,18 @@ export class HandleErrorService {
     let messageErrorB: any;
     if(typeof errorResponse.error !== undefined)
     {
-          if(typeof errorResponse.error.transactionStatus === undefined)
-          {
-            let finalmessage;
-            finalmessage = errorResponse.error.error.errmsg.split('index: ');
-            finalmessage[0] = finalmessage[1].split("_",1);
-            messageErrorB = finalmessage[0];
-          }
+
+          if(errorResponse.error.user != null)
+            messageErrorB = errorResponse.error.messages[errorResponse.error.messages.length - 1];
           else
-            messageErrorB = errorResponse.error.messages[0]+" , "+errorResponse.error.messages[1];
+            messageErrorB = errorResponse.error.messages[0];
+
+
+          messageErrorB += ", "+errorResponse.error.error.errmsg;
     }
     else
-    {
           messageErrorB = errorResponse;
-    }
+
 
     return throwError(messageErrorB);
   }

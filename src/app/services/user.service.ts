@@ -27,7 +27,7 @@ export class UserService {
   constructor(
         public http: HttpClient,
         public _handleError: HandleErrorService,
-        public generalService: GeneralService,
+        public generalService: GeneralService
               ) {
      this.loadStorage();
   }
@@ -124,6 +124,20 @@ export class UserService {
     });
 
   }// end saveStorage
+
+  updateUser(user: User,iduser: string,token: string)
+  {
+    const httpOptions = this.generalService.getHeaders(token);
+    let url = urlService + '/api/user/' +iduser;
+    return this.http.put<User>(url, user, httpOptions).pipe(
+      map( (res: any) => {
+      this.token.next(res.token);
+      this.user.next(res.user);
+      this.saveStorage(res.user._id, res.token, res.user, res.bus );
+      return true;
+    }),
+    catchError(this._handleError.handleError));
+  }// end updateUser
 
   logout() {
     this.token.next(null);

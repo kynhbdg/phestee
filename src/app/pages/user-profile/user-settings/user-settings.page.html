@@ -14,7 +14,7 @@
         <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
           <ion-card class="simple-card">
-            <ion-card-header class="d-flex-col-center-centered"> 
+            <ion-card-header class="d-flex-col-center-centered">
                 <img class="ph-avatar-xlg" src="./../assets/media/woman.jpg">
                 <ion-button (click)="onTakePhoto()" type="button" class="ion-margin-top" color="primary" size="small" fill="clear">
                   Cambiar foto de perfil
@@ -46,7 +46,7 @@
               <ion-item-divider>
                 <ion-label>Información privada</ion-label>
               </ion-item-divider>
-              
+
               <ion-item>
                 <ion-label position="fixed"><small>Email</small></ion-label>
                 <ion-input formControlName="email" name="email" type="email" class="ion-text-end"></ion-input>
@@ -96,7 +96,7 @@
               <ion-item-divider>
                 <ion-label>Contraseña</ion-label>
               </ion-item-divider>
-              
+
               <ion-item>
                 <ion-label position="fixed"><small>Vieja</small></ion-label>
                 <ion-input required type="password" formControlName="oldPwd" name="oldPwd"></ion-input>
@@ -107,14 +107,14 @@
               </ion-item>
               <ion-item>
                 <ion-label position="fixed"><small>Confirmar</small></ion-label>
-                <ion-input required type="password" formControlName="confirmPwd" name="confirmPwd"></ion-input>
+                <ion-input required type="password" formControlName="confirmPwd" name="confirmPwd" (keyup)="checkPwd($event)"></ion-input>
               </ion-item>
-              <ion-item *ngIf="confirmPwdForm.dirty && !pwdUpdateMatch">
+              <ion-item *ngIf="confirmPwdForm.dirty && !pwdMatchFlag">
                 <ion-note color="danger"><small>Las contraseñas no coinciden</small></ion-note>
               </ion-item>
 
               <div class="d-flex-row-center-centered ion-margin-top ion-margin-bottom">
-                <ion-button [disabled]="!pwdUpdateMatch" type="submit" class="ion-margin-top" expand="block" shape="round" color="primary" fill="outline" >
+                <ion-button [disabled]="pwdResetForm.invalid" type="submit" class="ion-margin-top" expand="block" shape="round" color="primary" fill="outline" >
                   Cambiar contraseña
                 </ion-button>
               </div>
@@ -124,7 +124,7 @@
             <ion-item-divider class="ion-padding-top">
               <ion-label color="danger">Zona de peligro</ion-label>
             </ion-item-divider>
-  
+
             <ion-button expand="full" color="danger">
               <ion-icon slot="start" name="close-circle-outline"></ion-icon>
               Eliminar perfil
@@ -132,13 +132,13 @@
             <ion-item-divider lines="none">
               <ion-text class="ion-margin-top ion-margin-bottom ion-text-center">
                 <small>
-                  
+
                   El perfil sólo se podrá eliminar si no tienes experiencias activas.
-                                  
+
                 </small>
               </ion-text>
             </ion-item-divider>
-              
+
 
           </ion-list>
 

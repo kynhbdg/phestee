@@ -26,6 +26,8 @@ export class UserSettingsPage implements OnInit, OnDestroy {
   tokenSubs: Subscription;
   token: string;
   loadImgSubs: Subscription;
+  addressUser: PlaceLocation;
+  pwdMatchFlag: boolean;
 
   citiesJal = [
     'El Salto',
@@ -46,6 +48,19 @@ export class UserSettingsPage implements OnInit, OnDestroy {
     public alertCtrl: AlertController
   ) { }
 
+
+  pwdMatch( pwd1: string, pwd2: string ) {
+
+    return( group: FormGroup ) => {
+
+      let value1 = group.controls[pwd1].value;
+      let value2 = group.controls[pwd2].value;
+      if (value1 === value2) {
+          return null;
+      }
+      return{ pwdMatch: true };
+    };
+  }
   ngOnInit() {
 
     this.userSettingForm = new FormGroup({
@@ -63,19 +78,19 @@ export class UserSettingsPage implements OnInit, OnDestroy {
     this.pwdResetForm = new FormGroup({
       oldPwd: new FormControl('', [Validators.required]),
       newPwd: new FormControl('', [Validators.required]),
-      confirmPwd: new FormControl('', [Validators.required]),
-    });
+      confirmPwd: new FormControl('', [Validators.required])
+    },
+    { validators: this.pwdMatch('newPwd', 'confirmPwd')});
 
     this.userSubs =  this._userService.user.subscribe( userData => {
       this.user = userData;
       this.userSettingForm.patchValue(userData);
+      //this.userSettingForm.get('city').patchValue(this.user.location.addressComponents.city); if i add the object to the field text, we have a compilation error.
     });
 
     this.tokenSubs = this._userService.token.subscribe( tokenId => {
       this.token = tokenId;
     });
-
-
 
     this.onPwdCheck();
 
@@ -125,8 +140,16 @@ onLocationPicked(location: PlaceLocation) {
       this.pwdUpdateMatch = confirmPwd === this.newPwdForm.value ? true : false;
       console.log(this.pwdUpdateMatch);
     });
-
   }
+
+  checkPwd(event: any)
+  {
+    if(this.pwdResetForm.value.newPwd == event.target.value)
+      this.pwdMatchFlag = true;
+    else
+      this.pwdMatchFlag = false;
+  }
+
 
   onTakePhoto() {
     this.cameraService.addNewPhoto();
@@ -178,11 +201,44 @@ onLocationPicked(location: PlaceLocation) {
       this._userService.loadImgProfile('userProfile', lastUpdated, this.user._id, this.token, img ).subscribe( res => {
         console.log(res);
       }, error => console.log('Error: ' + error));
-    }
+    } // end if
+
+    this.user.name = this.userSettingForm.getRawValue().name;
+    this.user.userName = this.userSettingForm.getRawValue().userName;
+    this.user.phone = this.userSettingForm.getRawValue().phone;
+    //this.user.birthDate = this.userSettingForm.getRawValue().birthday;
+    this.user.city = this.userSettingForm.getRawValue().city;
+    this.user.state = this.userSettingForm.getRawValue().state;
+    this.user.country = this.userSettingForm.getRawValue().country;
+    this.user.email = this.userSettingForm.getRawValue().email;
+    //ACHTUNG! i will add this code when ramon change the updateuser in the back.
+    /*this.addressUser.addressComponents.city = this.userSettingForm.getRawValue().city;
+    this.addressUser.addressComponents.state = this.userSettingForm.getRawValue().state;
+    this.addressUser.addressComponents.country = this.this.userSettingForm.getRawValue().country;
+    this.user.userLocation = this.addressUser;*/
+    this._userService.updateUser(this.user,this.user._id,this.token).subscribe(data => alert('Se actualizaron los datos del usuario'),error => {
+      let duplicateUserName = error.indexOf("userName_1 dup key:");
+      let duplicateEmail = error.indexOf("email_1 dup key:");
+      if(duplicateUserName >= 0 || duplicateEmail >= 0)
+      {
+          if(duplicateUserName >= 0)
+            alert("El usuario ingresado ya existe. Por favor de ingresar otro usuario.");
+
+          if(duplicateEmail >= 0)
+            alert("El correo ingresado ya existe. Por favor de ingresar otro correo.");
+      }
+      else
+        alert(error);
+
+
+    });
   }
 
   onPwdUpdate() {
-    console.log(this.pwdResetForm.value);
+    //ACHTUNG! The old password validation is pending!
+      this.user.password = this.pwdResetForm.getRawValue().oldPwd;
+      this.user.newPassword = this.pwdResetForm.getRawValue().newPwd;
+      this._userService.updateUser(this.user,this.user._id,this.token).subscribe(data => alert('La contraseña se ha cambiado con éxito'),error => alert(error));
   }
 
   ngOnDestroy() {
