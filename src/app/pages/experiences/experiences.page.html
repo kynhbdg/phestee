@@ -55,7 +55,7 @@
                 <ion-col *ngFor="let post of userPosts" class="padding-grid-2col" (click)="onOpenPost(post._id)" size="6">
                   <ion-img *ngIf="post.postImages.length > 0" class="img-exp-grid-20" [src]="urlBind + post.postImages[0]"></ion-img>
                   <div *ngIf="post.postImages.length === 0" class="post-wo-image-holder">
-                    <ion-text class="ion-text-center"> <h6>{{ post.post }}</h6></ion-text>
+                    <ion-text class="ion-text-center text-truncated-box"> <h6><b>{{ post.post }}</b></h6></ion-text>
                   </div>
                 </ion-col>
               </ion-row>

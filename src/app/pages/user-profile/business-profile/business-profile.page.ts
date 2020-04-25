@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+
+import { Subscription } from 'rxjs';
+
+import { UserService } from 'src/app/services/user.service';
+import { BusService } from 'src/app/services/bus.service';
 
 @Component({
   selector: 'app-business-profile',
   templateUrl: './business-profile.page.html',
   styleUrls: ['./business-profile.page.scss'],
 })
-export class BusinessProfilePage implements OnInit {
+export class BusinessProfilePage implements OnInit, OnDestroy {
 
   txnTypes = [
     0, // 'Venta'
@@ -24,12 +29,20 @@ export class BusinessProfilePage implements OnInit {
     4, // 'Mes'
   ]
 
+  bus: any;
+  busProfileHeader: string;
   addItemToArray: boolean;
   itemsArrayForm: FormGroup;
+  tokenSubs: Subscription;
+  token: string;
+  busId: string;
 
   constructor(
     public router: Router,
+    private activeRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
+    public _userService: UserService,
+    public busService: BusService
   ) { }
 
   ngOnInit() {
@@ -37,6 +50,41 @@ export class BusinessProfilePage implements OnInit {
     this.itemsArrayForm = this.formBuilder.group({
       busItems: this.formBuilder.array([])
     });
+
+    this.tokenSubs = this._userService.token.subscribe( tokenId => {
+      this.token = tokenId;
+    }, error => console.log('Error: ' + error));
+
+    this.activeRoute.params.subscribe( bus => {
+      this.busId = bus.id;
+    }, error => console.log('Error: ' + error));
+
+    this.getBusById();
+
+  }
+
+  getBusById() {
+    this.busService.getBusById(this.busId, this.token).subscribe( (res: any) => {
+      this.bus = res.bus[0];
+      this.curateBusAttr();
+    }, error => console.log('Error: ' + error));
+
+  }
+
+  curateBusAttr() {
+    const curatedBus = this.bus;
+
+    if (!curatedBus) { return; }
+    if (curatedBus.busType === 0) {curatedBus.busType = 'Negocio'; }
+    if (curatedBus.busType === 1) {curatedBus.busType = 'Freelancer'; }
+    if (curatedBus.busType === 2) {curatedBus.busType = 'Comunidad'; }
+    if (curatedBus.busType === 3) {curatedBus.busType = 'Oficio'; }
+    if (curatedBus.rtmMode === 0) {curatedBus.rtmMode = 'Fijo'; }
+    if (curatedBus.rtmMode === 1) {curatedBus.rtmMode = 'Ambulante'; }
+    if (curatedBus.rtmMode === 2) {curatedBus.rtmMode = 'Con servicio a domicilio'; }
+
+    this.bus = curatedBus;
+    this.busProfileHeader = this.bus.busProfile;
 
   }
 
@@ -69,6 +117,10 @@ export class BusinessProfilePage implements OnInit {
 
   onSaveItems(id: string) {
     console.log(this.itemsArrayForm.value);
+  }
+
+  ngOnDestroy() {
+    this.tokenSubs.unsubscribe();
   }
 
 

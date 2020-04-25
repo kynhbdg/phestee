@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { ActionSheetController, AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
@@ -11,6 +11,7 @@ import { User } from 'src/app/models/user.model';
 import { PlaceLocation } from '../../../models/location.model';
 
 import { UserService } from 'src/app/services/user.service';
+import { BusService } from 'src/app/services/bus.service';
 
 
 @Component({
@@ -22,7 +23,10 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
 
   businessSettingForm: FormGroup;
   busBody: Bus;
+  busId: string;
+  bus: any;
   user: User;
+  busProfileHeader: string;
   token: string;
   isMapLoaded = false;
   showCertifcationForm = false;
@@ -69,10 +73,16 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
     public actionSheetController: ActionSheetController,
     private alertCtrl: AlertController,
     public _userService: UserService,
+    public busService: BusService,
+    public activeRoute: ActivatedRoute,
     public router: Router
   ) { }
 
   ngOnInit() {
+
+    this.activeRoute.params.subscribe( bus => {
+      this.busId = bus.id;
+    }, error => console.log('Error: ' + error));
 
     this.businessSettingForm = this.formBuilder.group({
       busName: new FormControl('', [ Validators.required ] ),
@@ -125,7 +135,38 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
       this.token = tokenId;
     }, error => console.log('Error: ' + error));
 
+    if ( this.busId ) {
+      this.getBusById();
+    }
+
     this.onFormChanges();
+
+  }
+
+  getBusById() {
+    this.busService.getBusById(this.busId, this.token).subscribe( (res: any) => {
+      this.bus = res.bus[0];
+      this.curateBusAttr();
+    }, error => console.log('Error: ' + error));
+
+  }
+
+  curateBusAttr() {
+    const curatedBus = this.bus;
+
+    if (!curatedBus) { return; }
+    if (curatedBus.busType === 0) {curatedBus.busType = 'Negocio'; }
+    if (curatedBus.busType === 1) {curatedBus.busType = 'Freelancer'; }
+    if (curatedBus.busType === 2) {curatedBus.busType = 'Comunidad'; }
+    if (curatedBus.busType === 3) {curatedBus.busType = 'Oficio'; }
+    if (curatedBus.rtmMode === 0) {curatedBus.rtmMode = 'Fijo'; }
+    if (curatedBus.rtmMode === 1) {curatedBus.rtmMode = 'Ambulante'; }
+    if (curatedBus.rtmMode === 2) {curatedBus.rtmMode = 'Con servicio a domicilio'; }
+
+    this.bus = curatedBus;
+    this.busProfileHeader = this.bus.busProfile;
+    this.businessSettingForm.patchValue(this.bus);
+    console.log(this.businessSettingForm.value);
 
   }
 
@@ -181,6 +222,12 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
   get busLocationForm() {
     return this.businessSettingForm.get('busLocation');
   }
+  get busLocationAddressForm() {
+    return this.businessSettingForm.get('busLocation').get('address');
+  }
+  get busLocationMapForm() {
+    return this.businessSettingForm.get('busLocation').get('staticMapImageUrl');
+  }
   get busCertificationForm() {
     return this.businessSettingForm.get('certification');
   }
@@ -218,7 +265,7 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
   }
 
 
-  onBusUpdate(id?: any) {
+  onBusUpdate() {
 
     if (this.businessSettingForm.invalid) {
       return;
@@ -247,7 +294,9 @@ export class BusinessSettingsPage implements OnInit, OnDestroy {
       }
     }
 
-    this._userService.updateBus('busUpdate', this.busBody, this.user._id, this.token).subscribe( res => {
+    console.log(this.busBody);
+
+    this._userService.updateBus('busUpdate', this.busBody, this.user._id, this.token, this.busId).subscribe( res => {
       console.log(res);
     }, error => console.log('Error: ' + error));
 

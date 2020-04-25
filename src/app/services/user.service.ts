@@ -25,6 +25,7 @@ export class UserService {
   token = new BehaviorSubject<string>(null);
   incBus = new Subject<void>();
   userBusUrl = urlService + '/api/user/bus/';
+  editBusUrl = urlService + '/api/bus/';
 
   constructor(
         public http: HttpClient,
@@ -138,7 +139,7 @@ export class UserService {
     catchError(this._handleError.handleError));
   }
 
-  updateBus( postType: string, body: any, userId: string, token: string, imgProcessed?: File): Observable<any> {
+  updateBus( postType: string, body: any, userId: string, token: string,  busId?: string, imgProcessed?: File): Observable<any> {
 
 
     // pending for bus Image change
@@ -149,17 +150,32 @@ export class UserService {
     //   catchError(this._handleError.handleError));
     // }
 
-    const url = this.userBusUrl + userId;
+    const urlCreate = this.userBusUrl + userId;
     const headers = this.generalService.getHeaders(token);
 
-    return this.http.post<Bus>(url, body, headers).pipe(map((res: any) => {
-      this.saveStorage(res.user._id, res.token, res.user, res.bus);
+    if (!busId) {
+      return this.http.post<Bus>(urlCreate, body, headers).pipe(map((res: any) => {
+        this.saveStorage(res.user._id, res.token, res.user, res.bus);
+        return res;
+      }),
+      tap( bus => {
+        this.incBus.next(bus.user.ownedBus);
+      }),
+      catchError(this._handleError.handleError));
+
+    }
+
+    const urlUpdateBus = this.editBusUrl + busId;
+
+    return this.http.put<Bus>(urlUpdateBus, body, headers).pipe(map((res: any) => {
+      console.log(res);
       return res;
     }),
     tap( bus => {
       this.incBus.next(bus.user.ownedBus);
     }),
     catchError(this._handleError.handleError));
+
 
   }
 

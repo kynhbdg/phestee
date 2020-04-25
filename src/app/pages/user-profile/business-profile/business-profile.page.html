@@ -3,11 +3,10 @@
     <ion-buttons slot="start">
       <ion-back-button text="" color="dark"></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">cakesinGDL  <ion-icon name="chevron-down-outline"></ion-icon>
-     </ion-title>
+    <ion-title>{{ busProfileHeader }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="onSaveItems('123')" [disabled]="!addItemToArray">
-        Guardar
+      <ion-button (click)="onEditBusiness(busId)">
+        Editar
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -18,36 +17,36 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-        <ion-card class="simple-card ion-no-padding ion-no-margin ph-border-bottom">
+        <ion-card *ngIf="bus">
           <ion-card-header class="d-flex-col-center-centered w-100 ion-no-padding ion-padding-top ion-padding-end ion-padding-start">
-              <img class="ph-avatar-lg" src="./../assets/media/cake2.jpg">
+              <img class="ph-avatar-lg ion-margin-top" src="./../assets/media/cake2.jpg">
               <ion-card-title class="ion-text-center ion-margin-top">
                 <h6>
-                  <b>cakesinGDL <ion-icon color="primary" size="small" name="shield-checkmark"></ion-icon></b>
+                  <b> {{ bus.busProfile }} <ion-icon *ngIf="bus.certification[0].isCertified" color="primary" size="small" name="shield-checkmark"></ion-icon></b>
                 </h6>
-                <h6> Pasteles Guadalajara</h6>
+                <h6> {{ bus.busName }} </h6>
               </ion-card-title>
           </ion-card-header>
 
-          <ion-card-header class="ion-no-padding ion-padding-top">
+          <ion-card-header>
 
-            <ion-grid class="ph-border-bottom ion-margin-top ion-no-padding">
+            <ion-grid class="ion-margin-top ion-no-padding">
               <ion-row class="ion-margin-top ion-margin-bottom">
                 <ion-col size="4">
                   <ion-card-title color="dark" class="ion-text-center">
-                    <h6><b>35,1K</b></h6>
+                    <h6><b>0</b></h6>
                     <h6><ion-icon color="dark" name="flash-outline" slot="start"></ion-icon></h6>
                   </ion-card-title>
                 </ion-col>
                 <ion-col size="4">
                   <ion-card-title color="dark" class="ion-text-center">
-                    <h6><b>$63,5K</b></h6>
+                    <h6><b>$0.00</b></h6>
                     <h6><small>Ingresos</small></h6>
                   </ion-card-title>
                 </ion-col>
                 <ion-col size="4">
                   <ion-card-title color="dark" class="ion-text-center">
-                    <h6><b>4.98</b></h6>
+                    <h6><b>{{ bus.busRating }}</b></h6>
                     <h6><ion-icon color="warning" name="star" slot="start"></ion-icon></h6>
                   </ion-card-title>
                 </ion-col>
@@ -102,11 +101,6 @@
               </ion-row>
             </ion-grid>
           </ion-card-content> -->
-           <ion-button class="ion-margin-top" (click)="onEditBusiness('123')" expand="full" fill="clear" type="button" color="primary">
-              <ion-icon name="create-outline" slot="start"></ion-icon> <b>Editar negocio</b>
-            </ion-button>
-
-
 
           <!-- <ion-card-content class="ion-no-padding ion-padding-top ion ion-padding-end ion-padding-start ion-margin-bottom">
 
@@ -181,7 +175,9 @@
 
           </div>
 
-          <ion-button (click)='onAddBusItem()' expand="block" fill="clear" type="button" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon><b>Agregar item</b></ion-button>
+          <div class="d-flex-col-center-centered ion-margin-top ion-margin-bottom ">
+            <ion-button (click)='onAddBusItem()' shape="round" type="button" color="primary"><ion-icon name="add" slot="start"></ion-icon><b>Agregar item</b></ion-button>
+          </div>
 
           <!-- <ion-item-group>
             <ion-card class="ion-no-padding ion-padding-bottom">

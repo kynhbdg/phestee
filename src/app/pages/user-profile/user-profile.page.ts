@@ -37,6 +37,7 @@ export class UserProfilePage implements OnInit, AfterViewInit, OnDestroy {
       this.user = userData;
       this.userBusns = userData.ownedBus.reverse();
       this.addIncrementalBus();
+      this.curateBusAttr();
     }, error => console.log('Error: ' + error));
 
     this.tokenSubs = this._userService.token.subscribe( tokenId => {
@@ -56,20 +57,33 @@ export class UserProfilePage implements OnInit, AfterViewInit, OnDestroy {
         return;
       }
       this.userBusns = incrementalBus.reverse();
+      this.curateBusAttr();
     }, error => console.log('Error: ' + error));
   }
 
-  // curateBusAttr(busArray: Array<Bus>) {
-  //   const curatedBus = busArray;
+  curateBusAttr() {
+    const curatedBus = this.userBusns;
 
-  //   for ( const bus of curatedBus ) {
-  //     if ( bus.rtmMode && bus.rtmMode === 0 ) {
-  //       bus.rtmMode.toString() = 'Fijo';
+    if (curatedBus.length === 0 ) { return; }
 
-  //     }
-  //   }
+    if ( this.userBusns.length === 1 || this.userBusns.length > 1 ) {
 
-  // }
+      for ( const bus of curatedBus ) {
+         if (bus.busType === 0) {bus.busType = 'Negocio'; }
+         if (bus.busType === 1) {bus.busType = 'Freelancer'; }
+         if (bus.busType === 2) {bus.busType = 'Comunidad'; }
+         if (bus.busType === 3) {bus.busType = 'Oficio'; }
+      }
+      for ( const bus of curatedBus ) {
+         if (bus.rtmMode === 0) {bus.rtmMode = 'Fijo'; }
+         if (bus.rtmMode === 1) {bus.rtmMode = 'Ambulante'; }
+         if (bus.rtmMode === 2) {bus.rtmMode = 'Con servicio a domicilio'; }
+      }
+      this.userBusns = curatedBus;
+
+    }
+
+  }
 
 
   openBoard(id: string) {

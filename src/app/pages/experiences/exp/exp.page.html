@@ -27,13 +27,13 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-        <ion-card *ngIf="post" class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-          <img *ngIf="post.postImages.length === 1" class="img-feed-post" [src]="urlBind + post.postImages[0]">
+        <ion-card *ngIf="post">
+          <img *ngIf="post.postImages.length === 1" class="img-feed-exp" [src]="urlBind + post.postImages[0]">
           <ion-slides *ngIf="post.postImages.length > 1" pager="true">
             <ion-slide *ngFor="let img of post.postImages">
-              <div class="post-photo-carroussel">
+              <div class="post-photo-carroussel-exp">
                 <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon>-->
-                <ion-img class="img-carroussel" [src]="urlBind + img"></ion-img>
+                <ion-img class="img-carroussel-exp" [src]="urlBind + img"></ion-img>
               </div>
             </ion-slide>
           </ion-slides>

@@ -18,26 +18,37 @@
 
         <ion-list class="bg-transparent">
 
-          <ion-card *ngFor="let post of posts" class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
-
-            <img *ngIf="post.postImages.length === 1" class="img-feed-post" [src]="urlBind + post.postImages[0]"/>
-
-            <ion-slides *ngIf="post.postImages.length > 1" pager="true">
-              <ion-slide *ngFor="let img of post.postImages">
-                <div class="post-photo-carroussel">
-                  <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon>-->
-                  <ion-img class="img-carroussel" [src]="urlBind + img"></ion-img>
-                </div>
-              </ion-slide>
-            </ion-slides>
-
+          <ion-card class="simple-card">
             <ion-card-header>
+              <ion-card-title color="medium">
+                <h6>
+                  👋 ¡Hola! Nos da mucho gusto que estés aquí. En ésta sección podrás ver lo que la gente está pidiendo cerca de ti... 
+                  si puedes ayudar con tu negocio, servicio o bien ofrecer tu ayuda de forma gratuita, por favor siéntete libre de levantar la mano.
+                </h6>
+              </ion-card-title>
+            </ion-card-header>
+          </ion-card>
+
+          <ion-card *ngFor="let post of posts">
+
+              <img *ngIf="post.postImages.length === 1" class="img-feed-post" [src]="urlBind + post.postImages[0]"/>
+              
+              <ion-slides *ngIf="post.postImages.length > 1" pager="true">
+                <ion-slide *ngFor="let img of post.postImages">
+                  <div class="post-photo-carroussel">
+                    <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon>-->
+                    <ion-img class="img-carroussel" [src]="urlBind + img"></ion-img>
+                  </div>
+                </ion-slide>
+              </ion-slides>
+
+              <ion-card-header [ngClass] ="{'ion-no-padding ion-padding-end ion-padding-bottom ion-padding-start' : post.postImages.length > 1}">
               <ion-card-subtitle>Hace 5 minutos | A 2km</ion-card-subtitle>
-              <ion-card-title>{{ post.post }}</ion-card-title>
+              <ion-card-title><h5><b>{{ post.post }}</b></h5></ion-card-title>
             </ion-card-header>
             <ion-card-content class="d-flex-row-between-centered">
-              <ion-button (click)="makeOffer('123')" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> {{ post.hands.length }}</ion-button>
-              <ion-button shape="round" color="dark" fill="clear" ><ion-icon name="people-outline" slot="start"></ion-icon> {{ post.providers.length }}</ion-button>
+              <ion-button size="small" (click)="makeOffer(post._id)" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left-outline" slot="start"></ion-icon> {{ post.hands.length }}</ion-button>
+              <ion-button size="small" shape="round" color="dark" fill="clear" ><ion-icon name="people-outline" slot="start"></ion-icon> {{ post.providers.length }}</ion-button>
             </ion-card-content>
           </ion-card>
 

@@ -55,14 +55,14 @@ p, h1, h2, h3, h4, h5, h6 {
     height: 48px;
     border-radius: 5px;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .img-user-footer {
     width: 30px;
     height: 30px;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
     margin-top: 10px;
     border-radius: 100%;
 }
@@ -197,7 +197,7 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 32px!important;
     border-radius: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .ph-avatar-md {
@@ -205,7 +205,7 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 50px!important;
     border-radius: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .ph-avatar-lg {
@@ -213,7 +213,7 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 60px!important;
     border-radius: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .ph-avatar-xlg {
@@ -221,7 +221,7 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 70px!important;
     border-radius: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .phestee-icon-md {
@@ -385,21 +385,21 @@ p, h1, h2, h3, h4, h5, h6 {
     height: 45vh;
     width: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .img-feed-exp {
     height: 25vh;
     width: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .img-exp-grid-20 {
     height: 20vh;
     width: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .post-wo-image-holder {
@@ -410,30 +410,30 @@ p, h1, h2, h3, h4, h5, h6 {
     align-items: center;
     padding: 1rem;
     margin: 0;
-    background: #FFFFFF;
-    color: #000000;
-    border: .5px solid var(--ion-color-medium);
+    // background: #FFFFFF;
+    // color: #000000;
+    border: .5px solid var(--ion-color-light-shade);
 }
 
 .img-exp-grid-10 {
     height: 10vh;
     width: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .img-block-exp {
     height: 15vh !important;
     width: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .img-slider-thumbnail {
     height: 25vh !important;
     width: 100% !important;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 .slide-card-member {
@@ -454,6 +454,14 @@ p, h1, h2, h3, h4, h5, h6 {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+ }
+
+.text-truncated-box {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
  }
 
  .text-truncated-one-line {
@@ -481,7 +489,7 @@ p, h1, h2, h3, h4, h5, h6 {
      width: 100%;
      height: 20vh;
      object-fit: cover;
-     object-position: center;
+     object-position: top;
  }
 
  .post-photo-carroussel {
@@ -494,6 +502,18 @@ p, h1, h2, h3, h4, h5, h6 {
      }
      .img-carroussel {
         height: 90%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+     }
+ }
+
+ .post-photo-carroussel-exp {
+     position: relative;
+     height: 32vh;
+
+     .img-carroussel-exp {
+        height: 87%;
         width: 100%;
         object-fit: cover;
         object-position: center;

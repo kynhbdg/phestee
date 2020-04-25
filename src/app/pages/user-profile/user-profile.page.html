@@ -49,14 +49,13 @@
 
           </ion-card>
 
-        
-        <div class="d-flex-row-center-centered ion-margin-bottom">
-          <ion-button (click)="onAddNewBusiness()" shape="round" type="button" color="primary" class="ion-margin-top ion-margin-bottom"><ion-icon name="add" slot="start"></ion-icon><b>Agregar tablero</b></ion-button>
-        </div>
+
+        <!-- <div class="d-flex-row-center-centered ion-margin-bottom">
+        </div> -->
           
 
-        <ion-item-divider>
-          <b>Ingreso de tableros <span class="ion-margin-start">{{userBusns.length}}</span> </b>
+        <ion-item-divider *ngIf="userBusns.length > 0" >
+          <b>Ingreso de tableros</b>
           <ion-chip slot="end" color="primary"><b>$0.00</b></ion-chip>
         </ion-item-divider>
 
@@ -68,7 +67,7 @@
               <img src="./../assets/media/woman.jpg">
             </ion-avatar>
             <ion-text class="ion-margin-start" color="dark">
-              <h2><b> {{bus.busProfile}} </b></h2>
+              <h2><b> {{bus.busName}} </b></h2>
               <h3> {{bus.busType}} </h3>
             </ion-text>
             <ion-card-title class="ion-text-center ph-margin-right-0">
@@ -86,6 +85,12 @@
           </ion-card-content>
 
         </ion-card>
+
+        <ion-col class="d-flex-col-center-centered ion-margin-top ion-margin-bottom ion-padding-bottom">
+          <ion-text *ngIf="userBusns.length === 0" class="ion-padding ion-text-center" color="medium">Aún no tienes un tablero para ayudar a nuestra comunidad. Los tableros son utilizados por negocios, profesionistas, oficios o cualquier persona que pueda ofrecer algo.
+           Puedes empezar aquí abajo 👇 </ion-text>
+          <ion-button (click)="onAddNewBusiness()" shape="round" type="button" color="primary" class="ion-margin-top"><ion-icon name="add" slot="start"></ion-icon><b>Agregar tablero</b></ion-button>
+        </ion-col>
 
       </ion-col>
     </ion-row>
