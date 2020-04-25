@@ -85,12 +85,11 @@ export class UserSettingsPage implements OnInit, OnDestroy {
     this.userSubs =  this._userService.user.subscribe( userData => {
       this.user = userData;
       this.userSettingForm.patchValue(userData);
-      //this.userSettingForm.get('city').patchValue(this.user.location.addressComponents.city); if i add the object to the field text, we have a compilation error.
-    });
+    }, error => console.log('Error: ' + error));
 
     this.tokenSubs = this._userService.token.subscribe( tokenId => {
       this.token = tokenId;
-    });
+    }, error => console.log('Error: ' + error));
 
     this.onPwdCheck();
 
@@ -158,40 +157,6 @@ onLocationPicked(location: PlaceLocation) {
       console.log(imgReady);
       this.onUserUpdate(imgReady);
     });
-
-  }
-
-
-
-  async presentPhotoOptions() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Actualizar foto de perfil',
-      buttons: [{
-        text: 'Tomar foto',
-        icon: 'camera-outline',
-        handler: () => {
-          console.log('abrir camara');
-          }
-        },
-        {
-          text: 'Abrir galeria',
-          icon: 'images-outline',
-          handler: () => {
-            console.log('abrir galeria');
-          }
-        },
-        {
-          text: 'Cancelar',
-          role: 'destructive',
-          icon: 'close-circle-outline',
-          handler: () => {
-            console.log('abrir galeria');
-          }
-        }
-      ]
-    });
-
-    await actionSheet.present();
 
   }
 

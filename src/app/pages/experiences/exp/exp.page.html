@@ -9,7 +9,7 @@
     <ion-title>
       <div class="d-flex-row-center-centered">
         <img class="img-avatar-xs" src="../../assets/media/laura.jpg" alt="">
-        <ion-label class="ion-margin-start">Inés Cervantes</ion-label>
+        <ion-label class="ion-margin-start text-truncated">{{ postTextHdr }}</ion-label>
       </div>
     </ion-title>
 
@@ -27,24 +27,30 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-        <ion-card  class="ion-no-margin ion-margin-top ion-margin-bottom border-radius-0">
+        <ion-card *ngIf="post">
+          <img *ngIf="post.postImages.length === 1" class="img-feed-exp" [src]="urlBind + post.postImages[0]">
+          <ion-slides *ngIf="post.postImages.length > 1" pager="true">
+            <ion-slide *ngFor="let img of post.postImages">
+              <div class="post-photo-carroussel-exp">
+                <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon>-->
+                <ion-img class="img-carroussel-exp" [src]="urlBind + img"></ion-img>
+              </div>
+            </ion-slide>
+          </ion-slides>
           <ion-item lines="full">
             <ion-card-subtitle>Hace 6 minutos</ion-card-subtitle>
-            <ion-chip slot="end" color="primary"><b> $356.30</b></ion-chip>
+            <ion-chip slot="end" color="primary"><b> $0.00</b></ion-chip>
           </ion-item>
           <ion-item lines="none" class="ion-margin-top">
-            <ion-thumbnail slot="start">
-              <img src="../../assets/media/hero/apartment.jpg">
-            </ion-thumbnail>
-            <ion-text>
-              <b>Quiero pintar mi depa</b>
+            <ion-text class="ion-text-left">
+              <b>{{ post.post }}</b>
             </ion-text>
           </ion-item>
           <ion-item lines="none">
             <ion-label>
               <div class="d-flex-row-between-centered">
-                <ion-button shape="round" color="light"><ion-icon name="flash-outline" slot="start"></ion-icon>  3</ion-button>
-                <ion-button shape="round" color="light"><ion-icon name="hand-left-outline" slot="start" class="rotated-15"></ion-icon>  5</ion-button>
+                <ion-button shape="round" color="light"><ion-icon name="flash-outline" slot="start"></ion-icon> {{ post.hands.length }}</ion-button>
+                <ion-button shape="round" color="light"><ion-icon name="hand-left-outline" slot="start" class="rotated-15"></ion-icon> {{ post.providers.length }} </ion-button>
                 <ion-button shape="round" color="light"><ion-icon name="people-outline" slot="start"></ion-icon>  0</ion-button>
                 <ion-button shape="round" color="light"><ion-icon name="person-add-outline"></ion-icon></ion-button>
               </div>
@@ -59,29 +65,24 @@
         <ion-grid class="ion-no-padding">
             <ion-row class="ion-no-padding">
               <ion-col class="padding-grid-3col" size="4">
-                <img (click)="onOpenExperience('123')" class="img-exp-grid-20" src="../../assets/media/painter8.jpg" alt="">
+                <img (click)="onOpenExperience('123')" class="img-exp-grid-20" src="../../assets/media/hero/painter8.jpg" alt="">
               </ion-col>
               <ion-col class="padding-grid-3col" size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/painter2.jpg" alt="">
+                <img (click)="onOpenExperience('123')" class="img-exp-grid-20" src="../../assets/media/hero/painter8.jpg" alt="">
               </ion-col>
               <ion-col class="padding-grid-3col" size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/painter5.jpg" alt="">
+                <img (click)="onOpenExperience('123')" class="img-exp-grid-20" src="../../assets/media/hero/painter8.jpg" alt="">
               </ion-col>
               <ion-col class="padding-grid-3col" size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/painter12.jpg" alt="">
-              </ion-col>
-              <ion-col class="padding-grid-3col"size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/painter7.jpg" alt="">
+                <img (click)="onOpenExperience('123')" class="img-exp-grid-20" src="../../assets/media/hero/painter8.jpg" alt="">
               </ion-col>
               <ion-col class="padding-grid-3col" size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/painter11.jpg" alt="">
+                <img (click)="onOpenExperience('123')" class="img-exp-grid-20" src="../../assets/media/hero/painter8.jpg" alt="">
               </ion-col>
               <ion-col class="padding-grid-3col" size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/painter10.jpg" alt="">
+                <img (click)="onOpenExperience('123')" class="img-exp-grid-20" src="../../assets/media/hero/painter8.jpg" alt="">
               </ion-col>
-              <ion-col class="padding-grid-3col" size="4">
-                <img class="img-exp-grid-20" src="../../assets/media/painter6.jpg" alt="">
-              </ion-col>
+
 
             </ion-row>
 

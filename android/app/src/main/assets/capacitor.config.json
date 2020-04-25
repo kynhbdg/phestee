@@ -1,11 +1,8 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.phestee",
   "appName": "Phestee",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
-  "cordova": {},
-  "server": {
-    "url": "http://localhost:8100"
-  }
+  "cordova": {}
 }

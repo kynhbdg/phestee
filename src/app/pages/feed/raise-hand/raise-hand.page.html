@@ -1,11 +1,11 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button routerLink="/pages/tabs/feed" color="primary">
         <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Necesito un corte de cabello</ion-title>
+    <ion-title>{{ postTextHdr }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,20 +14,33 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2" size-xl="4" offset-xl="4">
 
-        <ion-card>
-          <img class="img-feed-exp" src="../../assets/media/stress.jpg"/>
-          <ion-card-header>
-            <ion-card-subtitle>Hace 10 minutos | A 2km</ion-card-subtitle>
-            <ion-card-title>Necesito un corte de cabello</ion-card-title>
-          </ion-card-header>
-          <ion-card-content class="d-flex-row-between-centered">
-            <ion-button shape="round" color="light"><ion-icon class="rotated-15" color="primary" name="hand-left" slot="start"></ion-icon>  15</ion-button>
-            <ion-button shape="round" color="medium" fill="clear"><ion-icon name="people-outline" slot="start"></ion-icon>  0</ion-button>
-          </ion-card-content>
-        </ion-card>
+
+        <ion-card *ngIf="post">
+
+          <img *ngIf="post.postImages.length === 1" class="img-feed-exp" [src]="urlBind + post.postImages[0]"/>
+          
+          <ion-slides *ngIf="post.postImages.length > 1" pager="true">
+            <ion-slide *ngFor="let img of post.postImages" class="ion-no-margin">
+              <div class="post-photo-carroussel-exp">
+                <!-- <ion-icon class="remove-photo-btn" name="close-circle"></ion-icon>-->
+                <ion-img class="img-carroussel-exp" [src]="urlBind + img"></ion-img>
+              </div>
+            </ion-slide>
+          </ion-slides>
+
+        <ion-card-header [ngClass] ="{'ion-no-padding ion-padding-end ion-padding-bottom ion-padding-start' : post.postImages.length > 1}">
+          <ion-card-subtitle>Hace 5 minutos | A 2km</ion-card-subtitle>
+          <ion-card-title><h5><b>{{ post.post }}</b></h5></ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="d-flex-row-between-centered">
+          <ion-button size="small" shape="round" color="light"><ion-icon class="rotated-15" name="hand-left" color="primary" slot="start"></ion-icon> {{ post.hands.length }}</ion-button>
+          <ion-button size="small" shape="round" color="dark" fill="clear" ><ion-icon name="people-outline" slot="start"></ion-icon> {{ post.providers.length }}</ion-button>
+        </ion-card-content>
+      </ion-card>
+
 
         <div class="ion-padding ion-text-center">
-          <h6>Ésta publicación coincide con tu tablero <span><b>@esteticaMX</b></span>. Selecciona los items para realizar una oferta.</h6>
+          <ion-text color="medium"><h6>Ésta publicación coincide con tu tablero <span><b>@esteticaMX</b></span>, selecciona los items de tu lista para realizar una oferta. Podrás ver el perfil del usuario cuando éste decida iniciar una experiencia contigo.</h6></ion-text>
         </div>
 
            <ion-card>

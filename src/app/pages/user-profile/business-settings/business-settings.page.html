@@ -3,9 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button text="" color="dark"></ion-back-button>
     </ion-buttons>
-    <ion-title>Crear Tablero</ion-title>
+    <ion-title>{{ busId? busProfileForm.value : 'Crear Tablero'}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button [disabled]="businessSettingForm.invalid" (click)="onBusUpdate('123')">
+      <ion-button type="button" [disabled]="businessSettingForm.invalid || businessSettingForm.untouched" (click)="onBusUpdate()">
         Guardar
       </ion-button>
     </ion-buttons>
@@ -20,7 +20,7 @@
         <ion-card class="simple-card">
           <ion-card-header class="d-flex-col-center-centered"> 
               <img class="ph-avatar-xlg" src="./../assets/media/cake2.jpg">
-              <ion-button (click)="presentPhotoOptions()" type="button" class="ion-margin-top" color="primary" size="small" fill="clear">
+              <ion-button  type="button" class="ion-margin-top" color="primary" size="small" fill="clear">
                 Cambiar foto de perfil
               </ion-button>
           </ion-card-header>
@@ -98,6 +98,16 @@
             <ion-item-divider>
               <ion-label>Dirección</ion-label>
             </ion-item-divider>
+
+            <!-- <div *ngIf="busId">
+              <!-- <ion-item lines="none" class="ion-margin-top ion-margin-bottom">
+                <ion-icon name="navigate-outline" size="small" slot="start"></ion-icon>
+                <ion-text>
+                  {{ busLocationAddressForm.value }}
+                </ion-text>
+              </ion-item> 
+              <img class="location-image" [src]="bus.staticMapImageUrl">
+            </div> -->
 
             <app-location-picker (locationPick)="onLocationPicked($event)"></app-location-picker>
 
@@ -180,7 +190,7 @@
                     <ion-input placeholder="13123465497778" formControlName="docID" name="docID" type="email" class="ion-text-end"></ion-input>
                   </ion-item>
                 </div>
-                <ion-item role="button" (click)="presentPhotoOptions()" >
+                <ion-item role="button">
                   <ion-icon name="camera-outline" size="small" slot="start"></ion-icon>
                   <ion-label>Agregar imagen de documento</ion-label> 
                 </ion-item>
@@ -241,7 +251,7 @@
             <ion-item-divider></ion-item-divider>
             
             <div class="d-flex-row-center-centered ion-margin-top ion-margin-bottom">
-              <ion-button [disabled]="businessSettingForm.invalid" type="submit" class="ion-margin-top" expand="block" shape="round" color="primary">
+              <ion-button [disabled]="businessSettingForm.invalid || businessSettingForm.untouched" type="button" (click)="onBusUpdate()" class="ion-margin-top" expand="block" shape="round" color="primary">
                 Guardar cambios
               </ion-button>
             </div>
